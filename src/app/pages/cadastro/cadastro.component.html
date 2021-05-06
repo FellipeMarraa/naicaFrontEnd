@@ -1,0 +1,155 @@
+<nav class="navbar-nav ml-auto navbar-expand-lg navbar-light bg-light" xmlns="http://www.w3.org/1999/html">
+  <div class="collapse navbar-collapse text-center" id="navbarNav">
+    <a class="nav-link nav-item" (click)="ocultaDiv('div-web-social')" id="web-social">WebSocial</a>
+    <a class="nav-link nav-item" (click)="ocultaDiv('div-relacao-de-alunos')" id="relacao-de-alunos">Relação de
+      Alunos</a>
+    <img src="assets/icone-user-home.png" id="icone-user-cadastro" alt="Icone user">
+  </div>
+</nav>
+<div class="container-fluid p-0" id="corpo-cadastro">
+  <div class="container-fluid p-0" id="caixa-cadastro">
+    <form id="formulario-cadastro">
+      <p id="titulo-cadastro"><strong>Cadastro de Atendidos</strong></p>
+
+      <div class="row" style="padding-top: 2%">
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="input-nome">Nome</label>
+            <input class="form-control" id="input-nome" type="text" name="nome" placeholder="Nome completo do atendido">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group" id="div-dataNascimento">
+            <label for="input-dataNascimento">Data de Nascimento</label>
+            <input class="form-control" id="input-dataNascimento" type="date" name="dataNascimento">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="input-idadeIncial">Idade Inicial</label>
+            <input class="form-control" id="input-idadeIncial" type="number" name="idadeIncial">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="input-idadeAtual">Idade Atual</label>
+            <input class="form-control" id="input-idadeAtual" type="number" name="idadeAtual">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row" style="padding-top: 2%">
+        <div class="col-md-3">
+          <p>Sexo</p>
+          <div class="container" id="sexo">
+            <input id="input-sexoMasculino" type="radio" name="masculino"> Masculino
+            <!--            <label class="radio-inline" for="input-sexoMasculino">Masculino </label>-->
+
+            <!--          </div>-->
+            <!--          <div class="form-check">-->
+            <input id="input-sexoFeminino" type="radio" name="feminino"> Feminino
+            <!--            <label class="radio-inline" for="input-sexoFeminino">Feminino</label>-->
+
+          </div>
+        </div>
+
+
+        <div class="col-md-3">
+
+          <div class="form-group">
+            <label for="input-nisAtendido">Nis Atendido</label>
+            <input class="form-control" id="input-nisAtendido" type="text" name="nisAtendido">
+          </div>
+
+
+        </div>
+
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="input-dataMatricula">Data da Matrícula</label>
+            <input class="form-control" id="input-dataMatricula" type="date" name="dataMatricula">
+          </div>
+        </div>
+
+
+        <div class="col-md-2">
+          <p>Desligado</p>
+          <div class="container" id="div-desligado">
+
+            <input class="form-check-input" id="input-desligadoSim" type="radio" name="desligadoSim"> Sim
+            <!--                <label class="form-check-label" for="input-desligadoSim">Sim</label>-->
+
+            <input class="form-check-input" id="input-desligadoNao" type="radio" name="nao"> Não
+            <!--                <label class="form-check-label" for="input-desligadoNao">Nao</label>-->
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row" style="padding-top: 2%">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="input-escola">Escola </label>
+            <input class="form-control" id="input-escola" type="text" name="escola">
+          </div>
+
+        </div>
+
+        <div class="col-md-2 ">
+          <div class="form-group">
+            <label for="input-anoEscolar">Ano Escolar</label>
+            <input class="form-control" id="input-anoEscolar" type="text" name="anoEscolar">
+          </div>
+
+        </div>
+
+        <div class="col-md-2">
+
+          <div class="form-group">
+            <label for="select-periodoEscolar">Periodo Escolar</label>
+            <select class="form-select" id="select-periodoEscolar" name="periodoEscolar">
+              <option selected>Periodo Escolar</option>
+              <option value="manha">Manhã</option>
+              <option value="tarde">Tarde</option>
+            </select>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row" style="padding-top: 2%">
+        <div class="col-md-3">
+          <p>Desacompanhado</p>
+          <div class="container" id="div-desacompanhado">
+
+            <input class="form-check-input" id="input-desacompanhadoSim" type="radio" name="desacompanhadoSim"> Sim
+
+            <input class="form-check-input" id="input-desacompanhadoNao" type="radio" name="nao"> Não
+
+          </div>
+
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <label for="input-autorizadoBuscar">Autorizado a buscar</label>
+            <input class="form-control" id="input-autorizadoBuscar" type="text" name="autorizadoBuscar">
+          </div>
+        </div>
+
+      </div>
+
+    </form>
+
+        <button type="submit" id="button-cadastrar">Cadastrar </button>
+
+  </div>
+</div>
+

@@ -6,12 +6,14 @@ import {AppRoutingModule} from './app.routing.module';
 import {HomeComponent} from './pages/home/home.component';
 import {LoginComponent} from './pages/login/login.component';
 import {DevExtremeModule, DxButtonModule, DxDataGridModule} from 'devextreme-angular';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    CadastroComponent,
   ],
   imports: [
     BrowserModule,
