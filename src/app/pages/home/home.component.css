@@ -1,0 +1,53 @@
+#icone-user-home {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+a {
+  cursor: pointer;
+  outline: none;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+
+  /*position: relative;*/
+}
+
+#web-social {
+  float: left;
+  margin-left: 30px;
+  margin-right: 30vw;
+  width: 300px;
+
+}
+
+#relacao-de-alunos {
+  width: 300px;
+  margin-right: 45vw;
+}
+
+#navbarNav {
+  /*text-align: center;*/
+  background-color: #243A7A;
+  height: 8vh;
+  padding: 3px;
+}
+
+#div-web-social {
+  background-color: yellow;
+  height: 85vh;
+  display: none;
+}
+
+#div-relacao-de-alunos {
+  background-color: blue;
+  height: 85vh;
+  display: none;
+}
+
+dxi-column{
+  border: 1px solid black;
+}
+
