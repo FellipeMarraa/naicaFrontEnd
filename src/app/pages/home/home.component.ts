@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {style} from '@angular/animations';
-import {Aluno} from '../models/aluno';
+import {Aluno} from '../../models/aluno';
 
 @Component({
   selector: 'app-home',
