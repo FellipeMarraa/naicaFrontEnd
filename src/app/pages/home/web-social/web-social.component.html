@@ -1,0 +1,61 @@
+<div class="container-fluid p-0" id="div-web-social">
+
+  <div class="container-fluid p-0" id="div-tabela">
+    <dx-data-grid [dataSource]="dataSource" [cacheEnabled]="false" [masterDetail]="{enable: true, template: 'informacaoTemplate'}">
+      <dxo-selection>
+
+      </dxo-selection>
+      <dxi-column dataField="nome"
+                  caption="Nome"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
+      <dxi-column dataField="idade"
+                  caption="Idade"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
+      <dxi-column dataField="escola"
+                  caption="Escola"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
+
+      <div *dxTemplate="let data of 'displayCellTemplate'">
+        {{data.value && data.value.getDisplayValue ? data.value.getDisplayValue() : data.value}}
+      </div>
+
+      <div *dxTemplate="let data of 'informacaoTemplate'">
+        <dx-data-grid [cacheEnabled]="false">
+          <dxi-column dataField=""
+                      caption="Nome"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField=""
+                      caption="Idade"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField=""
+                      caption="Escola"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+
+        </dx-data-grid>
+      </div>
+
+      <dxo-summary>
+        <dxi-total-item column="numero"
+                        summaryType="count"
+                        displayFormat="{0} Alunos">
+        </dxi-total-item>
+      </dxo-summary>
+
+    </dx-data-grid>
+  </div>
+</div>

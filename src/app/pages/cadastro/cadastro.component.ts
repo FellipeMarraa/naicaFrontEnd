@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -7,32 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }
-  ocultaDiv(divi1){
 
-    let display =  document.getElementById(divi1).style.display;
-    if(display == "none"){
-      document.getElementById(divi1).style.display = "block";
-    }else{
-      document.getElementById(divi1).style.display = "none";
-    }
+  webSocial() {
+    this.router.navigate(['web-social']);
+  }
 
-    if (divi1 == 'div-web-social'){
-      if (divi1 == "block"){
-        document.getElementById('div-relacao-de-alunos').style.display = "none";
-      }else{
-        document.getElementById(divi1).style.display;
-      }
-    }
-    if (divi1 == 'div-relacao-de-alunos'){
-      if (divi1 == "block"){
-        document.getElementById('div-web-social').style.display = "none";
-      }else{
-        document.getElementById(divi1).style.display;
-      }
-    }
+  relacaoAtendido() {
+    this.router.navigate(['relacao-atendidos']);
+  }
+
+  cadastroAtendido() {
+    this.router.navigate(['cadastro']);
+  }
+
+  home() {
+    this.router.navigate(['home']);
   }
 }

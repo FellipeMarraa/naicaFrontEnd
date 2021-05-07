@@ -1,0 +1,17 @@
+dx-data-grid{
+  margin-top: 100px;
+  border: 1px solid black;
+}
+dxi-column{
+  border: 1px solid black;
+
+}
+#div-tabela{
+  width: 95vw;
+  height: 85vh;
+  background-color: black;
+}
+
+#div-web-social{
+  height: 85vh;
+}
