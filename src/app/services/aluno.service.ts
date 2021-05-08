@@ -8,7 +8,7 @@ import {CoordenadorDTO} from '../models/coordenador.dto';
 
 
 @Injectable()
-export class CoordenadorService {
+export class AlunoService {
 
   constructor(
     public http: HttpClient,
@@ -16,16 +16,16 @@ export class CoordenadorService {
   }
 
   findById(id: string) {
-    return this.http.get(`${API_CONFIG.baseUrl}/coordenadores/${id}`);
+    return this.http.get(`${API_CONFIG.baseUrl}/alunos/${id}`);
   }
 
-  findByEmail(email: string) {
-    return this.http.get(`${API_CONFIG.baseUrl}/coordenadores/email?value=${email}`);
+  findByNome(nome: string) {
+    return this.http.get(`${API_CONFIG.baseUrl}/alunos/nome?value=${nome}`);
   }
 
   insert(obj : CoordenadorDTO) {
     return this.http.post(
-      `${API_CONFIG.baseUrl}/coordenadores`,
+      `${API_CONFIG.baseUrl}/alunos`,
       obj,
       {
         observe: 'response',
