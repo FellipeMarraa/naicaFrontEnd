@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top" id="navbarNav">
   <a class="navbar-brand" id="nav-nome-unidade">Nome Unidade</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar"
+          aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content" id="textoNavbar">
@@ -15,7 +16,7 @@
         <a class="nav-link" (click)="cadastroAtendido()" id="cadastroAluno">Cadastrar novo Atendido</a>
       </li>
     </ul>
-      <img src="assets/icone-user-home.png" id="icone-user-cadastro" alt="Icone user">
+    <img src="assets/icone-user-home.png" id="icone-user-cadastro" alt="Icone user">
   </div>
 </nav>
 <div class="container-fluid p-0" id="corpo-cadastro">
@@ -28,27 +29,27 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-nome">Nome</label>
-            <input class="form-control" id="input-nome" type="text" name="nome" placeholder="Nome completo do atendido">
+            <input class="form-control" id="input-nome" type="text" name="nome" placeholder="Nome completo do atendido" [(ngModel)]="aluno.nome" >
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group" id="div-dataNascimento">
             <label for="input-dataNascimento">Data de Nascimento</label>
-            <input class="form-control" id="input-dataNascimento" type="date" name="dataNascimento">
+            <input class="form-control" id="input-dataNascimento" type="date" name="dataNascimento" [(ngModel)]="aluno.dataNascimento">
           </div>
         </div>
 
         <div class="col-md-2">
           <div class="form-group">
             <label for="input-idadeIncial">Idade Inicial</label>
-            <input class="form-control" id="input-idadeIncial" type="number" name="idadeIncial">
+            <input class="form-control" id="input-idadeIncial" type="number" name="idadeIncial" [(ngModel)]="aluno.idadeInicial">
           </div>
         </div>
 
         <div class="col-md-2">
           <div class="form-group">
             <label for="input-idadeAtual">Idade Atual</label>
-            <input class="form-control" id="input-idadeAtual" type="number" name="idadeAtual">
+            <input class="form-control" id="input-idadeAtual" type="number" name="idadeAtual" [(ngModel)]="aluno.idadeAtual">
           </div>
         </div>
 
@@ -58,14 +59,8 @@
         <div class="col-md-3">
           <p>Sexo</p>
           <div class="container" id="sexo">
-            <input id="input-sexoMasculino" type="radio" name="masculino" value="masculino"> Masculino
-            <!--            <label class="radio-inline" for="input-sexoMasculino">Masculino </label>-->
-
-            <!--          </div>-->
-            <!--          <div class="form-check">-->
-            <input id="input-sexoFeminino" type="radio" name="feminino" value="feminino"> Feminino
-            <!--            <label class="radio-inline" for="input-sexoFeminino">Feminino</label>-->
-
+            <input id="input-sexoMasculino" type="radio" name="masculino" value="false" [(ngModel)]="aluno.sexo" > Masculino
+            <input id="input-sexoFeminino" type="radio" name="feminino" value="true" [(ngModel)]="aluno.sexo"  > Feminino
           </div>
         </div>
 
@@ -74,7 +69,7 @@
 
           <div class="form-group">
             <label for="input-nisAtendido">Nis Atendido</label>
-            <input class="form-control" id="input-nisAtendido" type="text" name="nisAtendido">
+            <input class="form-control" id="input-nisAtendido" type="text" name="nisAtendido" [(ngModel)]="aluno.nisAtendido">
           </div>
 
 
@@ -84,7 +79,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <label for="input-dataMatricula">Data da Matrícula</label>
-            <input class="form-control" id="input-dataMatricula" type="date" name="dataMatricula">
+            <input class="form-control" id="input-dataMatricula" type="date" name="dataMatricula" [(ngModel)]="aluno.dataMatricula">
           </div>
         </div>
 
@@ -93,11 +88,10 @@
           <p>Desligado</p>
           <div class="container" id="div-desligado">
 
-            <input class="form-check-input" id="input-desligadoSim" type="radio" name="desligadoSim" value="desligadoSim"> Sim
-            <!--                <label class="form-check-label" for="input-desligadoSim">Sim</label>-->
-
-            <input class="form-check-input" id="input-desligadoNao" type="radio" name="desligadoNao" value="desligadoNao"> Não
-            <!--                <label class="form-check-label" for="input-desligadoNao">Nao</label>-->
+            <input class="form-check-input" id="input-desligadoSim" type="radio" name="desligadoSim"
+                   value= true [(ngModel)]="aluno.desligado"> Sim
+            <input class="form-check-input" id="input-desligadoNao" type="radio" name="desligadoNao"
+                   value= false [(ngModel)]="aluno.desligado"> Não
           </div>
 
         </div>
@@ -108,7 +102,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-escola">Escola </label>
-            <input class="form-control" id="input-escola" type="text" name="escola">
+            <input class="form-control" id="input-escola" type="text" name="escola" [(ngModel)]="aluno.escola">
           </div>
 
         </div>
@@ -116,7 +110,7 @@
         <div class="col-md-2 ">
           <div class="form-group">
             <label for="input-anoEscolar">Ano Escolar</label>
-            <input class="form-control" id="input-anoEscolar" type="text" name="anoEscolar">
+            <input class="form-control" id="input-anoEscolar" type="text" name="anoEscolar" [(ngModel)]="aluno.anoEscolar">
           </div>
 
         </div>
@@ -125,7 +119,7 @@
 
           <div class="form-group">
             <label for="select-periodoEscolar">Periodo Escolar</label>
-            <select class="form-select" id="select-periodoEscolar" name="periodoEscolar">
+            <select class="form-select" id="select-periodoEscolar" name="periodoEscolar" [(ngModel)]="aluno.periodoEscolar">
               <option selected>Periodo Escolar</option>
               <option value="manha">Manhã</option>
               <option value="tarde">Tarde</option>
@@ -142,9 +136,9 @@
           <p>Desacompanhado</p>
           <div class="container" id="div-desacompanhado">
 
-            <input class="form-check-input" id="input-desacompanhadoSim" type="radio" name="desacompanhadoSim"> Sim
+            <input class="form-check-input" id="input-desacompanhadoSim" type="radio" name="sim" value= true [(ngModel)]="aluno.desacompanhado"> Sim
 
-            <input class="form-check-input" id="input-desacompanhadoNao" type="radio" name="nao"> Não
+            <input class="form-check-input" id="input-desacompanhadoNao" type="radio" name="nao" value=false [(ngModel)]="aluno.desacompanhado"> Não
 
           </div>
 
@@ -152,14 +146,148 @@
         <div class="col-md-9">
           <div class="form-group">
             <label for="input-autorizadoBuscar">Autorizado a buscar</label>
-            <textarea class="form-control" id="input-autorizadoBuscar" type="text" name="autorizadoBuscar"></textarea>
+            <textarea class="form-control" id="input-autorizadoBuscar" type="text" name="autorizadoBuscar" [(ngModel)]="aluno.autorizadoBuscar"></textarea>
           </div>
         </div>
 
       </div>
-      <button type="submit" id="button-cadastrar">Cadastrar </button>
     </form>
 
   </div>
 </div>
+
+<div class="container-fluid p-0" id="corpo-cadastro-responsavel">
+  <div class="container-fluid p-0" id="caixa-cadastro-responsavel">
+    <form id="formulario-cadastro-responsavel" style="padding-top: 2%">
+      <p id="titulo-cadastro-responsavel"><strong>Cadastro do Responsável</strong></p>
+
+      <div class="row" style="padding-top: 2%">
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="input-nome">Nome</label>
+            <input class="form-control" id="input-nome-responsavel" type="text" name="nome"
+                   placeholder="Nome completo do Responsável" [(ngModel)]="responsavel.nome">
+          </div>
+        </div>
+
+
+        <div class="col-md-2">
+          <div class="form-group" id="div-dataNascimento-responsavel">
+            <label for="input-dataNascimento-responsavel">Data de Nascimento</label>
+            <input class="form-control" id="input-dataNascimento-responsavel" type="date"
+                   name="dataNascimento-responsavel" [(ngModel)]="responsavel.dataNascimento">
+          </div>
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="input-cpf">CPF</label>
+            <input class="form-control" id="input-cpf" type="text" name="cpf" [(ngModel)]="responsavel.cpf">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row" style="padding-top: 2%">
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="input-identidade">Identidade</label>
+            <input class="form-control" id="input-identidade" type="text" name="identidade" [(ngModel)]="responsavel.identidade">
+          </div>
+        </div>
+
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="input-dataEmissao">Data de Emissão</label>
+            <input class="form-control" id="input-dataEmissao" type="date" name="dataEmissao" [(ngModel)]="responsavel.dataEmissao">
+          </div>
+        </div>
+
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="input-uf">UF </label>
+            <input class="form-control" id="input-uf" type="text" name="uf" [(ngModel)]="responsavel.uf">
+          </div>
+        </div>
+
+
+        <div class="col-md-4 ">
+          <div class="form-group">
+            <label for="input-orgaoExpeditor">Órgão Expeditor</label>
+            <input class="form-control" id="input-orgaoExpeditor" type="text" name="orgaoExpeditor" [(ngModel)]="responsavel.orgaoExpeditor">
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="padding-top: 2%">
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="input-ctps">CTPS</label>
+            <input class="form-control" id="input-ctps" type="text" name="ctps" [(ngModel)]="responsavel.ctps">
+          </div>
+        </div>
+
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="input-nisResponsavel">Nis Responsável</label>
+            <input class="form-control" id="input-nisResponsavel" type="text" name="nisResponsavel" [(ngModel)]="responsavel.nisResponsavel">
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="input-endereco">Endereco</label>
+            <input class="form-control" id="input-endereco" type="text" name="endereco" [(ngModel)]="responsavel.endereco">
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="padding-top: 2%">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="input-email">Email</label>
+            <input class="form-control" id="input-email" type="email" name="email" [(ngModel)]="responsavel.email">
+          </div>
+        </div>
+
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="input-telefone">Telefone</label>
+            <input class="form-control" id="input-telefone" type="tel" name="telefone" [(ngModel)]="responsavel.telefone">
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="input-telefone2">Telefone 2</label>
+            <input class="form-control" id="input-telefone2" type="tel" name="telefone2" [(ngModel)]="responsavel.telefone">
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="padding-top: 2%">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="input-observacao">Observacao</label>
+            <textarea class="form-control" id="input-observacao" type="text" name="observacao" [(ngModel)]="responsavel.observacao"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+    <button type="submit" id="button-cadastrar" (click)="cadastrar()">Cadastrar</button>
+
+  </div>
+</div>
+
 

@@ -31,18 +31,18 @@ export class LoginComponent {
         error => {});
   }
 
-  // login(){
-  //   console.log(this.creds);
-  //   this.router.navigate(['home']);
-  // }
-
-  login() {
-    this.auth.authenticate(this.creds)
-      .subscribe(response => {
-          console.log(response.headers.get('Authorization'));
-          this.router.navigate(['home']);
-
-        },
-        error => {});
+  login(){
+    console.log(this.creds);
+    this.router.navigate(['home']);
   }
+
+  // login() {
+  //   this.auth.authenticate(this.creds)
+  //     .subscribe(response => {
+  //         console.log(response.headers.get('Authorization'));
+  //         this.router.navigate(['home']);
+  //
+  //       },
+  //       error => {});
+  // }
 }

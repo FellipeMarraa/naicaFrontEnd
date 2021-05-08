@@ -47,3 +47,8 @@ import {AlertService} from './services/alert.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+import {JwtModule} from '@auth0/angular-jwt'
+
+
+

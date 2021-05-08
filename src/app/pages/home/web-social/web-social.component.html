@@ -1,7 +1,7 @@
 <div class="container-fluid p-0" id="div-web-social">
 
   <div class="container-fluid p-0" id="div-tabela">
-    <dx-data-grid [dataSource]="dataSource" [cacheEnabled]="false" [masterDetail]="{enable: true, template: 'informacaoTemplate'}">
+    <dx-data-grid [dataSource]="dataSource" [cacheEnabled]="false" [masterDetail]="{enable: true, template: 'informacaoTemplate'}" [elementAttr]="{ 'grid-except':true }">
       <dxo-selection>
 
       </dxo-selection>
@@ -29,9 +29,8 @@
       </div>
 
       <div *dxTemplate="let data of 'informacaoTemplate'">
-        <dx-data-grid [cacheEnabled]="false">
-          <dxi-column dataField=""
-                      caption="Nome"
+        <dx-data-grid [dataSource]="data.data && data.data.coordenador ? data.data.coordenador:[]" [cacheEnabled]="false" [elementAttr]="{ 'grid-except':true }">          <dxi-column dataField="nome"
+                      caption="Nome Coordenador"
                       dataType="string"
                       alignment="center">
           </dxi-column>
