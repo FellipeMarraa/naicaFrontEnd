@@ -17,15 +17,15 @@ const routes: Routes = [
   },
   {
     path: 'cadastro', component: CadastroComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'relacao-atendidos', component: RelacaoAlunoComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'web-social', component: WebSocialComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'login', component: LoginComponent
@@ -43,3 +43,4 @@ export class AppRoutingModule {
 
 
 }
+

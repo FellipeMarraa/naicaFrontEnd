@@ -43,13 +43,11 @@ a {
 }
 
 #caixa-cadastro {
-  height: 92vh;
+  height: 87vh;
   width: 90vw;
   background-color: whitesmoke;
   position: relative;
   top: 2%;
-
-
 }
 
 #titulo-cadastro {
@@ -84,48 +82,66 @@ p {
 /*COMECANDO EDITAR OS INPUTS---------------------------------------------------------------------------------------------*/
 
 
-#input-nome {
-
-}
-
 #div-dataNascimento {
   width: auto;
-
 }
 
 #div-idade-atual {
   width: auto;
-
 }
 
 #div-idade-inicial {
   width: auto;
   margin-left: 2%;
-
 }
 
 #sexo {
   padding-left: 0% !important;
-
 }
 
 #input-sexoMasculino {
   padding-right: 2% !important;
-
 }
 
 #div-desligado {
   padding-left: 0% !important;
-
 }
 
 #div-desacompanhado {
   padding-left: 0% !important;
+}
 
+
+
+/*AQUI ACABA O CADASTRO DO ATENDIDO-----------------------------------------------------------------------------------*/
+
+#corpo-cadastro-responsavel {
+  height: 105vh;
+  background-color: #243A7A;
+}
+
+#caixa-cadastro-responsavel {
+  height: 95vh;
+  width: 90vw;
+  background-color: whitesmoke;
+  position: relative;
+  bottom: 5%;
+  }
+
+#titulo-cadastro-responsavel {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 30px;
+  color: #243A7A;
+ }
+
+#formulario-cadastro-responsavel {
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 #button-cadastrar {
-  margin-top: 10%;
+  margin-top: 3%;
   margin-left: 41%;
   width: 15vw;
   height: 40px;
