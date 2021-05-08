@@ -5,11 +5,11 @@ import { Observable } from "rxjs/Rx";
 import {StorageService} from './storage.service';
 import {API_CONFIG} from '../config/api.config';
 import {CoordenadorDTO} from '../models/coordenador.dto';
-import {AlunoDto} from '../models/aluno.dto';
+import {ResponsavelDto} from '../models/responsavel.dto';
 
 
 @Injectable()
-export class AlunoService {
+export class ResponsavelService {
 
   constructor(
     public http: HttpClient,
@@ -17,16 +17,16 @@ export class AlunoService {
   }
 
   findById(id: string) {
-    return this.http.get(`${API_CONFIG.baseUrl}/alunos/${id}`);
+    return this.http.get(`${API_CONFIG.baseUrl}/responsaveis/${id}`);
   }
 
-  findByNome(nome: string) {
-    return this.http.get(`${API_CONFIG.baseUrl}/alunos/nome?value=${nome}`);
+  findByEmail(email: string) {
+    return this.http.get(`${API_CONFIG.baseUrl}/responsaveis/email?value=${email}`);
   }
 
-  insert(obj : AlunoDto) {
+  insert(obj : ResponsavelDto) {
     return this.http.post(
-      `${API_CONFIG.baseUrl}/alunos/create`,
+      `${API_CONFIG.baseUrl}/responsaveis/create`,
       obj,
       {
         observe: 'response',

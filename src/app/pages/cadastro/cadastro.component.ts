@@ -3,6 +3,10 @@ import {Router} from '@angular/router';
 import {Aluno} from '../../models/aluno';
 import {isBoolean} from 'devextreme/core/utils/type';
 import {Responsavel} from '../../models/responsavel';
+import {AlunoService} from '../../services/aluno.service';
+import {AlunoDto} from '../../models/aluno.dto';
+import {ResponsavelDto} from '../../models/responsavel.dto';
+import {ResponsavelService} from '../../services/responsavel.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,7 +15,7 @@ import {Responsavel} from '../../models/responsavel';
 })
 export class CadastroComponent implements OnInit {
 
-  aluno: Aluno = {
+  aluno: AlunoDto = {
     "nome":"",
     "dataNascimento": Date.toString(),
     "idadeInicial":0,
@@ -28,7 +32,7 @@ export class CadastroComponent implements OnInit {
     "autorizadoBuscar": ""
   };
 
-  responsavel: Responsavel = {
+  responsavel: ResponsavelDto = {
     "nome":"",
     "dataNascimento": Date.toString(),
     "cpf": "",
@@ -45,7 +49,9 @@ export class CadastroComponent implements OnInit {
     "alunos": this.aluno
   };
 
-  constructor(public router: Router) { }
+  constructor(public router: Router,
+              public alunoService: AlunoService,
+              public responsavelService: ResponsavelService) { }
 
   ngOnInit(): void {
   }
@@ -67,7 +73,23 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastrar(){
+
+      this.alunoService.insert(this.aluno)
+        .subscribe(response => {
+            // this.router.navigate(['home']);
+
+          },
+          error => {});
+
     this.responsavel.alunos = this.aluno;
+
+    this.responsavelService.insert(this.responsavel)
+      .subscribe(response => {
+          // this.router.navigate(['home']);
+
+        },
+        error => {});
+
     console.log(this.aluno);
     console.log(this.responsavel);
 

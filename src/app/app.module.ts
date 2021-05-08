@@ -42,13 +42,17 @@ import {AlertService} from './services/alert.service';
     HttpClient,
     AuthGuard,
     AlertService,
-    FormBuilder
+    FormBuilder,
+    AlunoService,
+    ResponsavelService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
 import {JwtModule} from '@auth0/angular-jwt'
+import {AlunoService} from './services/aluno.service';
+import {ResponsavelService} from './services/responsavel.service';
 
 
 
