@@ -30,7 +30,6 @@
               "node_modules/devextreme/dist/css/dx.common.css",
               "node_modules/devextreme/dist/css/dx.light.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/angular5-toaster/toaster.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],

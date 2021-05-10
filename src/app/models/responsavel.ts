@@ -1,8 +1,7 @@
 import {Aluno} from './aluno';
 
 export class Responsavel {
-
-
+  id:string
   nome: string ;
   dataNascimento: string ;
   cpf: string ;
@@ -14,9 +13,9 @@ export class Responsavel {
   nisResponsavel: string ;
   endereco: string ;
   email:string ;
-  telefone: string[];
+  telefones: string
   observacao: string;
-  alunos: Aluno;
+  alunos: Aluno[];
 
 
 }

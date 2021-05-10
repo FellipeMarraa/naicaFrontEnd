@@ -17,12 +17,13 @@ import {ToastrService} from 'ngx-toastr';
 export class CadastroComponent implements OnInit {
 
   aluno: AlunoDto = {
+    "id" : null,
     "nome":"",
     "dataNascimento": Date.toString(),
     "idadeInicial":0,
     "idadeAtual": 0,
     "escola":"",
-    "responsavel":"",
+    "responsaveis": [],
     "sexo": false,
     "nisAtendido": "",
     "dataMatricula": "",
@@ -34,6 +35,7 @@ export class CadastroComponent implements OnInit {
   };
 
   responsavel: ResponsavelDto = {
+    "id": null,
     "nome":"",
     "dataNascimento": Date.toString(),
     "cpf": "",
@@ -45,9 +47,9 @@ export class CadastroComponent implements OnInit {
     "nisResponsavel": "" ,
     "endereco": "" ,
     "email":"" ,
-    "telefone": [],
+    "telefones": "",
     "observacao": "",
-    "alunos": this.aluno
+    "alunos": []
   };
 
   constructor(public router: Router,
@@ -83,16 +85,18 @@ export class CadastroComponent implements OnInit {
           },
           error => {});
 
-    this.responsavel.alunos = this.aluno;
+    this.aluno.responsaveis = [this.responsavel];
+
 
     this.responsavelService.insert(this.responsavel)
       .subscribe(response => {
           // this.router.navigate(['home']);
 
         },
-        error => {
+        error => {});
 
-        });
+    this.responsavel.alunos = [this.aluno];
+
 
     console.log(this.aluno);
     console.log(this.responsavel);
