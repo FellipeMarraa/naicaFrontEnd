@@ -1,16 +1,21 @@
 import { Injectable } from "@angular/core";
 import { CredenciaisDTO } from "../models/credenciais.dto";
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { API_CONFIG } from "../config/api.config";
 import { LocalUser } from "../models/local_user";
 import { StorageService } from "./storage.service";
 import { JwtHelper } from 'angular2-jwt';
 import {Observable} from 'rxjs/Rx';
+import {Coordenador} from '../models/coordenador';
 
 @Injectable()
 export class AuthService {
 
+  coordenador: Coordenador;
+
   jwtHelper: JwtHelper = new JwtHelper();
+
+  headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
 
   constructor(
     public http: HttpClient,

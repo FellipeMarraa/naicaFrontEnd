@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -33,7 +33,10 @@ import {AlertService} from './services/alert.service';
     DxDataGridModule,
     DevExtremeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot(),
+    ToasterModule,
+    BrowserAnimationsModule
   ],
   providers: [
     CoordenadorService,
@@ -44,7 +47,8 @@ import {AlertService} from './services/alert.service';
     AlertService,
     FormBuilder,
     AlunoService,
-    ResponsavelService
+    ResponsavelService,
+    ToastrService
   ],
   bootstrap: [AppComponent]
 })
@@ -53,6 +57,9 @@ export class AppModule { }
 import {JwtModule} from '@auth0/angular-jwt'
 import {AlunoService} from './services/aluno.service';
 import {ResponsavelService} from './services/responsavel.service';
+import {ToastNoAnimationModule, ToastrModule, ToastrService} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToasterModule} from 'angular5-toaster/dist';
 
 
 

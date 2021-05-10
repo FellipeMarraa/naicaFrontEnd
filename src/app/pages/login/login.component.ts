@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -16,9 +17,11 @@ export class LoginComponent {
     senha: ""
   };
 
+
   constructor(
     public auth: AuthService,
-    public router: Router) {
+    public router: Router,
+    public toastr: ToastrService) {
 
   }
 
@@ -28,21 +31,25 @@ export class LoginComponent {
           this.auth.successfulLogin(response.headers.get('Authorization'));
           this.router.navigate(['home']);
         },
-        error => {});
+        error => {
+
+        });
   }
 
-  login(){
-    console.log(this.creds);
-    this.router.navigate(['home']);
-  }
-
-  // login() {
-  //   this.auth.authenticate(this.creds)
-  //     .subscribe(response => {
-  //         console.log(response.headers.get('Authorization'));
-  //         this.router.navigate(['home']);
-  //
-  //       },
-  //       error => {});
+  // login(){
+  //   console.log(this.creds);
+  //   this.router.navigate(['home']);
   // }
+
+  login() {
+    this.auth.authenticate(this.creds)
+      .subscribe(response => {
+          this.auth.successfulLogin(response.headers.get('Authorization'));
+          this.router.navigate(['home']);
+
+        },
+        error => {
+        this.toastr.error("Usuário não autorizado");
+      });
+  }
 }

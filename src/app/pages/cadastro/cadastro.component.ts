@@ -7,6 +7,7 @@ import {AlunoService} from '../../services/aluno.service';
 import {AlunoDto} from '../../models/aluno.dto';
 import {ResponsavelDto} from '../../models/responsavel.dto';
 import {ResponsavelService} from '../../services/responsavel.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro',
@@ -51,7 +52,8 @@ export class CadastroComponent implements OnInit {
 
   constructor(public router: Router,
               public alunoService: AlunoService,
-              public responsavelService: ResponsavelService) { }
+              public responsavelService: ResponsavelService,
+              public toastUiService: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -88,7 +90,9 @@ export class CadastroComponent implements OnInit {
           // this.router.navigate(['home']);
 
         },
-        error => {});
+        error => {
+
+        });
 
     console.log(this.aluno);
     console.log(this.responsavel);
