@@ -1,0 +1,43 @@
+<div *ngIf="visible" [ngClass]="{'view-message': true,
+                                  'error': messageType == 'ERROR',
+                                  'info': messageType == 'INFO',
+                                  'warning': messageType == 'WARNING',
+                                  'success': messageType == 'SUCCESS'}">
+
+    <div class="view-message-panel">
+
+        <div class="view-message-icon">
+            <img [src]="icon" alt="" width="32px" height="32px"/>
+        </div>
+
+        <div class="view-message-body">
+            <div class="view-message-item" *ngFor="let message of currentPageContent; let idx = index">
+                <span *ngIf="messageCount > 1">{{(pageSize * currentPage + idx) + 1}} - </span>
+                <span style="white-space: pre">{{message.content}}</span>
+                <span class="detalhes" *ngIf="message.details" (click)="showDetails(message.details)"> Ver detalhes </span>
+            </div>
+        </div>
+
+        <div class="view-message-close-button">
+            <img src="/GRP/assets/images/icons-lib/inverted/1123-cancel-circle.png" (click)="visible = false" alt="" width="16px" height="16px">
+        </div>
+
+    </div>
+
+    <div *ngIf="pages.length > 1" class="view-message-pag-panel">
+
+        <div class="view-message-prev-pag" (click)="prevPage()">
+            <img src="/GRP/assets/images/icons-lib/inverted/angle-double-left.png" alt="" width="10px" height="12px">
+        </div>
+
+        <div [ngClass]="{'view-message-pag': true, 'selected': currentPage == pag}" *ngFor="let pag of pages" (click)="currentPage = pag">{{pag + 1}}</div>
+
+        <div class="view-message-next-pag" (click)="nextPage()">
+            <img src="/GRP/assets/images/icons-lib/inverted/angle-double-right.png" alt="" width="10px" height="12px">
+        </div>
+
+    </div>
+
+    <message-details-popup [(visible)]="detailsVisible" [details]="currentDetails"></message-details-popup>
+
+</div>

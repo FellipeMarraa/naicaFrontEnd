@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="paginator-left">
+        <dx-button icon="fa fa-angle-left" class="paginator-button" (onClick)="scrollLeft()"></dx-button>
+    </div>
+    <div *ngFor="let ano of anosVisiveis" style="padding-right: 5px;">
+        <dx-button [text]="ano" class="item-button" [style.background-color]="getStyle(ano)"
+                   (onClick)="setAnoSelecionado(ano)"></dx-button>
+    </div>
+    <div style="padding-right: 5px" *ngIf="exibeSelecionarTodos">
+        <dx-button icon="check" hint="Todos" (onClick)="selecionarTodos()"></dx-button>
+    </div>
+    <div style="padding-right: 5px" *ngIf="exibeDeselecionarTodos">
+        <dx-button icon="clear" hint="Nenhum" (onClick)="deselecionarTodos()"></dx-button>
+    </div>
+    <div class="paginator-right">
+        <dx-button icon="fa fa-angle-right" class="paginator-button" (onClick)="scrollRight()"></dx-button>
+    </div>
+</div>
+<div class="multiple-selected-years-container" *ngIf="multiplo && anosSelecionados.length > 1">
+
+    <div class="selected-years">
+        <span>Selecionados:</span>
+        <dx-tag-box
+                [searchEnabled]="false"
+                [multiline]="true"
+                [items]="anosSelecionados"
+                [value]="anosSelecionados"
+                [disabled]="true">
+        </dx-tag-box>
+    </div>
+</div>

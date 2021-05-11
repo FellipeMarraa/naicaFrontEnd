@@ -1,0 +1,26 @@
+docker-pull {
+
+  display: block;
+  position: relative;
+  height: inherit;
+
+  .docker-pull-starting {
+    width: inherit;
+    padding-top: 30px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .layerProgress {
+
+    height: inherit;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-left: 35px;
+    padding-right: 35px;
+
+  }
+
+}

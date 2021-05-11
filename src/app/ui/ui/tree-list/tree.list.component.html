@@ -1,0 +1,30 @@
+<!--<dx-tree-list-->
+        <!--id="nome"-->
+        <!--[dataSource]="nome"-->
+        <!--[expandedRowKeys]="[1, 2]"-->
+        <!--[selectedRowKeys]="[1, 29, 42]"-->
+        <!--[columnAutoWidth]="true"-->
+        <!--[wordWrapEnabled]="true"-->
+        <!--[showBorders]="true">-->
+
+    <!--<dxo-search-panel [visible]="true" width="250"></dxo-search-panel>-->
+    <!--<dxo-header-filter [visible]="true"></dxo-header-filter>-->
+    <!--<dxo-selection mode="multiple"></dxo-selection>-->
+    <!--<dxo-column-chooser [enabled]="true"></dxo-column-chooser>-->
+
+    <!--<dxi-column dataField="nome" caption="Nome" [minWidth]="200" cssClass="nome" cellTemplate="nomeTemplate">-->
+        <!--<dxo-lookup [dataSource]="tipos" valueExpr="ID" displayExpr="Nome"></dxo-lookup>-->
+    <!--</dxi-column>-->
+    <!--<dxi-column dataField="SituacaoAtivoInativoEnum" caption="Ativo" [minWidth]="100">-->
+        <!--<dxo-lookup [dataSource]="situacao"></dxo-lookup>-->
+    <!--</dxi-column>-->
+    <!--<dxi-column dataField="valor" caption="Valor" [visible]="false" [customizeText]="getCompletionText"></dxi-column>-->
+    <!--<div *dxTemplate="let options of 'nomeTemplate'">-->
+        <!--<span *ngIf="options.data.valores" class="nome" >{{options.data.CompraCentralService.nome}}</span>-->
+    <!--</div>-->
+
+
+
+<!--</dx-tree-list>-->
+
+

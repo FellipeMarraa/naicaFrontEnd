@@ -1,0 +1,42 @@
+system-flag {
+
+    .container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .image-current-system {
+        padding: 4px;
+        color: var(--left-sidebar-color);
+        border-radius: 10px;
+        font-size: 32px;
+        border: 1px solid var(--left-sidebar-color);
+    }
+
+    .image-system {
+        padding: 4px;
+        color: var(--global-header-popup-primary-color);
+        border-radius: 10px;
+        font-size: 32px;
+    }
+
+}
+
+.system-flag-label {
+    position: absolute;
+    left: 20px;
+    bottom: -6px;
+    font-size: 10px;
+    color: var(--global-header-color);
+    border: 1px solid #999999;
+    border-radius: 4px;
+    padding: 2px;
+    background-color: var(--global-header-background-color);
+}
+
+.leftbar-expanded .system-icon .system-flag-label {
+    left: 26px;
+}
+
+

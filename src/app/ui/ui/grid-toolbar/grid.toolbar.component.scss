@@ -1,0 +1,16 @@
+grid-toolbar{
+  .default-grid-toolbar{
+    background-color: var(--grid-toolbar-background-color);
+    color: var(--grid-toolbar-color);
+    padding: 3px 10px;
+  }
+  .bordaValidate{
+    border: 1px solid rgba(247, 77, 97, 0.4);
+  }
+  .tab-icon-error {
+    color: #d9534f;
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+}

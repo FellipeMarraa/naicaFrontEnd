@@ -1,0 +1,92 @@
+<div class="containerFileManager">
+
+  <dx-responsive-box
+    [width]="'100%'"
+    [height]="'100%'">
+    <dxi-row></dxi-row>
+    <dxi-col [ratio]="1"></dxi-col>
+    <dxi-col [ratio]="1"></dxi-col>
+
+    <dxi-item>
+      <dxi-location [row]="0" [col]="0"></dxi-location>
+      <dx-file-manager
+        [width]="'100%'"
+        [height]="'100%'"
+        [rootFolderName]="'Local'"
+        [fileSystemProvider]="_remoteProvider"
+        (onSelectionChanged)="displayDataPreview($event)"
+      >
+        <dxo-toolbar>
+          <dxi-item name="showNavPane" [visible]="false"></dxi-item>
+          <dxi-item name="separator"></dxi-item>
+          <dxi-item name="switchView"></dxi-item>
+          <dxi-item name="separator" location="after"></dxi-item>
+          <dxi-item name="refresh"></dxi-item>
+
+          <dxi-file-selection-item name="rename"></dxi-file-selection-item>
+          <dxi-file-selection-item name="separator"></dxi-file-selection-item>
+          <dxi-file-selection-item name="delete"></dxi-file-selection-item>
+          <dxi-file-selection-item name="separator"></dxi-file-selection-item>
+          <dxi-file-selection-item name="download"></dxi-file-selection-item>
+          <dxi-file-selection-item name="clearSelection"></dxi-file-selection-item>
+        </dxo-toolbar>
+        <dxo-item-view [showFolders]="false" [showParentFolder]="false">
+        </dxo-item-view>
+        <dxo-permissions
+          [create]="false"
+          [copy]="false"
+          [move]="false"
+          [delete]="true"
+          [rename]="true"
+          [upload]="false"
+          [download]="true">
+        </dxo-permissions>
+      </dx-file-manager>
+    </dxi-item>
+    <dxi-item>
+      <dxi-location [row]="0" [col]="1"></dxi-location>
+      <div style="width: 100%; height: 100%; border: 1px gray solid">
+        <div [style]="pdfStyle">
+          <div class="tituloPreview">
+            <h2>PDF Preview</h2>
+          </div>
+          <ngx-extended-pdf-viewer
+            [src]="srcUrl"
+            [zoom]="'auto'"
+            [textLayer]="true"
+
+            [showBookmarkButton]="false"
+            [showOpenFileButton]="false"
+            [showDownloadButton]="false"
+            [showPrintButton]="false"
+            [showBorders]="false"
+            height="100%">
+          </ngx-extended-pdf-viewer>
+        </div>
+        <div [style]="imgStyle">
+          <div class="tituloPreview">
+            <h2>Image Preview</h2>
+          </div>
+          <img [src]="srcUrl" alt="" width="100%">
+        </div>
+        <div [style]="docStyle">
+          <div class="tituloPreview">
+            <h2>DOC Preview</h2>
+          </div>
+          <ngx-doc-viewer
+            [url]="srcUrl"
+            viewer="google"
+            style="width:100%; height:90vh;">
+          </ngx-doc-viewer>
+        </div>
+        <div [style]="noPreviewStyle">
+          <div class="tituloPreview">
+            <h2>No Preview</h2>
+          </div>
+          <img [src]="srcNoPreview" alt="" width="100%">
+        </div>
+      </div>
+    </dxi-item>
+  </dx-responsive-box>
+
+</div>

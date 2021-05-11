@@ -1,0 +1,9 @@
+<div class="context-bar-container" [hidden]="!visible">
+
+    <ng-content></ng-content>
+
+    <div class="context-bar-lembrar-dados" *ngIf="!customStorage">
+        <dx-check-box [(value)]="mustSaveContext" [visible]="showSave" [width]="120" text="Lembrar Dados"></dx-check-box>
+    </div>
+
+</div>
