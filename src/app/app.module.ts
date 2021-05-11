@@ -37,6 +37,7 @@ import {AlertService} from './services/alert.service';
     ToastrModule.forRoot(),
     ToasterModule,
     BrowserAnimationsModule
+
   ],
   providers: [
     CoordenadorService,

@@ -1,12 +1,222 @@
+<!--<dx-data-grid [dataSource]="dataSource" [remoteOperations]="true" [height]="600" [showBorders]="true">-->
+<!--  <dxo-filter-row [visible]="true"></dxo-filter-row>-->
+<!--  <dxo-header-filter [visible]="true"></dxo-header-filter>-->
+<!--  <dxo-group-panel [visible]="true"></dxo-group-panel>-->
+<!--  <dxo-scrolling mode="virtual"></dxo-scrolling>-->
+
+<!--  <dxo-editing mode="row" [allowAdding]="true" [allowUpdating]="true" [allowDeleting]="true">-->
+<!--  </dxo-editing>-->
+
+<!--  <dxo-grouping [autoExpandAll]="false"></dxo-grouping>-->
+<!--  <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>-->
+
+<!--  <dxi-column-->
+<!--    dataField="nome"-->
+<!--    caption="Nome">-->
+<!--    &lt;!&ndash;    <dxi-validation-rule type="stringLength" [max]="120"&ndash;&gt;-->
+<!--    &lt;!&ndash;                         message="O campo deve conter no maximo 120 caracteres"></dxi-validation-rule>&ndash;&gt;-->
+<!--&lt;!&ndash;        <dxo-lookup [dataSource]="customersData" valueExpr="id" displayExpr="Text"></dxo-lookup>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="dataNascimento"-->
+<!--    dataType="date">-->
+<!--    &lt;!&ndash;    <dxi-validation-rule type="required" message="A ordenação pela data é obrigatorio!"></dxi-validation-rule>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="idadeAtual">-->
+<!--    <dxo-header-filter groupInterval="100"></dxo-header-filter>-->
+<!--    &lt;!&ndash;    <dxi-validation-rule type="int" [min]="0" [max]="2000"&ndash;&gt;-->
+<!--    &lt;!&ndash;                         message="The field Freight must be between 0 and 2000.">&ndash;&gt;-->
+<!--    &lt;!&ndash;    </dxi-validation-rule>&ndash;&gt;-->
+
+<!--  </dxi-column>-->
+<!--  <dxi-column-->
+<!--    dataField="idadeInicial">-->
+<!--    &lt;!&ndash;    <dxi-validation-rule type="stringLength" max="15"&ndash;&gt;-->
+<!--    &lt;!&ndash;                         message="The field ShipCountry must be a string with a maximum length of 15."></dxi-validation-rule>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="sexo"-->
+<!--    caption="Sexo"-->
+<!--    dataType="string">-->
+<!--    &lt;!&ndash;    <dxo-lookup [dataSource]="shippersData" valueExpr="Value" displayExpr="Text"></dxo-lookup>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="nisAtendido"-->
+<!--    caption="Nis Atendido"-->
+<!--    dataType="string">-->
+<!--    &lt;!&ndash;    <dxo-lookup [dataSource]="shippersData" valueExpr="Value" displayExpr="Text"></dxo-lookup>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="dataMatricula"-->
+<!--    caption="Data Matricula"-->
+<!--    dataType="date">-->
+<!--    &lt;!&ndash;    <dxo-lookup [dataSource]="shippersData" valueExpr="Value" displayExpr="Text"></dxo-lookup>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="desligado"-->
+<!--    caption="Desligado"-->
+<!--    dataType="boolean">-->
+<!--    &lt;!&ndash;    <dxo-lookup [dataSource]="shippersData" valueExpr="Value" displayExpr="Text"></dxo-lookup>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="escola"-->
+<!--    caption="Escola"-->
+<!--    dataType="string">-->
+<!--    &lt;!&ndash;    <dxo-lookup [dataSource]="shippersData" valueExpr="Value" displayExpr="Text"></dxo-lookup>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="anoEscolar"-->
+<!--    caption="Ano Escolar"-->
+<!--    dataType="string">-->
+<!--    &lt;!&ndash;    <dxo-lookup [dataSource]="shippersData" valueExpr="Value" displayExpr="Text"></dxo-lookup>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="periodoEscolar"-->
+<!--    caption="Período Escolar"-->
+<!--    dataType="string">-->
+<!--    &lt;!&ndash;    <dxo-lookup [dataSource]="shippersData" valueExpr="Value" displayExpr="Text"></dxo-lookup>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="desacompanhado"-->
+<!--    caption="Desacompanhado"-->
+<!--    dataType="boolean">-->
+<!--    &lt;!&ndash;    <dxo-lookup [dataSource]="shippersData" valueExpr="Value" displayExpr="Text"></dxo-lookup>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="autorizadoBuscar"-->
+<!--    caption="Autorizado Buscar"-->
+<!--    dataType="string">-->
+<!--&lt;!&ndash;        <dxo-lookup [dataSource]="shippersData" valueExpr="Value" displayExpr="Text"></dxo-lookup>&ndash;&gt;-->
+<!--  </dxi-column>-->
+
+
+<!--  <div *dxTemplate="let order of 'detail'">-->
+<!--&lt;!&ndash;    <detail-grid [key]="order.key">&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="nome"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="Nome Responsavel"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="dataNascimento"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="Data Nascimento"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="cpf"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="CPF"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="identidade"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="Identidade"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="dataEmissao"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="Data de Emissão"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="uf"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="UF"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="orgaoExpeditor"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="Orgao Expeditor"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="ctps"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="CTPS"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="nisResponsavel"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="NIS"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="endereco"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="Endereco"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="email"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="Email"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="telefones"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="Telefones"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxi-column dataField="observacao"&ndash;&gt;-->
+<!--&lt;!&ndash;                  caption="Observacao"&ndash;&gt;-->
+<!--&lt;!&ndash;                  dataType="string"&ndash;&gt;-->
+<!--&lt;!&ndash;                  alignment="center">&ndash;&gt;-->
+<!--&lt;!&ndash;      </dxi-column>&ndash;&gt;-->
+<!--&lt;!&ndash;    </detail-grid>&ndash;&gt;-->
+<!--  </div>-->
+
+<!--<dxo-summary>-->
+<!--  <dxi-total-item column="numero"-->
+<!--                  summaryType="count"-->
+<!--                  displayFormat="{0} Alunos">-->
+<!--  </dxi-total-item>-->
+<!--</dxo-summary>-->
+
+
+
+<!--&lt;!&ndash;  <dxo-summary>&ndash;&gt;-->
+<!--&lt;!&ndash;    <dxi-total-item column="Freight" summaryType="sum">&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxo-value-format type="decimal" [precision]="2"></dxo-value-format>&ndash;&gt;-->
+<!--&lt;!&ndash;    </dxi-total-item>&ndash;&gt;-->
+<!--&lt;!&ndash;    &ndash;&gt;-->
+<!--&lt;!&ndash;    <dxi-group-item column="Freight" summaryType="sum">&ndash;&gt;-->
+<!--&lt;!&ndash;      <dxo-value-format type="decimal" [precision]="2"></dxo-value-format>&ndash;&gt;-->
+<!--&lt;!&ndash;    </dxi-group-item>&ndash;&gt;-->
+<!--&lt;!&ndash;    <dxi-group-item summaryType="count">&ndash;&gt;-->
+<!--&lt;!&ndash;    </dxi-group-item>&ndash;&gt;-->
+<!--&lt;!&ndash;  </dxo-summary>&ndash;&gt;-->
+
+
+<!--</dx-data-grid>-->
+
+
 <div class="container-fluid p-0" id="div-web-social">
 
   <div class="container-fluid p-0" id="div-tabela">
-    <dx-data-grid [dataSource]="dataSource" [cacheEnabled]="false"
-                  [masterDetail]="{enable: true, template: 'informacaoTemplate'}"
-                  [elementAttr]="{ 'grid-except':true }">
-      <dxo-selection>
 
+
+    <dx-data-grid [dataSource]="dataSource" [remoteOperations]="true" [height]="600" [showBorders]="true"  [masterDetail]="{enable: true, template: 'informacaoTemplate'}">
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-scrolling mode="virtual"></dxo-scrolling>
+
+      <dxo-editing mode="row" [allowAdding]="true" [allowUpdating]="true" [allowDeleting]="true">
+      </dxo-editing>
+
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+      <dxo-selection [selectAllMode]="allMode"
+                     [showCheckBoxesMode]="checkBoxesMode">
       </dxo-selection>
+
       <dxi-column dataField="nome"
                   caption="Nome"
                   dataType="string"
@@ -15,9 +225,9 @@
       </dxi-column>
       <dxi-column dataField="dataNascimento"
                   caption="Data Nascimento"
-                  dataType="string"
+                  dataType="date"
                   alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
+                  [cellTemplate]="'displayDateCellTemplate'">
       </dxi-column>
       <dxi-column dataField="idadeAtual"
                   caption="Idade Atual"
@@ -39,9 +249,9 @@
       </dxi-column>
       <dxi-column dataField="dataMatricula"
                   caption="Data da Matrícula"
-                  dataType="string"
+                  dataType="date"
                   alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
+                  [cellTemplate]="'displayDateCellTemplate'">
       </dxi-column>
       <dxi-column dataField="escola"
                   caption="Escola"
@@ -63,7 +273,7 @@
       </dxi-column>
       <dxi-column dataField="desacompanhado"
                   caption="Desacompanhado"
-                  dataType="string"
+                  dataType="boolean"
                   alignment="center"
                   [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
@@ -73,12 +283,17 @@
                   alignment="center"
                   [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
+
+      <div *dxTemplate="let data of 'displayDateCellTemplate'">
+        {{data.value | date: "dd/MM/yyyy"}}
+      </div>
+
       <div *dxTemplate="let data of 'displayCellTemplate'">
         {{data.value && data.value.getDisplayValue ? data.value.getDisplayValue() : data.value}}
       </div>
 
       <div *dxTemplate="let data of 'informacaoTemplate'">
-        <dx-data-grid [dataSource]="data.data && data.data.responsaveis ? data.data.responsaveis:[]"
+        <dx-data-grid [dataSource]="dataSourceResponsaveis"
                       [cacheEnabled]="false" [elementAttr]="{ 'grid-except':true }">
           <dxi-column dataField="nome"
                       caption="Nome Responsavel"
@@ -87,7 +302,7 @@
           </dxi-column>
           <dxi-column dataField="dataNascimento"
                       caption="Data Nascimento"
-                      dataType="string"
+                      dataType="date"
                       alignment="center">
           </dxi-column>
           <dxi-column dataField="cpf"
@@ -102,7 +317,7 @@
           </dxi-column>
           <dxi-column dataField="dataEmissao"
                       caption="Data de Emissão"
-                      dataType="string"
+                      dataType="date"
                       alignment="center">
           </dxi-column>
           <dxi-column dataField="uf"
