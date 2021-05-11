@@ -36,20 +36,20 @@ export class LoginComponent {
         });
   }
 
-  login(){
-    console.log(this.creds);
-    this.router.navigate(['home']);
-  }
-
-  // login() {
-  //   this.auth.authenticate(this.creds)
-  //     .subscribe(response => {
-  //         this.auth.successfulLogin(response.headers.get('Authorization'));
-  //         this.router.navigate(['home']);
-  //
-  //       },
-  //       error => {
-  //       this.toastr.error("Usuário não autorizado");
-  //     });
+  // login(){
+  //   console.log(this.creds);
+  //   this.router.navigate(['home']);
   // }
+
+  login() {
+    this.auth.authenticate(this.creds)
+      .subscribe(response => {
+          // this.auth.successfulLogin(response.headers.get('Authorization'));
+          this.router.navigate(['home']);
+
+        },
+        error => {
+        this.toastr.error("Usuário não autorizado");
+      });
+  }
 }

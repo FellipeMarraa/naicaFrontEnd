@@ -33,11 +33,13 @@ export class AppComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
-  ngOnInit(): void {
-
+  ngOnInit(){
+  this.isLoggedIn$= this.authService.isLoggedIn;
   }
 
   onLogout(){
     this.authService.logout();
   }
 }
+
+

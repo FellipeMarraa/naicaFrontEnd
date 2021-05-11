@@ -7,29 +7,40 @@ import { StorageService } from "./storage.service";
 import { JwtHelper } from 'angular2-jwt';
 import {Observable} from 'rxjs/Rx';
 import {Coordenador} from '../models/coordenador';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable()
 export class AuthService {
+
+  creds: CredenciaisDTO;
 
   coordenador: Coordenador;
 
   jwtHelper: JwtHelper = new JwtHelper();
 
   headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
+  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     public http: HttpClient,
     public storage: StorageService) {
   }
 
+  get isLoggedIn() {
+
+    return this.loggedIn.asObservable();
+
+  }
+
   authenticate(creds : CredenciaisDTO): Observable<HttpResponse<string>> {
-    return this.http.post(
-      `${API_CONFIG.baseUrl}/login`,
-      creds,
-      {
-        observe: 'response',
-        responseType: 'text'
-      });
+        this.loggedIn.next(true);
+        return this.http.post(
+          `${API_CONFIG.baseUrl}/login`,
+          creds,
+          {
+            observe: 'response',
+            responseType: 'text'
+          });
   }
 
   refreshToken() {
