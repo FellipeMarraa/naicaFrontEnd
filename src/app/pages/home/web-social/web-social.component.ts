@@ -8,7 +8,7 @@ import {Aluno} from '../../../models/aluno';
 })
 export class WebSocialComponent implements OnInit {
 
-  dataSource: Aluno[] = [];
+  dataSource: Aluno;
 
   constructor() { }
 

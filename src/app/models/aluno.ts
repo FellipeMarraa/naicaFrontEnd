@@ -1,12 +1,14 @@
 import {Coordenador} from './coordenador';
+import {Responsavel} from './responsavel';
 
 export class Aluno {
+  id:string
   nome: string;
   dataNascimento: string;
   idadeInicial: number;
   idadeAtual: number;
   escola: string;
-  responsavel: string;
+  responsaveis: Responsavel[];
   sexo: boolean;
   nisAtendido: string;
   dataMatricula: string;

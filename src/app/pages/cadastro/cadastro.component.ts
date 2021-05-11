@@ -19,12 +19,13 @@ import {Coordenador} from '../../models/coordenador';
 export class CadastroComponent extends AbstractCrud<Coordenador, any> {
 
   aluno: AlunoDto = {
+    "id" : null,
     "nome":"",
     "dataNascimento": Date.toString(),
     "idadeInicial":0,
     "idadeAtual": 0,
     "escola":"",
-    "responsavel":"",
+    "responsaveis": [],
     "sexo": false,
     "nisAtendido": "",
     "dataMatricula": "",
@@ -36,6 +37,7 @@ export class CadastroComponent extends AbstractCrud<Coordenador, any> {
   };
 
   responsavel: ResponsavelDto = {
+    "id": null,
     "nome":"",
     "dataNascimento": Date.toString(),
     "cpf": "",
@@ -47,9 +49,9 @@ export class CadastroComponent extends AbstractCrud<Coordenador, any> {
     "nisResponsavel": "" ,
     "endereco": "" ,
     "email":"" ,
-    "telefone": [],
+    "telefones": "",
     "observacao": "",
-    "alunos": this.aluno
+    "alunos": []
   };
 
   constructor(injector: Injector,
@@ -88,16 +90,18 @@ export class CadastroComponent extends AbstractCrud<Coordenador, any> {
           },
           error => {});
 
-    this.responsavel.alunos = this.aluno;
+    this.aluno.responsaveis = [this.responsavel];
+
 
     this.responsavelService.insert(this.responsavel)
       .subscribe(response => {
           // this.router.navigate(['home']);
 
         },
-        error => {
+        error => {});
 
-        });
+    this.responsavel.alunos = [this.aluno];
+
 
     console.log(this.aluno);
     console.log(this.responsavel);

@@ -8,6 +8,8 @@
   height: 40px;
   float: right;
   cursor: pointer;
+  right: 20px;
+  position: absolute;
 }
 
 a {

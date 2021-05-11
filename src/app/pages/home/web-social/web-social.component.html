@@ -1,7 +1,9 @@
 <div class="container-fluid p-0" id="div-web-social">
 
   <div class="container-fluid p-0" id="div-tabela">
-    <dx-data-grid [dataSource]="dataSource" [cacheEnabled]="false" [masterDetail]="{enable: true, template: 'informacaoTemplate'}" [elementAttr]="{ 'grid-except':true }">
+    <dx-data-grid [dataSource]="dataSource" [cacheEnabled]="false"
+                  [masterDetail]="{enable: true, template: 'informacaoTemplate'}"
+                  [elementAttr]="{ 'grid-except':true }">
       <dxo-selection>
 
       </dxo-selection>
@@ -11,8 +13,32 @@
                   alignment="center"
                   [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
-      <dxi-column dataField="idade"
-                  caption="Idade"
+      <dxi-column dataField="dataNascimento"
+                  caption="Data Nascimento"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
+      <dxi-column dataField="idadeAtual"
+                  caption="Idade Atual"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
+      <dxi-column dataField="sexo"
+                  caption="Sexo"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
+      <dxi-column dataField="nisAtendido"
+                  caption="NIS"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
+      <dxi-column dataField="dataMatricula"
+                  caption="Data da Matrícula"
                   dataType="string"
                   alignment="center"
                   [cellTemplate]="'displayCellTemplate'">
@@ -23,28 +49,102 @@
                   alignment="center"
                   [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
-
+      <dxi-column dataField="anoEscolar"
+                  caption="Ano Escolar"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
+      <dxi-column dataField="periodoEscolar"
+                  caption="Período Escolar"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
+      <dxi-column dataField="desacompanhado"
+                  caption="Desacompanhado"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
+      <dxi-column dataField="autorizadoBuscar"
+                  caption="Autorizado Buscar"
+                  dataType="string"
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
+      </dxi-column>
       <div *dxTemplate="let data of 'displayCellTemplate'">
         {{data.value && data.value.getDisplayValue ? data.value.getDisplayValue() : data.value}}
       </div>
 
       <div *dxTemplate="let data of 'informacaoTemplate'">
-        <dx-data-grid [dataSource]="data.data && data.data.coordenador ? data.data.coordenador:[]" [cacheEnabled]="false" [elementAttr]="{ 'grid-except':true }">          <dxi-column dataField="nome"
-                      caption="Nome Coordenador"
+        <dx-data-grid [dataSource]="data.data && data.data.responsaveis ? data.data.responsaveis:[]"
+                      [cacheEnabled]="false" [elementAttr]="{ 'grid-except':true }">
+          <dxi-column dataField="nome"
+                      caption="Nome Responsavel"
                       dataType="string"
                       alignment="center">
           </dxi-column>
-          <dxi-column dataField=""
-                      caption="Idade"
+          <dxi-column dataField="dataNascimento"
+                      caption="Data Nascimento"
                       dataType="string"
                       alignment="center">
           </dxi-column>
-          <dxi-column dataField=""
-                      caption="Escola"
+          <dxi-column dataField="cpf"
+                      caption="CPF"
                       dataType="string"
                       alignment="center">
           </dxi-column>
-
+          <dxi-column dataField="identidade"
+                      caption="Identidade"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField="dataEmissao"
+                      caption="Data de Emissão"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField="uf"
+                      caption="UF"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField="orgaoExpeditor"
+                      caption="Orgao Expeditor"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField="ctps"
+                      caption="CTPS"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField="nisResponsavel"
+                      caption="NIS"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField="endereco"
+                      caption="Endereco"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField="email"
+                      caption="Email"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField="telefones"
+                      caption="Telefones"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
+          <dxi-column dataField="observacao"
+                      caption="Observacao"
+                      dataType="string"
+                      alignment="center">
+          </dxi-column>
         </dx-data-grid>
       </div>
 
