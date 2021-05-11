@@ -1,14 +1,10 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector} from '@angular/core';
 import {Router} from '@angular/router';
-import {Aluno} from '../../models/aluno';
-import {isBoolean} from 'devextreme/core/utils/type';
-import {Responsavel} from '../../models/responsavel';
 import {AlunoService} from '../../services/aluno.service';
 import {AlunoDto} from '../../models/aluno.dto';
 import {ResponsavelDto} from '../../models/responsavel.dto';
 import {ResponsavelService} from '../../services/responsavel.service';
 import {ToastrService} from 'ngx-toastr';
-import {AbstractCrud} from '../../ui/ui/crud/abstract.crud';
 import {Coordenador} from '../../models/coordenador';
 
 @Component({
@@ -16,7 +12,7 @@ import {Coordenador} from '../../models/coordenador';
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
-export class CadastroComponent extends AbstractCrud<Coordenador, any> {
+export class CadastroComponent {
 
   aluno: AlunoDto = {
     "id" : null,
@@ -54,12 +50,12 @@ export class CadastroComponent extends AbstractCrud<Coordenador, any> {
     "alunos": []
   };
 
-  constructor(injector: Injector,
+  constructor(
     public router: Router,
               public alunoService: AlunoService,
               public responsavelService: ResponsavelService,
               public toastUiService: ToastrService) {
-    super(injector);
+
   }
 
   ngOnInit(): void {

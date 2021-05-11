@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injector} from '@angular/core';
+import {AlunoService} from '../../../services/aluno.service';
 import {Aluno} from '../../../models/aluno';
 
 @Component({
@@ -6,13 +7,19 @@ import {Aluno} from '../../../models/aluno';
   templateUrl: './web-social.component.html',
   styleUrls: ['./web-social.component.css']
 })
-export class WebSocialComponent implements OnInit {
+export class WebSocialComponent {
 
-  dataSource: Aluno;
+  aluno:Aluno;
+  dataSource:Aluno[]=[];
 
-  constructor() { }
+  constructor(
+              public alunoService: AlunoService) {
+
+  }
 
   ngOnInit(): void {
+    this.alunoService.findAll(this.dataSource);
+    console.log(this.dataSource);
   }
 
 }

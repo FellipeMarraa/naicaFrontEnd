@@ -1,7 +1,7 @@
 import {Coordenador} from './coordenador';
 import {Responsavel} from './responsavel';
 
-export class AlunoDto {
+export interface AlunoDto {
   id: string
   nome: string;
   dataNascimento: string;

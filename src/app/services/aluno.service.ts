@@ -6,6 +6,7 @@ import {StorageService} from './storage.service';
 import {API_CONFIG} from '../config/api.config';
 import {CoordenadorDTO} from '../models/coordenador.dto';
 import {AlunoDto} from '../models/aluno.dto';
+import {Aluno} from '../models/aluno';
 
 
 @Injectable()
@@ -35,4 +36,7 @@ export class AlunoService {
     );
   }
 
+  findAll(obj : Aluno[]) {
+    return this.http.get(`${API_CONFIG.baseUrl}/alunos/list`);
+  }
 }

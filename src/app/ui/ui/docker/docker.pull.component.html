@@ -1,6 +1,0 @@
-<div *ngIf="!progress || progress.length == 0" class="docker-pull-starting">
-    <dx-load-indicator height="60" width="60"></dx-load-indicator>
-</div>
-<div class="layerProgress">
-    <docker-pull-layer *ngFor="let layer of progress; trackBy: getLayerId" [layer]="layer"></docker-pull-layer>
-</div>
