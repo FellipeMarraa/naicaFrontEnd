@@ -1,0 +1,26 @@
+<dx-button #tooltipButton
+           [visible]="visible"
+           [id]="idTooltipButton"
+           [height]="20"
+           [width]="20"
+           [text]="iconText"
+           [className]="'tooltip-helper-button'"
+           class="tooltip-helper-button"
+           (onClick)="tooltipClick($event)"
+           (mouseenter)="tooltipMouseenter($event)"
+           (mouseleave)="tooltipMouseleave($event)"
+           [icon]="iconText ? null : icon">
+</dx-button>
+
+<dx-tooltip
+		[disabled]="disabledTooltip"
+		[deferRendering]="false"
+		[target]="'#' + idTooltipButton"
+		position="right"
+		[(visible)]="tooltipVisible">
+	
+	<div *dxTemplate="let data of 'content'">
+		<div [innerHTML]="text"></div>
+		<div #tooltipNgContent><ng-content></ng-content></div>
+	</div>
+</dx-tooltip>

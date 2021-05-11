@@ -1,0 +1,49 @@
+<div>
+    <span><i>test input</i></span>
+    <dx-number-box
+            (onValueChanged)="onValueChanged($event)"
+            [value]="scalarValue"
+            [width]="100"
+            inputOnlyNumber
+            [focusAfterViewInit]="focusFirstInputOnInit"
+            propagateElementAttrToInput
+            [elementAttr]="{maxLength: 9}">
+    </dx-number-box>
+    <!--
+    <dx-autocomplete
+            [focusAfterViewInit]="focusFirstInputOnInit"
+            placeholder="Pesquisar..."
+            (onValueChanged)="onValueChanged($event)"
+            [value]="scalarValue"            [width]="100"
+            [dataSource]="['Option_1', 'Option_2']">
+    </dx-autocomplete>
+    <dx-calendar [focusAfterViewInit]="focusFirstInputOnInit" [(value)]="scalarValue"></dx-calendar>
+
+    <dx-select-box [(value)]="scalarValue"
+                   [focusAfterViewInit]="focusFirstInputOnInit"
+                   displayExpr="name"
+                   [dataSource]="[{name: 'Option_1'}, {name: 'Option_2'}]">
+    </dx-select-box>
+
+    <dx-text-box [(value)]="scalarValue"
+                 [focusAfterViewInit]="focusFirstInputOnInit">
+    </dx-text-box>
+
+    <dx-check-box [(value)]="scalarValue"
+                  [focusAfterViewInit]="focusFirstInputOnInit">
+    </dx-check-box>
+
+    <dx-date-box [(value)]="scalarValue"
+                 [acceptCustomValue]="true"
+                 [focusAfterViewInit]="focusFirstInputOnInit" [max]="maxToday">
+    </dx-date-box>
+
+    <dx-text-area  [(value)]="scalarValue"
+                   [focusAfterViewInit]="focusFirstInputOnInit"
+                   maxLength="1000"
+                  width='300'
+                  height='90'
+                  [readOnly]="false">
+    </dx-text-area>
+    -->
+</div>

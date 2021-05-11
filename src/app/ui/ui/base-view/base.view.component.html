@@ -1,0 +1,52 @@
+<div style="display:flex; flex-direction:column; height: inherit; overflow: hidden" class="{{cssClass}}">
+	
+	<div style="display:flex; flex-shrink: 0; flex-direction:column;" class="{{cssClass}}">
+		
+		<ng-container *ngIf="!toolbarFullOverride">
+			<list-toolbar
+					[cssClass]="toolbarCssClass"
+					[rightSectionCssClass]="toolbarRightSectionCssClass"
+					[leftSectionCssClass]="toolbarLeftSectionCssClass"
+					[showLeftSection]="toolbarShowLeftSection"
+					[showRightSection]="toolbarShowRightSection"
+					[title]="toolbarTitle"
+					[titleCssClass]="toolbarTitleCssClass"
+					[allButtonsCssClass]="toolbarAllButtonsCssClass"
+					
+					[clearButtonShow]="false"
+					[filterButtonShow]="false"
+					[newButtonShow]="false"
+					
+					[closeButtonCssClass]="listToolbarCloseButtonCssClass"
+					[closeButtonIconClass]="listToolbarCloseButtonIconClass"
+					[closeButtonText]="listToolbarCloseButtonText"
+					[closeButtonOrder]="listToolbarCloseButtonOrder"
+					[closeButtonShow]="!embedded && listToolbarCloseButtonShow"
+					[closeButtonTitle]="listToolbarCloseButtonTitle"
+					[closeButtonDisabled]="listToolbarCloseButtonDisabled"
+					
+					(closeButtonAction)="onToolbarCloseButtonAction($event)">
+				
+				<ng-content select="[base-toolbar-override]"></ng-content>
+			
+			</list-toolbar>
+		</ng-container>
+		
+		<!-- messages -->
+		<message-panel [visible]="messagePanelVisible" [messageType]="messageType"
+		               (visibleChange)="onCloseButtonMessagePanel($event)"
+		               [messages]="messages"></message-panel>
+		
+		<!-- form header -->
+		<div>
+			<ng-content select="[header]"></ng-content>
+		</div>
+		
+		
+		<!-- content -->
+		<div style="padding-top: 10px; flex-shrink: 1; flex-grow: 1; border-top: 1px solid #cfcfcf; overflow: auto">
+			<ng-content></ng-content>
+		</div>
+		
+	</div>
+</div>

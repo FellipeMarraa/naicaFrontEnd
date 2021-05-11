@@ -1,0 +1,27 @@
+base-view {
+  .base-toolbar-right-section {
+    padding-right: 20px;
+  }
+
+  .base-toolbar-right-section > div {
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .base-toolbar-buttons > * {
+    align-items: center;
+  }
+
+  .base-toolbar-buttons:hover {
+    opacity: 0.6;
+  }
+
+  .base-toolbar {
+    align-items: center;
+    width: 100%;
+    font-size: 140%;
+    font-weight: 400;
+    color: black;
+    border-bottom: 1px solid #dfdfdf;
+  }
+}

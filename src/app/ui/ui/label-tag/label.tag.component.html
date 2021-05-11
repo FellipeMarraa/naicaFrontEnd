@@ -1,0 +1,12 @@
+<dx-form align="left">
+    <dxi-item template="template">
+        <dxo-label [visible]="false"></dxo-label>
+    </dxi-item>
+
+    <div *dxTemplate="let data of 'template'">
+        <span (click)="onClick.emit($event)"
+              (mouseover)="mouseOver($event)"
+              (mouseout)="mouseOut($event)"
+              [id]="idLabel" class="label-tag" [innerHTML]="value"></span>
+    </div>
+</dx-form>

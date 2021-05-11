@@ -1,0 +1,43 @@
+context-bar {
+
+    .context-bar-container {
+
+        margin-bottom: 5px;
+
+        height: 55px;
+        background-color: var(--context-bar-background-color);
+        display: flex;
+        align-items: center;
+
+        > * {
+
+            padding: 0 5px;
+            color: var(--context-bar-color);
+
+        }
+
+        .context-bar-lembrar-dados {
+
+            padding-left: 20px;
+            flex-grow: 1;
+
+            .dx-checkbox-text {
+
+                color: var(--context-bar-color);
+                font-size: 12px;
+                font-family: Verdana, sans-serif;
+
+            }
+
+        }
+
+    }
+
+    .context-bar-container .dx-field-item-label-text {
+        color: var(--context-bar-color) !important;
+    }
+
+    .dx-checkbox-container {
+        width: 250px !important;
+    }
+}

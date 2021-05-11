@@ -1,0 +1,30 @@
+.publicidade-popup-panel {
+
+  display: flex;
+  flex-direction: row;
+
+  .publicidade-nav-button {
+    flex: 0;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .publicidade-popup-content {
+    flex: 1;
+
+    .publicidade-imagem-content {
+      text-align: center;
+    }
+
+    .publicidade-link {
+      cursor: pointer;
+    }
+
+  }
+
+}

@@ -1,0 +1,6 @@
+<div class="container" [ngClass]="{'system-icon': isCurrentSystem}">
+    <div style="position: relative; max-width: 48px; flex: 1;">
+        <i [ngClass]="{'image-system': !isCurrentSystem, 'image-current-system': isCurrentSystem}" [faStyle]="system.iconeFa"></i>
+        <span class="system-flag-label">{{ system.mnemonico }}</span>
+    </div>
+</div>

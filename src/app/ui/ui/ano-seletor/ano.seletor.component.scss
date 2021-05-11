@@ -1,0 +1,44 @@
+ano-seletor {
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 3px;
+  }
+
+  .paginator-left {
+    padding-right: 10px;
+  }
+
+  .paginator-right {
+    padding-left: 5px;
+  }
+
+  .item-button {
+    height: 35px;
+  }
+
+  .paginator-button {
+    height: 35px;
+  }
+
+  .multiple-selected-years-container {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3px;
+
+    .selected-years {
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .selected-years > * {
+      margin-left: 5px;
+    }
+  }
+  .multiple-selected-years-container > * {
+    margin-left: 5px;
+  }
+}

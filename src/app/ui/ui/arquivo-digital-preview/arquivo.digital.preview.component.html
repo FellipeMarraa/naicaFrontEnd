@@ -1,0 +1,11 @@
+<sonner-popup #popupMaster popupTitle="Visualização de Arquivo"
+       [dragEnabled]="true"
+       [showAceitarButton]="false"
+       textCancelarButton="Fechar"
+       [(visible)]="visible"
+       (onContentSizeChanged)="contentSizeChanged($event)"
+       [width]="1000" [height]="600">
+    <div style="width: 100%;height: 500px">
+        <iframe #iframe class="iframeClasse" *ngIf="arqSrc" [src]="arqSrc" frameborder="0"></iframe>
+    </div>
+</sonner-popup>

@@ -1,0 +1,8 @@
+<dx-toolbar>
+    <dxi-item *ngIf="!excludes.includes('printer')" locateInMenu="always" text="Imprimir..." [onClick]="imprimir"></dxi-item>
+    <dxi-item *ngIf="!excludes.includes('png')" locateInMenu="always" text="Salvar como PNG" [onClick]="salvarPng"></dxi-item>
+    <dxi-item *ngIf="!excludes.includes('pdf')" locateInMenu="always" text="Salvar como PDF" [onClick]="salvarPdf"></dxi-item>
+    <dxi-item *ngIf="!excludes.includes('jpeg')" locateInMenu="always" text="Salvar como JPEG" [onClick]="salvarJpeg"></dxi-item>
+    <dxi-item *ngIf="!excludes.includes('svg')" locateInMenu="always" text="Salvar como SVG" [onClick]="salvarSvg"></dxi-item>
+    <dxi-item *ngIf="!excludes.includes('xls')" locateInMenu="always" text="Salvar como XLS" [onClick]="salvarXls"></dxi-item>
+</dx-toolbar>

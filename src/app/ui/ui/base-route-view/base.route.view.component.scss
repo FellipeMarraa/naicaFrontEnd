@@ -1,0 +1,27 @@
+base-route-view {
+
+  height: inherit;
+
+  .route-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: inherit;
+  }
+
+  .toolbar {
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size: 14px;
+  }
+
+  .content {
+    overflow: auto;
+    flex-grow: 1;
+  }
+
+  .header {
+    background-color: #efefef;
+  }
+
+}

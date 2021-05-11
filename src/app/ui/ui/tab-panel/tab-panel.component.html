@@ -1,0 +1,44 @@
+<auto-size-container #container [width]="width" [height]="height"
+                     [marginWidth]="marginWidth" [marginHeight]="marginHeight" (heightChange)="adjustHeight($event)"
+                     [disabled]="autoSizeDisabled">
+    <div [ngStyle]="{'padding-top': padddingTop, 'display': visible ? 'flex' : 'none', height: '100%'}" class="tab-panel-area">
+
+        <div class="tab-panel-header" *ngIf="!autoSizeDisabled" #tabHeader>
+
+            <div class="tab-panel-tabs">
+                <div [ngClass]="{'tab-header': true,
+                                 'tab-header-active': tabOffset + idx == _activeTabIndex,
+                                 'tab-header-inactive': tabOffset + idx != _activeTabIndex,
+                                 'tab-header-invisible': !t.tabVisible,
+                                 'tab-header-disable': t.tabDisable,
+                                 'last-tab': tabOffset + idx == tabsVisible.length - 1}"
+                     *ngFor=" let t of tabsVisible; let idx = index; trackBy: getTabId"
+                     (click)="activateTab(tabOffset + idx)">
+                    <span *ngIf="t.hasError" class="tab-icon-error"><i class="fa fa-exclamation-circle"></i></span>
+                    <span>{{t.tabTitle}}</span>
+                </div>
+                <div class="tab-header-nav">
+                    <dx-button *ngIf="showNav" icon="back" [disabled]="!canNavBack" (onClick)="navBack()"></dx-button>
+                    <dx-button *ngIf="showNav" icon="chevronnext" [disabled]="!canNavNext" (onClick)="navNext()"></dx-button>
+                    <dx-button [id]="tabPanelMenuId" icon="chevrondown"></dx-button>
+                </div>
+                <div class="tab-header-space">&nbsp;</div>
+            </div>
+
+        </div>
+
+        <div class="tab-panel-body" [ngClass]="{'component-restricted-area': !autoSizeDisabled, 'top-border': autoSizeDisabled}">
+            <div *ngIf="autoSizeDisabled" class="normal-mode-button">
+                <dx-button icon="fal fa-table" text="Exibir por aba" type="normal" stylingMode="text" (onClick)="updateViewMode('NORMAL')"></dx-button>
+            </div>
+            <dx-scroll-view #scrollView [height]="_scrollHeight" (onScroll)="onScroll($event)">
+                <ng-content></ng-content>
+            </dx-scroll-view>
+        </div>
+
+        <dx-context-menu [target]="'#' + tabPanelMenuId" [position]="{my: 'top right', at: 'bottom right'}"
+                         [dataSource]="tabsMenuDs" showEvent="dxclick" (onItemClick)="menuItemClick($event)">
+        </dx-context-menu>
+
+    </div>
+</auto-size-container>

@@ -1,0 +1,54 @@
+<dx-popup [width]="1000"
+          [height]="575"
+          [showTitle]="true"
+          [title]="publicidade?.nome"
+          [showCloseButton]="true"
+          [dragEnabled]="false"
+          [closeOnOutsideClick]="false"
+          [(visible)]="visible"
+          (onHidden)="notificaVisualizados()">
+
+    <div *dxTemplate="let data of 'content'">
+        <div *ngIf="visible">
+            <div class="publicidade-popup-panel">
+                <div class="publicidade-nav-button">
+                    <dx-button icon="chevronleft"
+                               hint="Anterior"
+                               [height]="100"
+                               [ngStyle]="{visibility: publicidadeList.length > 1 ? 'visible' : 'hidden'}"
+                               [disabled]="!index"
+                               (onClick)="anterior()">
+                    </dx-button>
+                </div>
+                <div class="publicidade-popup-content">
+                    <div [ngSwitch]="publicidade.tipo">
+                        <div *ngSwitchCase="'VIDEO'">
+                            <youtube-player [videoUrl]="publicidade.conteudo"></youtube-player>
+                        </div>
+                        <div *ngSwitchCase="'IMAGEM'" class="publicidade-imagem-content" [ngClass]="{'publicidade-link': publicidade.conteudo}" (click)="abrirLink(publicidade)">
+                            <img [src]="'/GRP/servlets/cadastrosgerais/downloadArquivoDigital?id=' + publicidade.idArquivoDigital + '&imgWidth=880&imgHeight=495'" alt="">
+                        </div>
+                        <div *ngSwitchCase="'PDF'">
+                            <iframe frameborder="0" marginheight="0" marginwidth="0" width="100%" height="100%"
+                                    [src]="'/GRP/servlets/cadastrosgerais/downloadArquivoDigital?id=' + publicidade.idArquivoDigital + '&imgWidth=880&imgHeight=495'"></iframe>
+                        </div>
+                        <div *ngSwitchCase="'HTML'">
+                            <iframe frameborder="0" marginheight="0" marginwidth="0" width="100%" height="100%"
+                                    [src]="'/GRP/servlets/cadastrosgerais/downloadArquivoDigital?id=' + publicidade.idArquivoDigital + '&imgWidth=880&imgHeight=495'"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="publicidade-nav-button" >
+                    <dx-button icon="chevronright"
+                               hint="Próximo"
+                               [height]="100"
+                               [ngStyle]="{visibility: publicidadeList.length > 1 ? 'visible' : 'hidden'}"
+                               [disabled]="index >= publicidadeList.length - 1"
+                               (onClick)="proximo()">
+                    </dx-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</dx-popup>

@@ -1,0 +1,22 @@
+<div *ngIf="!boxMode">
+    <fieldset [ngClass]="{'field-set': true, 'field-set-shadow': shadow}" [style.width]="width" [style.height]="height">
+        <legend [align]="alignTitle">{{title}}</legend>
+        <ng-container *ngIf="false; else templateContent"></ng-container>
+    </fieldset>
+</div>
+
+<div *ngIf="boxMode">
+    <div [style.width]="width" [style.height]="height" [ngClass]="{'field-set-box': true, 'field-set-shadow': shadow}">
+
+        <h4 [style.text-align]="alignTitle">{{title}}</h4>
+
+        <div class="field-set-box-content">
+            <ng-container *ngIf="false; else templateContent"></ng-container>
+        </div>
+
+    </div>
+</div>
+
+<ng-template #templateContent>
+    <ng-content></ng-content>
+</ng-template>

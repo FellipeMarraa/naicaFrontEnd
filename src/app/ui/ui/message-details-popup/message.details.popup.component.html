@@ -1,0 +1,23 @@
+<dx-popup [width]="720"
+          [height]="400"
+          [showTitle]="true"
+          title="Detalhes"
+          [showCloseButton]="true"
+          [dragEnabled]="false"
+          [closeOnOutsideClick]="true"
+          (onContentReady)="popupContentReady($event)"
+          [(visible)]="visible">
+
+    <div *dxTemplate="let data of 'content'" class="message-details-container">
+
+        <div class="details-content">
+            <dx-text-area #detailsText height="100%" [readOnly]="true" [(value)]="details"></dx-text-area>
+        </div>
+        <div class="details-buttons">
+            <div class="details-copy-message"><span *ngIf="copyMessageVisible">Texto copiado para a área de transferência.</span></div>
+            <dx-button text="Copiar" (onClick)="copyDetails()"></dx-button>
+            <dx-button text="Fechar" type="default" (onClick)="closeDetails()"></dx-button>
+        </div>
+    </div>
+
+</dx-popup>

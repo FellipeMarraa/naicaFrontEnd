@@ -1,0 +1,5 @@
+<div class="container" [style.width.px]="width">
+    <div *ngFor="let mes of meses;index as i;" style="padding-right: 5px;">
+        <dx-button [text]="mes" class="item-button" [style.background-color]="getStyle(i)" (onClick)="setMesSelecionado(mes, i)"></dx-button>
+    </div>
+</div>

@@ -1,0 +1,169 @@
+.dx-overlay-wrapper.secondary-popup-overlay {
+  z-index: 220000 !important;
+  //width: 99% !important; o tamanho de 99% está quebrando o layout na v4. Caso haja algum cenário em que este atributo seja necessário, verificar.
+}
+
+.dx-overlay-wrapper.secondary-popup-overlay > .dx-overlay-content {
+
+  border: 0 !important;
+  background: #fff;
+  -webkit-box-shadow: initial !important;
+  -moz-box-shadow: initial !important;
+  box-shadow: initial !important;
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  -ms-border-radius: 0px !important;
+  -o-border-radius: 0px !important;
+  border-radius: 0px !important;
+
+}
+
+.secondary-crud-container-no-padding {
+  padding: 0 !important;
+}
+
+.secondary-crud-container {
+
+  background-color: white;
+  padding: 10px 10px 0;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+
+  .component-restricted-area {
+    box-sizing: border-box;
+  }
+
+  .secondary-crud-header {
+
+    height: 40px;
+    background-color: #5e87b0;
+    padding: 5px 25px;
+
+    display: flex;
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+
+    .back-button {
+      flex-grow: 0;
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    .back-button:hover {
+      opacity: 0.6 !important;
+      cursor: pointer;
+    }
+
+    .secondary-crud-title {
+      flex-grow: 1;
+      color: white;
+      font-family: Verdana, sans-serif;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .secondary-crud-ok-button {
+      flex-grow: 0;
+    }
+
+    .secondary-crud-cancel-button {
+      margin-left: 30px;
+      flex-grow: 0;
+    }
+
+    .secondary-crud-button {
+
+      display: flex;
+
+      .secondary-crud-button-icon {
+
+        width: 16px;
+        height: 16px;
+
+      }
+
+      .secondary-crud-button-text {
+
+        padding-left: 6px;
+        color: white;
+        font-family: Verdana, sans-serif;
+        font-size: 12px;
+        text-align: center;
+        vertical-align: middle;
+
+      }
+
+    }
+
+    .secondary-crud-button:hover {
+      opacity: 0.6 !important;
+      cursor: pointer;
+    }
+
+  }
+
+  .secondary-crud-panel {
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    padding: 10px;
+
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+  }
+
+  .secondary-crud-panel > * {
+    flex-grow: 1;
+  }
+
+  .popup-content-panel {
+    flex-grow: 1;
+    display: block;
+    flex-direction: column;
+    height: inherit;
+  }
+
+  .popup-buttons-panel {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 0;
+    border-top: 1px solid #dfdfdf;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .radio-group {
+    align-items: center !important;
+  }
+
+  .vertical-align {
+    .dx-datagrid-content .dx-datagrid-table .dx-row > td, .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td {
+      vertical-align: baseline;
+    }
+  }
+
+  .margim-left{
+    margin-left: 15px;
+  }
+
+  .dx-datagrid-rowsview .dx-select-checkboxes-hidden > tbody > tr > td > .dx-select-checkbox {
+    display: inline-table;
+  }
+}

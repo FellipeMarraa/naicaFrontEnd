@@ -1,0 +1,155 @@
+<div class="arq-digital-container" [style.width.px]="width">
+
+    <div class="arq-digital-header">
+
+        <div class="arq-file-uploader" [ngStyle]="{'margin-left': marginLeftFileUploader + 'px'}">
+            <form #form>
+                <dx-file-uploader #fileUploader
+                                  [width]="widthFileUploader"
+                                  [(isValid)]="uploadIsValid"
+                                  [validationError]="validationError"
+                                  [multiple]="multiple"
+                                  [accept]="filtroTipo"
+                                  [showFileList]="false"
+                                  (onValueChanged)="submitForm($event);"
+                                  [readOnly]="disabled || progress !== null"
+                                  name="fileUpload"
+                                  uploadMode="useForm"
+                                  selectButtonText="Selecionar arquivo"
+                                  labelText="(ou arraste um arquivo aqui)"
+                                  [visible]="permiteUpload"
+                                  [disabled]="arquivoUnico && arquivos.length > 1">
+                    <dx-validator [validationGroup]="validationGroup">
+                        <dxi-validation-rule type="custom"
+                                             [validationCallback]="validationCallback"></dxi-validation-rule>
+                    </dx-validator>
+                </dx-file-uploader>
+            </form>
+            <dx-button *ngIf="permiteCapturarImagem"
+                       icon="photo"
+                       hint="Capturar Imagem"
+                       (onClick)="exibirCapturarImagem()"></dx-button>
+        </div>
+
+        <div class="arq-header-buttons-container">
+
+            <div class="arq-header-buttons">
+                <dx-button *ngIf="permiteOrdenacao && fileListDataSource.length > 1" icon="fa fa-arrow-up" class="toolbar-item-button" (onClick)="moveUp()" [disabled]="!podeReordenarRegistro()"></dx-button>
+                <dx-button *ngIf="permiteOrdenacao && fileListDataSource.length > 1" icon="fa fa-arrow-down" class="toolbar-item-button toolbar-separator" (onClick)="moveDown()" [disabled]="!podeReordenarRegistro()"></dx-button>
+                <dx-button *ngIf="!arquivoUnico && fileListDataSource.length > 0" icon="download" hint="Baixar selecionados"
+                           (onClick)="baixaSelecionados()"></dx-button>
+                <dx-button *ngIf="!arquivoUnico && fileListDataSource.length > 0" icon="clear" hint="Excluir selecionados"
+                           (onClick)="excluirSelecionados()" [visible]="BtnExcluirSelecionados"></dx-button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div *ngIf="exibeArquivos && fileListDataSource.length > 0" class="arq-digital-files">
+
+        <ng-content *ngIf="mode == modes.CUSTOM"></ng-content>
+
+        <!-- mode: DEFAULT -->
+        <div *ngIf="mode == modes.DEFAULT" [ngClass]="{'possui-template': itemTemplate}">
+            <dx-list #fileList [dataSource]="fileListDataSource"
+                     [selectionMode]="arquivoUnico ? undefined : 'all'"
+                     [showSelectionControls]="true"
+                     [focusStateEnabled]="false"
+                     height="100%">
+                <div *dxTemplate="let data of 'item'" (click)="onTemplateClick($event)">
+                    <div *ngIf="!data.id" class="arq-placeholder-container">
+                        <div class="arq-placeholder-icon">&nbsp;</div>
+                        <div class="arq-placeholder-name">&nbsp;</div>
+                        <div class="arq-placeholder-data">&nbsp;</div>
+                        <div class="arq-placeholder-buttons">&nbsp;</div>
+                        <div class="arq-progress-container" *ngIf="progress">
+                            <div class="arq-progress">
+                                <dx-progress-bar [min]="0" [max]="100" [value]="progress"
+                                                 [statusFormat]="formatProgress"></dx-progress-bar>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="data.id" class="arq-item-container">
+                        <div class="arq-icon">
+                            <!-- não informar o atributo 'height' e 'width' na tag <img> pois será calculado diretamente no servlet -->
+                            <img [src]=" mode <= 1 ? '/GRP/servlets/filetypeimg?filename=' + data.nomeArquivo + '&id=' + data.id + '&width=' + width + '&height=' + height : '' " >
+                        </div>
+                        <div class="arq-info">
+                            <div class="arq-info-top">
+                                <div class="arq-name">
+                                    {{data.nomeArquivo}}
+                                </div>
+                                <div class="arq-info-buttons">
+                                    <dx-button icon="download" hint="Baixar"
+                                               (onClick)="downloadFile($event, data)"></dx-button>
+                                    <dx-button icon="clear" hint="Excluir"
+                                               (onClick)="removeFile($event, data)" [visible]="BtnExcluirSelecionado"></dx-button>
+                                </div>
+                            </div>
+                            <div class="arq-data">
+                                <div class="arq-type">
+                                    Tipo: {{data.mimeType}}
+                                </div>
+                                <div style="width: 10px"></div>
+                                <div class="arq-size">
+                                    Tamanho: {{getTamanhoArquivo(data.tamanho)}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="data.id && itemTemplate">
+                        <ng-container *ngIf="getRef(data.id); let ref">
+                            <ng-container *ngTemplateOutlet="itemTemplate;context:{item: ref}"></ng-container>
+                        </ng-container>
+                    </div>
+                </div>
+            </dx-list>
+        </div>
+
+        <!-- mode: IMAGE_PREVIEW_ONLY -->
+        <!-- TODO: por hora, o modo IMAGE_PREVIEW_ONLY suporta apenas uma imagem. Portanto, 'unicoArquivo=true'. Ampliar suporte à múltiplas imagens. -->
+        <div *ngIf="mode == modes.IMAGE_PREVIEW_ONLY">
+            <div style="display: flex" *ngIf="fileListDataSource && fileListDataSource.length > 0">
+                <div [ngClass]="{'img-div-box': true}">
+
+                    <div>
+                        <div class="single-img-toolbar">
+                            <dx-button (onClick)="clearSingleImage($event)" icon="fa fa-trash"></dx-button>
+                        </div>
+
+                        <dx-gallery
+                                [className]="'single-container-img'"
+                                [(dataSource)]="urlSingleImg"
+                                [showIndicator]="false"
+                                [width]="width"
+                                [height]="height">
+                        </dx-gallery>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <sonner-popup popupTitle="Capturar Imagem"
+           [(visible)]="popupCapturarImagemVisivel"
+           [width]="600"
+           [height]="500"
+           (onShown)="initStream()"
+           (onClose)="closeStream()"
+           (onAceitarButtonClicked)="uploadSnapshot()">
+        <div class="capturar-imagem-panel">
+            <div class="video-panel">
+                <video #video [width]="CANVAS_WIDTH" [height]="CANVAS_HEIGHT"></video>
+                <dx-button *ngIf="streamIniciado"
+                           text="Capturar Imagem"
+                           icon="photo"
+                           (onClick)="takeSnapshot()"></dx-button>
+            </div>
+            <div class="img-panel">
+                <img #photo [width]="photoWidth" [height]="photoHeight" [src]="pictureSrc"/>
+            </div>
+        </div>
+    </sonner-popup>
+
+    <canvas #canvasSnapshot style="display:none"></canvas>
+</div>
