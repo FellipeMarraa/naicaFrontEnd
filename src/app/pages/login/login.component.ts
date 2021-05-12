@@ -3,6 +3,7 @@ import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {CoordenadorService} from '../../services/coordenador.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class LoginComponent {
 
   constructor(
     public auth: AuthService,
+    public  coordenadorService: CoordenadorService,
     public router: Router,
     public toastr: ToastrService) {
 
@@ -28,7 +30,7 @@ export class LoginComponent {
   ionViewDidEnter() {
     this.auth.refreshToken()
       .subscribe(response => {
-          this.auth.successfulLogin(response.headers.get('Authorization'));
+          this.auth.succefullLogin(response.headers.get('Authorization'));
           this.router.navigate(['home']);
         },
         error => {
@@ -42,14 +44,7 @@ export class LoginComponent {
   // }
 
   login() {
-    this.auth.authenticate(this.creds)
-      .subscribe(response => {
-          // this.auth.successfulLogin(response.headers.get('Authorization'));
-          this.router.navigate(['home']);
-
-        },
-        error => {
-        this.toastr.error("Usuário não autorizado");
-      });
+    this.auth.authenticate(this.creds);
+              // this.router.navigate(['home']);
   }
 }

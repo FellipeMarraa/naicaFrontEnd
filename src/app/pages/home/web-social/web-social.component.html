@@ -1,5 +1,5 @@
 <dx-data-grid [dataSource]="dataSource" [remoteOperations]="true" [height]="600" [showBorders]="true"
-              [masterDetail]="{enable: true, template: 'informacaoTemplate'}" [columns]="['nome']">
+              [masterDetail]="{enable: true, template: 'informacaoTemplate'}" [columns]="['nome', 'dataNascimento', 'idadeAtual']" id="data-grid-aluno">
   <dxo-filter-row [visible]="true"></dxo-filter-row>
   <dxo-header-filter [visible]="true"></dxo-header-filter>
   <dxo-scrolling mode="virtual"></dxo-scrolling>
@@ -93,7 +93,7 @@
 
   <div *dxTemplate="let data of 'informacaoTemplate'">
     <dx-data-grid [dataSource]="dataSourceResponsaveis"
-                  [cacheEnabled]="false" [elementAttr]="{ 'grid-except':true }">
+                  [cacheEnabled]="false" [elementAttr]="{ 'grid-except':true }" id="data-grid-responsavel">
       <dxi-column dataField="nome"
                   caption="Nome Responsavel"
                   dataType="string"
@@ -166,10 +166,6 @@
     <dxi-total-item
       column="nome"
       summaryType="count">
-    </dxi-total-item>
-    <dxi-total-item
-      column="escola"
-      summaryType="sum">
     </dxi-total-item>
   </dxo-summary>
 

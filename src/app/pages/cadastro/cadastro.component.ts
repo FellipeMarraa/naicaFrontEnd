@@ -15,46 +15,46 @@ import {Coordenador} from '../../models/coordenador';
 export class CadastroComponent {
 
   aluno: AlunoDto = {
-    "id" : null,
-    "nome":"",
-    "dataNascimento": Date.toString(),
-    "idadeInicial":0,
-    "idadeAtual": 0,
-    "escola":"",
-    "responsaveis": [],
-    "sexo": false,
-    "nisAtendido": "",
-    "dataMatricula": "",
-    "desligado": false,
-    "anoEscolar": "",
-    "periodoEscolar": "",
-    "desacompanhado": false,
-    "autorizadoBuscar": ""
+    'id': null,
+    'nome': '',
+    'dataNascimento': Date.toString(),
+    'idadeInicial': 0,
+    'idadeAtual': 0,
+    'escola': '',
+    'responsaveis': [],
+    'sexo': false,
+    'nisAtendido': '',
+    'dataMatricula': '',
+    'desligado': false,
+    'anoEscolar': '',
+    'periodoEscolar': '',
+    'desacompanhado': false,
+    'autorizadoBuscar': ''
   };
 
   responsavel: ResponsavelDto = {
-    "id": null,
-    "nome":"",
-    "dataNascimento": Date.toString(),
-    "cpf": "",
-    "identidade": "" ,
-    "dataEmissao": Date.toString() ,
-    "uf": "" ,
-    "orgaoExpeditor": "" ,
-    "ctps": "" ,
-    "nisResponsavel": "" ,
-    "endereco": "" ,
-    "email":"" ,
-    "telefones": "",
-    "observacao": "",
-    "alunos": []
+    'id': null,
+    'nome': '',
+    'dataNascimento': Date.toString(),
+    'cpf': '',
+    'identidade': '',
+    'dataEmissao': Date.toString(),
+    'uf': '',
+    'orgaoExpeditor': '',
+    'ctps': '',
+    'nisResponsavel': '',
+    'endereco': '',
+    'email': '',
+    'telefones': '',
+    'observacao': '',
+    'alunos': []
   };
 
   constructor(
     public router: Router,
-              public alunoService: AlunoService,
-              public responsavelService: ResponsavelService,
-              public toastUiService: ToastrService) {
+    public alunoService: AlunoService,
+    public responsavelService: ResponsavelService,
+    public toastr: ToastrService) {
 
   }
 
@@ -77,24 +77,25 @@ export class CadastroComponent {
     this.router.navigate(['home']);
   }
 
-  cadastrar(){
+  cadastrar() {
 
-      this.alunoService.insert(this.aluno)
-        .subscribe(response => {
-            // this.router.navigate(['home']);
-
-          },
-          error => {});
+    this.alunoService.insert(this.aluno)
+      .subscribe(response => {
+        },
+        error => {
+          this.toastr.error('Não foi possível efetuar o cadastro do aluno');
+        });
 
     this.aluno.responsaveis = [this.responsavel];
 
 
     this.responsavelService.insert(this.responsavel)
       .subscribe(response => {
-          // this.router.navigate(['home']);
-
         },
-        error => {});
+        error => {
+          this.toastr.error('Não foi possível efetuar o cadastro do responsável');
+
+        });
 
     this.responsavel.alunos = [this.aluno];
 

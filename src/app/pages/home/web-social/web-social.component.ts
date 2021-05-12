@@ -6,6 +6,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {API_CONFIG} from '../../../config/api.config';
 import * as AspNetData from "devextreme-aspnet-data-nojquery";
 import {keys} from '@material-ui/core/styles/createBreakpoints';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-web-social',
@@ -17,14 +18,15 @@ export class WebSocialComponent implements OnInit {
   dataSource: any;
   url: string;
 
-  constructor() {
+  constructor(public toastr: ToastrService,
+              public alunoService: AlunoService) {
     this.url = `${API_CONFIG.baseUrl}`;
 
     this.dataSource = AspNetData.createStore({
       key: "id",
       loadUrl: this.url + "/alunos/list",
-      updateUrl: this.url + "/alunos/edit/id" ,
-      deleteUrl: this.url + "/alunos/delete",
+      updateUrl: this.url + "/alunos/edit/" ,
+      deleteUrl: this.url + "/alunos/delete/",
     });
 
     this.dataSourceResponsaveis = AspNetData.createStore({

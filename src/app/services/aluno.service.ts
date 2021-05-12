@@ -1,10 +1,7 @@
-
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs/Rx";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {StorageService} from './storage.service';
 import {API_CONFIG} from '../config/api.config';
-import {CoordenadorDTO} from '../models/coordenador.dto';
 import {AlunoDto} from '../models/aluno.dto';
 import {Aluno} from '../models/aluno';
 
