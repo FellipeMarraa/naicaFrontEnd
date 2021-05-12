@@ -7,6 +7,8 @@ import {API_CONFIG} from '../../../config/api.config';
 import * as AspNetData from "devextreme-aspnet-data-nojquery";
 import {keys} from '@material-ui/core/styles/createBreakpoints';
 import {ToastrService} from 'ngx-toastr';
+import {ObservableUtils} from "../../../classe/observable.utils";
+import {Observable} from "rxjs/Rx";
 
 @Component({
   selector: 'app-web-social',
@@ -17,6 +19,13 @@ export class WebSocialComponent implements OnInit {
   dataSourceResponsaveis: any;
   dataSource: any;
   url: string;
+
+  aluno:Aluno;
+
+  of(observable: Observable<any>, successFn?: Function, errorFn?: Function) {
+    const defaultHandleError = this.alunoService.handleError.bind(this);
+    return ObservableUtils.of(observable, successFn, errorFn ? errorFn : defaultHandleError);
+  }
 
   constructor(public toastr: ToastrService,
               public alunoService: AlunoService) {
@@ -29,10 +38,10 @@ export class WebSocialComponent implements OnInit {
       deleteUrl: this.url + "/alunos/delete/",
     });
 
-    this.dataSourceResponsaveis = AspNetData.createStore({
-      key: "id",
-      loadUrl: this.url + "/responsaveis/list",
-    });
+    // this.dataSourceResponsaveis = AspNetData.createStore({
+    //   key: "id",
+    //   loadUrl: this.url + "/responsaveis/list",
+    // });
   }
 
 
@@ -41,7 +50,6 @@ export class WebSocialComponent implements OnInit {
     console.log(this.dataSource);
 
   }
-
 
 
 }

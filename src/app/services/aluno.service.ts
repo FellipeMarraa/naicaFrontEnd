@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {StorageService} from './storage.service';
 import {API_CONFIG} from '../config/api.config';
 import {AlunoDto} from '../models/aluno.dto';
 import {Aluno} from '../models/aluno';
+import {throwError} from "rxjs";
+import {Observable} from "rxjs/Rx";
 
 
 @Injectable()
@@ -13,6 +15,8 @@ export class AlunoService {
     public http: HttpClient,
     public storage: StorageService) {
   }
+
+
 
   findById(id: string) {
     return this.http.get(`${API_CONFIG.baseUrl}/alunos/${id}`);
@@ -36,4 +40,21 @@ export class AlunoService {
   findAll(obj : Aluno[]) {
     return this.http.get(`${API_CONFIG.baseUrl}/alunos/list`);
   }
+
+
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Erro ocorreu no lado do cliente
+      errorMessage = error.error.message;
+    } else {
+      // Erro ocorreu no lado do servidor
+      errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
+  }
+
+
+
 }

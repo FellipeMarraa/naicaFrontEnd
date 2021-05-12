@@ -6,6 +6,8 @@ import {ResponsavelDto} from '../../models/responsavel.dto';
 import {ResponsavelService} from '../../services/responsavel.service';
 import {ToastrService} from 'ngx-toastr';
 import {Coordenador} from '../../models/coordenador';
+import {Observable} from "rxjs/Rx";
+import {ObservableUtils} from "../../classe/observable.utils";
 
 @Component({
   selector: 'app-cadastro',
@@ -15,7 +17,7 @@ import {Coordenador} from '../../models/coordenador';
 export class CadastroComponent {
 
   aluno: AlunoDto = {
-    'id': null,
+    'id': '',
     'nome': '',
     'dataNascimento': Date.toString(),
     'idadeInicial': 0,
@@ -33,7 +35,7 @@ export class CadastroComponent {
   };
 
   responsavel: ResponsavelDto = {
-    'id': null,
+    'id': '',
     'nome': '',
     'dataNascimento': Date.toString(),
     'cpf': '',
@@ -49,6 +51,8 @@ export class CadastroComponent {
     'observacao': '',
     'alunos': []
   };
+
+
 
   constructor(
     public router: Router,
@@ -79,15 +83,15 @@ export class CadastroComponent {
 
   cadastrar() {
 
+    this.aluno.responsaveis = [this.responsavel];
+    this.responsavel.alunos = [this.aluno];
+
     this.alunoService.insert(this.aluno)
       .subscribe(response => {
         },
         error => {
           this.toastr.error('Não foi possível efetuar o cadastro do aluno');
         });
-
-    this.aluno.responsaveis = [this.responsavel];
-
 
     this.responsavelService.insert(this.responsavel)
       .subscribe(response => {
@@ -97,13 +101,16 @@ export class CadastroComponent {
 
         });
 
-    this.responsavel.alunos = [this.aluno];
 
 
     console.log(this.aluno);
     console.log(this.responsavel);
 
   }
+
+
+
+
 }
 
 
