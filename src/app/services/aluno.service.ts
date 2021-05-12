@@ -6,6 +6,7 @@ import {AlunoDto} from '../models/aluno.dto';
 import {Aluno} from '../models/aluno';
 import {throwError} from "rxjs";
 import {Observable} from "rxjs/Rx";
+import {catchError, retry} from "rxjs/operators";
 
 
 @Injectable()
@@ -37,8 +38,8 @@ export class AlunoService {
     );
   }
 
-  findAll(obj : Aluno[]) {
-    return this.http.get(`${API_CONFIG.baseUrl}/alunos/list`);
+  findAll(): Observable<AlunoDto[]>{
+    return this.http.get<AlunoDto[]>(`${API_CONFIG.baseUrl}/alunos/list`).pipe(retry(2),catchError(this.handleError));
   }
 
 

@@ -9,6 +9,7 @@ import {keys} from '@material-ui/core/styles/createBreakpoints';
 import {ToastrService} from 'ngx-toastr';
 import {ObservableUtils} from "../../../classe/observable.utils";
 import {Observable} from "rxjs/Rx";
+import {AlunoDto} from "../../../models/aluno.dto";
 
 @Component({
   selector: 'app-web-social',
@@ -20,7 +21,7 @@ export class WebSocialComponent implements OnInit {
   dataSource: any;
   url: string;
 
-  aluno:Aluno;
+  aluno:AlunoDto[];
 
   of(observable: Observable<any>, successFn?: Function, errorFn?: Function) {
     const defaultHandleError = this.alunoService.handleError.bind(this);
@@ -29,14 +30,15 @@ export class WebSocialComponent implements OnInit {
 
   constructor(public toastr: ToastrService,
               public alunoService: AlunoService) {
-    this.url = `${API_CONFIG.baseUrl}`;
 
-    this.dataSource = AspNetData.createStore({
-      key: "id",
-      loadUrl: this.url + "/alunos/list",
-      updateUrl: this.url + "/alunos/edit/" ,
-      deleteUrl: this.url + "/alunos/delete/",
-    });
+    // this.url = `${API_CONFIG.baseUrl}`;
+    //
+    // this.dataSource = AspNetData.createStore({
+    //   key: "id",
+    //   loadUrl: this.url + "/alunos/list",
+    //   updateUrl: this.url + "/alunos/edit/" ,
+    //   deleteUrl: this.url + "/alunos/delete/",
+    // });
 
     // this.dataSourceResponsaveis = AspNetData.createStore({
     //   key: "id",
@@ -45,9 +47,9 @@ export class WebSocialComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-
-    console.log(this.dataSource);
+  ngOnInit() {
+   this.alunoService.findAll().subscribe(response=>{this.aluno=response;}, error => {console.log(error)});
+    console.log(this.aluno);
 
   }
 
