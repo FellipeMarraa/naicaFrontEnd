@@ -5,6 +5,7 @@ import CustomStore from 'devextreme/data/custom_store';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {API_CONFIG} from '../../../config/api.config';
 import * as AspNetData from "devextreme-aspnet-data-nojquery";
+import {keys} from '@material-ui/core/styles/createBreakpoints';
 
 @Component({
   selector: 'app-web-social',
@@ -15,8 +16,6 @@ export class WebSocialComponent implements OnInit {
   dataSourceResponsaveis: any;
   dataSource: any;
   url: string;
-  allMode: any;
-  checkBoxesMode: any;
 
   constructor() {
     this.url = `${API_CONFIG.baseUrl}`;
@@ -24,8 +23,7 @@ export class WebSocialComponent implements OnInit {
     this.dataSource = AspNetData.createStore({
       key: "id",
       loadUrl: this.url + "/alunos/list",
-      insertUrl: this.url + "/alunos/create",
-      updateUrl: this.url + "/alunos/edit/" ,
+      updateUrl: this.url + "/alunos/edit/id" ,
       deleteUrl: this.url + "/alunos/delete",
     });
 
@@ -41,7 +39,6 @@ export class WebSocialComponent implements OnInit {
     console.log(this.dataSource);
 
   }
-
 
 
 
