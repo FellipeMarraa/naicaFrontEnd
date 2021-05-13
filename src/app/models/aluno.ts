@@ -1,5 +1,5 @@
-import {Coordenador} from './coordenador';
 import {Responsavel} from './responsavel';
+import {ResponsavelDto} from './responsavel.dto';
 
 export class Aluno {
   id:string
@@ -8,8 +8,8 @@ export class Aluno {
   idadeInicial: number;
   idadeAtual: number;
   escola: string;
-  responsaveis: Responsavel[];
-  sexo: boolean;
+  responsaveis: string[];
+  sexo: string;
   nisAtendido: string;
   dataMatricula: string;
   desligado: boolean;

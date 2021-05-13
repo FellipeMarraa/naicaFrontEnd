@@ -10,6 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 import {ObservableUtils} from "../../../classe/observable.utils";
 import {Observable} from "rxjs/Rx";
 import {AlunoDto} from "../../../models/aluno.dto";
+import {ResponsavelService} from '../../../services/responsavel.service';
 
 @Component({
   selector: 'app-web-social',
@@ -18,18 +19,18 @@ import {AlunoDto} from "../../../models/aluno.dto";
 })
 export class WebSocialComponent implements OnInit {
   dataSourceResponsaveis: any;
-  dataSource: any;
+  dataSource: Aluno[];
   url: string;
 
-  aluno:AlunoDto[];
-
-  of(observable: Observable<any>, successFn?: Function, errorFn?: Function) {
-    const defaultHandleError = this.alunoService.handleError.bind(this);
-    return ObservableUtils.of(observable, successFn, errorFn ? errorFn : defaultHandleError);
-  }
+  // of(observable: Observable<any>, successFn?: Function, errorFn?: Function) {
+  //   const defaultHandleError = this.alunoService.handleError.bind(this);
+  //   return ObservableUtils.of(observable, successFn, errorFn ? errorFn : defaultHandleError);
+  // }
+  // aluno: AlunoDto[];
 
   constructor(public toastr: ToastrService,
-              public alunoService: AlunoService) {
+              public alunoService: AlunoService,
+              public responsavelService: ResponsavelService) {
 
     // this.url = `${API_CONFIG.baseUrl}`;
     //
@@ -48,8 +49,17 @@ export class WebSocialComponent implements OnInit {
 
 
   ngOnInit() {
-   this.alunoService.findAll().subscribe(response=>{this.aluno=response;}, error => {console.log(error)});
-    console.log(this.aluno);
+   this.alunoService.list().subscribe(response => {
+     this.dataSource = response;
+     console.log(this.dataSource);
+
+   }, error => {console.log(error)});
+
+    // this.responsavelService.findAll().subscribe(response => {
+    //   this.dataSource = response;
+    //   console.log(this.dataSource);
+    //
+    // }, error => {console.log(error)});
 
   }
 

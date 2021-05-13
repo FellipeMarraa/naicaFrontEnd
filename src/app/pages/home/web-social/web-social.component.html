@@ -1,5 +1,5 @@
 <dx-data-grid [dataSource]="dataSource" [remoteOperations]="true" [height]="600" [showBorders]="true"
-              [masterDetail]="{enable: true, template: 'informacaoTemplate'}" [columns]="['nome', 'dataNascimento', 'idadeAtual']" id="data-grid-aluno">
+              [masterDetail]="{template:'informacaoTemplate'}" [columns]="['nome', 'dataNascimento', 'idadeAtual']" id="data-grid-aluno">
   <dxo-filter-row [visible]="true"></dxo-filter-row>
   <dxo-header-filter [visible]="true"></dxo-header-filter>
   <dxo-scrolling mode="virtual"></dxo-scrolling>
@@ -7,7 +7,6 @@
   <dxo-editing mode="row" [allowAdding]="false" [allowUpdating]="true" [allowDeleting]="true">
   </dxo-editing>
 
-  <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
   <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
 
   <dxi-column dataField="nome"
@@ -76,6 +75,12 @@
               alignment="center"
               [cellTemplate]="'displayCellTemplate'">
   </dxi-column>
+  <dxi-column dataField="responsaveis"
+              caption="Responsavel"
+              dataType="string"
+              alignment="center"
+              [cellTemplate]="'displayCellTemplate'">
+  </dxi-column>
 
   <dxo-paging [pageSize]="12"></dxo-paging>
   <dxo-pager
@@ -97,68 +102,89 @@
       <dxi-column dataField="nome"
                   caption="Nome Responsavel"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
       <dxi-column dataField="dataNascimento"
                   caption="Data Nascimento"
                   dataType="date"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayDateCellTemplate'">
       </dxi-column>
       <dxi-column dataField="cpf"
                   caption="CPF"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
       <dxi-column dataField="identidade"
                   caption="Identidade"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
       <dxi-column dataField="dataEmissao"
                   caption="Data de Emissão"
                   dataType="date"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayDateCellTemplate'">
       </dxi-column>
       <dxi-column dataField="uf"
                   caption="UF"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
       <dxi-column dataField="orgaoExpeditor"
                   caption="Orgao Expeditor"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
       <dxi-column dataField="ctps"
                   caption="CTPS"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
       <dxi-column dataField="nisResponsavel"
                   caption="NIS"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
       <dxi-column dataField="endereco"
                   caption="Endereco"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
       <dxi-column dataField="email"
                   caption="Email"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
       <dxi-column dataField="telefones"
                   caption="Telefones"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
       <dxi-column dataField="observacao"
                   caption="Observacao"
                   dataType="string"
-                  alignment="center">
+                  alignment="center"
+                  [cellTemplate]="'displayCellTemplate'">
       </dxi-column>
+
+      <div *dxTemplate="let data of 'displayDateCellTemplate'">
+        {{data.value | date: "dd/MM/yyyy"}}
+      </div>
+
+      <div *dxTemplate="let data of 'displayCellTemplate'">
+        {{data.value && data.value.getDisplayValue ? data.value.getDisplayValue() : data.value}}
+      </div>
     </dx-data-grid>
   </div>
 

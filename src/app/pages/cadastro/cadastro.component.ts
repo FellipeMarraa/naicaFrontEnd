@@ -8,6 +8,8 @@ import {ToastrService} from 'ngx-toastr';
 import {Coordenador} from '../../models/coordenador';
 import {Observable} from "rxjs/Rx";
 import {ObservableUtils} from "../../classe/observable.utils";
+import {Responsavel} from '../../models/responsavel';
+import {Aluno} from '../../models/aluno';
 
 @Component({
   selector: 'app-cadastro',
@@ -16,7 +18,7 @@ import {ObservableUtils} from "../../classe/observable.utils";
 })
 export class CadastroComponent {
 
-  aluno: AlunoDto = {
+  aluno: Aluno = {
     'id': '',
     'nome': '',
     'dataNascimento': Date.toString(),
@@ -24,7 +26,7 @@ export class CadastroComponent {
     'idadeAtual': 0,
     'escola': '',
     'responsaveis': [],
-    'sexo': false,
+    'sexo': "",
     'nisAtendido': '',
     'dataMatricula': '',
     'desligado': false,
@@ -34,7 +36,7 @@ export class CadastroComponent {
     'autorizadoBuscar': ''
   };
 
-  responsavel: ResponsavelDto = {
+  responsavel: Responsavel = {
     'id': '',
     'nome': '',
     'dataNascimento': Date.toString(),
@@ -83,18 +85,22 @@ export class CadastroComponent {
 
   cadastrar() {
 
-    this.aluno.responsaveis = [this.responsavel];
-    this.responsavel.alunos = [this.aluno];
+    this.aluno.responsaveis = [this.responsavel.id];
+    this.responsavel.alunos = [this.aluno.id];
 
-    this.alunoService.insert(this.aluno)
+    this.alunoService.save(this.aluno)
       .subscribe(response => {
+        response.responsaveis = this.aluno.responsaveis
+          console.log(response);
         },
         error => {
           this.toastr.error('Não foi possível efetuar o cadastro do aluno');
         });
 
-    this.responsavelService.insert(this.responsavel)
+    this.responsavelService.save(this.responsavel)
       .subscribe(response => {
+        response.alunos = this.aluno.responsaveis
+          console.log(response);
         },
         error => {
           this.toastr.error('Não foi possível efetuar o cadastro do responsável');
@@ -103,8 +109,8 @@ export class CadastroComponent {
 
 
 
-    console.log(this.aluno);
-    console.log(this.responsavel);
+    // console.log(this.aluno);
+    // console.log(this.responsavel);
 
   }
 

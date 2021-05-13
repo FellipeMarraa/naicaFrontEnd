@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {StorageService} from './storage.service';
 import {API_CONFIG} from '../config/api.config';
-import {AlunoDto} from '../models/aluno.dto';
 import {Aluno} from '../models/aluno';
-import {throwError} from "rxjs";
-import {Observable} from "rxjs/Rx";
-import {catchError, retry} from "rxjs/operators";
+import {Observable, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
+import {AlunoDto} from '../models/aluno.dto';
 
 
 @Injectable()
@@ -17,31 +16,37 @@ export class AlunoService {
     public storage: StorageService) {
   }
 
-
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'string'
+    })
+  };
 
   findById(id: string) {
     return this.http.get(`${API_CONFIG.baseUrl}/alunos/${id}`);
   }
 
-  findByNome(nome: string) {
-    return this.http.get(`${API_CONFIG.baseUrl}/alunos/nome?value=${nome}`);
+  list(): Observable<Aluno[]> {
+    return this.http.get<Aluno[]>(`${API_CONFIG.baseUrl}/alunos/list`)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
   }
 
-  insert(obj : AlunoDto) {
-    return this.http.post(
-      `${API_CONFIG.baseUrl}/alunos/create`,
-      obj,
-      {
-        observe: 'response',
-        responseType: 'text'
-      }
-    );
+  save(aluno: AlunoDto): Observable<Aluno> {
+    return this.http.post<Aluno>(`${API_CONFIG.baseUrl}/alunos/create`, JSON.stringify(aluno), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
   }
 
-  findAll(): Observable<AlunoDto[]>{
-    return this.http.get<AlunoDto[]>(`${API_CONFIG.baseUrl}/alunos/list`).pipe(retry(2),catchError(this.handleError));
+  update(aluno: AlunoDto): Observable<AlunoDto> {
+    return this.http.put<AlunoDto>(`${API_CONFIG.baseUrl}/alunos/edit`, JSON.stringify(aluno), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
   }
-
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
@@ -50,12 +55,9 @@ export class AlunoService {
       errorMessage = error.error.message;
     } else {
       // Erro ocorreu no lado do servidor
-      errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+      errorMessage = `Código do erro: ${error.status}, ` + `message: ${error.message}`;
     }
     console.log(errorMessage);
     return throwError(errorMessage);
   }
-
-
-
 }

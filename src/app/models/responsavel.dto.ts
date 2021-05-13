@@ -1,4 +1,5 @@
 import {Aluno} from './aluno';
+import {AlunoDto} from './aluno.dto';
 
 export class ResponsavelDto {
   id:string
@@ -15,5 +16,7 @@ export class ResponsavelDto {
   email:string ;
   telefones: string;
   observacao: string;
-  alunos: Aluno[];
+
+
+  alunos: string[];
 }

@@ -1,5 +1,6 @@
 import {Coordenador} from './coordenador';
 import {Responsavel} from './responsavel';
+import {ResponsavelDto} from './responsavel.dto';
 
 export interface AlunoDto {
   id: string
@@ -8,8 +9,8 @@ export interface AlunoDto {
   idadeInicial: number;
   idadeAtual: number;
   escola: string;
-  responsaveis: Responsavel[];
-  sexo: boolean;
+  responsaveis: string[];
+  sexo: string;
   nisAtendido: string;
   dataMatricula: string;
   desligado: boolean;
