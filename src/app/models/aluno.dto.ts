@@ -9,7 +9,7 @@ export interface AlunoDto {
   idadeInicial: number;
   idadeAtual: number;
   escola: string;
-  responsaveis: string[];
+  responsavel: Responsavel;
   sexo: string;
   nisAtendido: string;
   dataMatricula: string;

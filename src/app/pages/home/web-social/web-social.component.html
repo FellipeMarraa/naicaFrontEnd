@@ -97,8 +97,8 @@
   </div>
 
   <div *dxTemplate="let data of 'informacaoTemplate'">
-    <dx-data-grid [dataSource]="data.data && data.data.responsaveis ? data.data.responsaveis:[]"
-                  [cacheEnabled]="false" [elementAttr]="{ 'grid-except':true }" id="data-grid-responsavel">
+    <dx-data-grid [dataSource]="data.data && data.data.responsavel ? data.data.responsavel:[]"
+                  [cacheEnabled]="false" id="data-grid-responsavel">
       <dxi-column dataField="nome"
                   caption="Nome Responsavel"
                   dataType="string"

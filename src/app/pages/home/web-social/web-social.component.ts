@@ -51,7 +51,7 @@ export class WebSocialComponent implements OnInit {
   ngOnInit() {
    this.alunoService.list().subscribe(response => {
      this.dataSource = response;
-     console.log(this.dataSource);
+     console.log(response);
 
    }, error => {console.log(error)});
 

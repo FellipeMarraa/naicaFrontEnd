@@ -17,6 +17,4 @@ export class ResponsavelDto {
   telefones: string;
   observacao: string;
 
-
-  alunos: string[];
 }

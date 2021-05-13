@@ -18,25 +18,8 @@ import {Aluno} from '../../models/aluno';
 })
 export class CadastroComponent {
 
-  aluno: Aluno = {
-    'id': '',
-    'nome': '',
-    'dataNascimento': Date.toString(),
-    'idadeInicial': 0,
-    'idadeAtual': 0,
-    'escola': '',
-    'responsaveis': [],
-    'sexo': "",
-    'nisAtendido': '',
-    'dataMatricula': '',
-    'desligado': false,
-    'anoEscolar': '',
-    'periodoEscolar': '',
-    'desacompanhado': false,
-    'autorizadoBuscar': ''
-  };
 
-  responsavel: Responsavel = {
+  responsavel: ResponsavelDto = {
     'id': '',
     'nome': '',
     'dataNascimento': Date.toString(),
@@ -50,9 +33,28 @@ export class CadastroComponent {
     'endereco': '',
     'email': '',
     'telefones': '',
-    'observacao': '',
-    'alunos': []
+    'observacao': ''
   };
+
+
+  aluno: AlunoDto = {
+    'id': '',
+    'nome': '',
+    'dataNascimento': Date.toString(),
+    'idadeInicial': 0,
+    'idadeAtual': 0,
+    'escola': '',
+    'responsavel': new Responsavel(),
+    'sexo': "",
+    'nisAtendido': '',
+    'dataMatricula': '',
+    'desligado': false,
+    'anoEscolar': '',
+    'periodoEscolar': '',
+    'desacompanhado': false,
+    'autorizadoBuscar': ''
+  };
+
 
 
 
@@ -85,27 +87,28 @@ export class CadastroComponent {
 
   cadastrar() {
 
-    this.aluno.responsaveis = [this.responsavel.id];
-    this.responsavel.alunos = [this.aluno.id];
-
-    this.alunoService.save(this.aluno)
-      .subscribe(response => {
-        response.responsaveis = this.aluno.responsaveis
-          console.log(response);
-        },
-        error => {
-          this.toastr.error('Não foi possível efetuar o cadastro do aluno');
-        });
-
     this.responsavelService.save(this.responsavel)
       .subscribe(response => {
-        response.alunos = this.aluno.responsaveis
+
           console.log(response);
         },
         error => {
           this.toastr.error('Não foi possível efetuar o cadastro do responsável');
 
         });
+
+    this.aluno.responsavel = this.responsavel;
+
+    this.alunoService.save(this.aluno)
+      .subscribe(response => {
+        response.responsavel = this.responsavel;
+          console.log(response);
+        },
+        error => {
+          this.toastr.error('Não foi possível efetuar o cadastro do aluno');
+        });
+
+
 
 
 
