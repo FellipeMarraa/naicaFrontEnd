@@ -18,4 +18,5 @@ export interface AlunoDto {
   periodoEscolar: string;
   desacompanhado: boolean;
   autorizadoBuscar: string;
+
 }

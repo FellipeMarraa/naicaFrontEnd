@@ -11,6 +11,7 @@ import {ObservableUtils} from "../../../classe/observable.utils";
 import {Observable} from "rxjs/Rx";
 import {AlunoDto} from "../../../models/aluno.dto";
 import {ResponsavelService} from '../../../services/responsavel.service';
+import {Responsavel} from '../../../models/responsavel';
 
 @Component({
   selector: 'app-web-social',
@@ -20,12 +21,14 @@ import {ResponsavelService} from '../../../services/responsavel.service';
 export class WebSocialComponent implements OnInit {
   dataSourceResponsaveis: any;
   dataSource: Aluno[];
+  aluno: Aluno;
   url: string;
+  alunoList: Aluno[]=[];
 
-  // of(observable: Observable<any>, successFn?: Function, errorFn?: Function) {
-  //   const defaultHandleError = this.alunoService.handleError.bind(this);
-  //   return ObservableUtils.of(observable, successFn, errorFn ? errorFn : defaultHandleError);
-  // }
+  of(observable: Observable<any>, successFn?: Function, errorFn?: Function) {
+    const defaultHandleError = this.alunoService.handleError.bind(this);
+    return ObservableUtils.of(observable, successFn, errorFn ? errorFn : defaultHandleError);
+  }
   // aluno: AlunoDto[];
 
   constructor(public toastr: ToastrService,
@@ -49,11 +52,15 @@ export class WebSocialComponent implements OnInit {
 
 
   ngOnInit() {
-   this.alunoService.list().subscribe(response => {
-     this.dataSource = response;
-     console.log(response);
 
-   }, error => {console.log(error)});
+    console.log(this.dataSource);
+
+
+   //  this.alunoService.list().subscribe(response => {
+   //   this.dataSource = response;
+   //   console.log(response);
+   //
+   // }, error => {console.log(error)});
 
     // this.responsavelService.findAll().subscribe(response => {
     //   this.dataSource = response;

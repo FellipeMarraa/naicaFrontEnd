@@ -1,4 +1,4 @@
-<dx-data-grid [dataSource]="dataSource" [remoteOperations]="true" [height]="600" [showBorders]="true"
+<dx-data-grid [dataSource]="alunoList" [remoteOperations]="true" [height]="600" [showBorders]="true"
               [masterDetail]="{template:'informacaoTemplate'}" [columns]="['nome', 'dataNascimento', 'idadeAtual']" id="data-grid-aluno">
   <dxo-filter-row [visible]="true"></dxo-filter-row>
   <dxo-header-filter [visible]="true"></dxo-header-filter>

@@ -11,6 +11,7 @@ import {ObservableUtils} from "../../classe/observable.utils";
 import {Responsavel} from '../../models/responsavel';
 import {Aluno} from '../../models/aluno';
 
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -18,6 +19,12 @@ import {Aluno} from '../../models/aluno';
 })
 export class CadastroComponent {
 
+  alunoList:Aluno[] = [];
+
+  of(observable: Observable<any>, successFn?: Function, errorFn?: Function) {
+    const defaultHandleError = this.alunoService.handleError.bind(this);
+    return ObservableUtils.of(observable, successFn, errorFn ? errorFn : defaultHandleError);
+  }
 
   responsavel: ResponsavelDto = {
     'id': '',
@@ -57,7 +64,6 @@ export class CadastroComponent {
 
 
 
-
   constructor(
     public router: Router,
     public alunoService: AlunoService,
@@ -87,26 +93,41 @@ export class CadastroComponent {
 
   cadastrar() {
 
-    this.responsavelService.save(this.responsavel)
-      .subscribe(response => {
+    this.alunoList.forEach(aluno => {
+      aluno.responsaveis.forEach(items => {
+        return this.of(this.alunoService.geraResponsavel(this.alunoList),() => {}).map(aluno => this.responsavelService.save(this.responsavel)
+          .subscribe(response => console.log(response)));
+      })
+      return this.alunoService.save(this.aluno)
+        .subscribe(response => {
 
-          console.log(response);
-        },
-        error => {
-          this.toastr.error('Não foi possível efetuar o cadastro do responsável');
-
-        });
-
-    this.aluno.responsavel = this.responsavel;
-
-    this.alunoService.save(this.aluno)
-      .subscribe(response => {
-        response.responsavel = this.responsavel;
-          console.log(response);
-        },
-        error => {
+            console.log(response);
+          },  error => {
           this.toastr.error('Não foi possível efetuar o cadastro do aluno');
+          //
         });
+    })
+    console.log(this.alunoList);
+    // this.responsavelService.save(this.responsavel)
+    //   .subscribe(response => {
+    //
+    //       console.log(response);
+    //     },
+    //     error => {
+    //       this.toastr.error('Não foi possível efetuar o cadastro do responsável');
+    // //
+    //     });
+
+    // this.aluno.responsavel = this.responsavel;
+    //
+    // this.alunoService.save(this.aluno)
+    //   .subscribe(response => {
+    //     response.responsavel = this.responsavel;
+    //       console.log(response);
+    //     },
+    //     error => {
+    //       this.toastr.error('Não foi possível efetuar o cadastro do aluno');
+    //     });
 
 
 

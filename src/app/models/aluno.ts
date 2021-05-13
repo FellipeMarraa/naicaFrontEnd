@@ -17,4 +17,7 @@ export class Aluno {
   periodoEscolar: string;
   desacompanhado: boolean;
   autorizadoBuscar: string;
+  responsaveis: Responsavel[];
+
+
 }
