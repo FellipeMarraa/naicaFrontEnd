@@ -1,0 +1,18 @@
+<div class="container" id="perfil">
+  <div class="container" >
+  <h1>Tela de Perfil do Atendido: {{ aluno.nome }}</h1>
+  <dl class="list">
+    <dt>Nome</dt>
+    <dd>{{ aluno.nome }}</dd>
+    <dt>Escola</dt>
+    <dd>{{ aluno.escola }}</dd>
+  </dl>
+    <div class="row">
+      <div class="col-md-12">
+        <button (click)="editAluno(aluno.id)"  class="btn btn-success">Edit</button>
+        <!--    <button class="btn btn-danger" (click)="deleteAluno(aluno._id)" type="button">Delete</button>-->
+      </div>
+    </div>
+</div>
+
+</div>

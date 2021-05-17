@@ -21,6 +21,10 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
 import {CoordenadorService} from './services/coordenador.service';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { PerfilAlunoComponent } from './pages/home/web-social/perfil-aluno/perfil-aluno.component';
+import { EditAlunoComponent } from './pages/home/web-social/perfil-aluno/edit-aluno/edit-aluno.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,9 @@ import {CoordenadorService} from './services/coordenador.service';
     LoginComponent,
     CadastroComponent,
     RelacaoAlunoComponent,
-    WebSocialComponent
+    WebSocialComponent,
+    PerfilAlunoComponent,
+    EditAlunoComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,9 @@ import {CoordenadorService} from './services/coordenador.service';
     FormsModule,
     ToastrModule.forRoot(),
     ToasterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule,
+    MatProgressBarModule
 
   ],
   providers: [

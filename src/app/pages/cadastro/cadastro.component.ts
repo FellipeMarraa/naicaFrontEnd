@@ -1,11 +1,10 @@
-import {Component, Injector} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {AlunoService} from '../../services/aluno.service';
 import {AlunoDto} from '../../models/aluno.dto';
 import {ResponsavelDto} from '../../models/responsavel.dto';
 import {ResponsavelService} from '../../services/responsavel.service';
 import {ToastrService} from 'ngx-toastr';
-import {Coordenador} from '../../models/coordenador';
 import {Observable} from "rxjs/Rx";
 import {ObservableUtils} from "../../classe/observable.utils";
 import {Responsavel} from '../../models/responsavel';
@@ -19,7 +18,8 @@ import {Aluno} from '../../models/aluno';
 })
 export class CadastroComponent {
 
-  alunoList:Aluno[] = [];
+  alunos:Aluno[];
+  responsaveis:Responsavel[];
 
   of(observable: Observable<any>, successFn?: Function, errorFn?: Function) {
     const defaultHandleError = this.alunoService.handleError.bind(this);
@@ -45,7 +45,7 @@ export class CadastroComponent {
 
 
   aluno: AlunoDto = {
-    'id': '',
+    'id':"",
     'nome': '',
     'dataNascimento': Date.toString(),
     'idadeInicial': 0,
@@ -61,7 +61,6 @@ export class CadastroComponent {
     'desacompanhado': false,
     'autorizadoBuscar': ''
   };
-
 
 
   constructor(
@@ -93,31 +92,26 @@ export class CadastroComponent {
 
   cadastrar() {
 
-    this.alunoList.forEach(aluno => {
-      aluno.responsaveis.forEach(items => {
-        return this.of(this.alunoService.geraResponsavel(this.alunoList),() => {}).map(aluno => this.responsavelService.save(this.responsavel)
-          .subscribe(response => console.log(response)));
-      })
-      return this.alunoService.save(this.aluno)
-        .subscribe(response => {
 
-            console.log(response);
-          },  error => {
-          this.toastr.error('Não foi possível efetuar o cadastro do aluno');
-          //
+    this.responsavelService.save(this.responsavel)
+      .subscribe(response => {
+        this.responsavel=response;
+          console.log(response);
+        },
+        error => {
+          this.toastr.error('Não foi possível efetuar o cadastro do responsável');
+
         });
-    })
-    console.log(this.alunoList);
-    // this.responsavelService.save(this.responsavel)
-    //   .subscribe(response => {
-    //
-    //       console.log(response);
-    //     },
-    //     error => {
-    //       this.toastr.error('Não foi possível efetuar o cadastro do responsável');
-    // //
-    //     });
+    this.alunos=[this.aluno];
 
+    this.alunoService.save(this.aluno)
+      .subscribe(responseAluno => {
+          responseAluno.responsavel = this.responsavel;
+          console.log(this.responsavel);
+        },
+        error => {
+          this.toastr.error('Não foi possível efetuar o cadastro do aluno');
+        });
     // this.aluno.responsavel = this.responsavel;
     //
     // this.alunoService.save(this.aluno)
@@ -130,15 +124,10 @@ export class CadastroComponent {
     //     });
 
 
-
-
-
     // console.log(this.aluno);
     // console.log(this.responsavel);
 
   }
-
-
 
 
 }

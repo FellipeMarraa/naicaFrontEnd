@@ -1,10 +1,11 @@
-<nav class="navbar navbar-expand-lg fixed-top" id="navbarNav">
+<nav class="navbar navbar-expand-md fixed-top" id="navbarNav">
 <!--  *ngIf="isLoggedIn$ | async as isLoggedIn"-->
   <a class="navbar-brand" id="nav-nome-unidade">Nome Unidade</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed" data-target="#navbarsExampleDefault"
+          aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content" id="textoNavbar">
+  <div class="collapse navbar-collapse justify-content" id="textoNavbar" [ngbCollapse]="isCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" (click)="webSocial()" id="web-social">WebSocial</a>
@@ -18,8 +19,6 @@
     </ul>
     <img src="assets/icone-user-home.png" id="icone-user-cadastro" alt="Icone user" title="Perfil">
   </div>
-
-
-
 </nav>
+
 <router-outlet></router-outlet>

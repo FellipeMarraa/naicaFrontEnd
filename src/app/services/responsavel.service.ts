@@ -37,7 +37,7 @@ export class ResponsavelService {
   }
 
   save(responsavel: ResponsavelDto): Observable<Responsavel> {
-    return this.http.post<Responsavel>(`${API_CONFIG.baseUrl}/responsaveis/create`, JSON.stringify(responsavel), this.httpOptions)
+    return this.http.post<Responsavel>(`${API_CONFIG.baseUrl}/responsaveis/create`,responsavel)
       .pipe(
         retry(2),
         catchError(this.handleError)

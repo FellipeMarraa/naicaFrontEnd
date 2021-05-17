@@ -2,7 +2,7 @@ import {Responsavel} from './responsavel';
 import {ResponsavelDto} from './responsavel.dto';
 
 export class Aluno {
-  id:string
+  id:string;
   nome: string;
   dataNascimento: string;
   idadeInicial: number;
@@ -17,7 +17,5 @@ export class Aluno {
   periodoEscolar: string;
   desacompanhado: boolean;
   autorizadoBuscar: string;
-  responsaveis: Responsavel[];
-
 
 }

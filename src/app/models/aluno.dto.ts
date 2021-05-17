@@ -3,7 +3,7 @@ import {Responsavel} from './responsavel';
 import {ResponsavelDto} from './responsavel.dto';
 
 export interface AlunoDto {
-  id: string
+  id:string;
   nome: string;
   dataNascimento: string;
   idadeInicial: number;
