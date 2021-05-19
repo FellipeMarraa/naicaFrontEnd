@@ -7,7 +7,6 @@ import {CadastroComponent} from './pages/cadastro/cadastro.component';
 import {RelacaoAlunoComponent} from './pages/home/relacao-aluno/relacao-aluno.component';
 import {WebSocialComponent} from './pages/home/web-social/web-social.component';
 import {PerfilAlunoComponent} from "./pages/home/web-social/perfil-aluno/perfil-aluno.component";
-import {EditAlunoComponent} from "./pages/home/web-social/perfil-aluno/edit-aluno/edit-aluno.component";
 
 
 const routes: Routes = [
@@ -31,10 +30,6 @@ const routes: Routes = [
   },
   {
     path: 'perfil-aluno/:id', component: PerfilAlunoComponent,
-    // canActivate: [AuthGuard]
-  },
-  {
-    path: 'aluno-edit/:id', component: EditAlunoComponent,
     // canActivate: [AuthGuard]
   },
   {

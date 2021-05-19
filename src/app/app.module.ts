@@ -24,7 +24,7 @@ import {CoordenadorService} from './services/coordenador.service';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { PerfilAlunoComponent } from './pages/home/web-social/perfil-aluno/perfil-aluno.component';
-import { EditAlunoComponent } from './pages/home/web-social/perfil-aluno/edit-aluno/edit-aluno.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,7 @@ import { EditAlunoComponent } from './pages/home/web-social/perfil-aluno/edit-al
     CadastroComponent,
     RelacaoAlunoComponent,
     WebSocialComponent,
-    PerfilAlunoComponent,
-    EditAlunoComponent
+    PerfilAlunoComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +48,8 @@ import { EditAlunoComponent } from './pages/home/web-social/perfil-aluno/edit-al
     ToasterModule,
     BrowserAnimationsModule,
     NgbModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    Ng2SearchPipeModule
 
   ],
   providers: [

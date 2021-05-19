@@ -33,6 +33,7 @@
     "devextreme-angular": "20.2.7",
     "devextreme-aspnet-data-nojquery": "^2.8.3",
     "jquery": "^3.6.0",
+    "ng2-search-filter": "^0.5.1",
     "ngx-toastr": "^13.2.1",
     "popper": "^1.0.1",
     "proxy-observable": "^4.0.4",

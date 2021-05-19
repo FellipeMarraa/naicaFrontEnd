@@ -4,13 +4,11 @@ import {Aluno} from '../../../models/aluno';
 import {ToastrService} from 'ngx-toastr';
 import {ObservableUtils} from "../../../classe/observable.utils";
 import {Observable} from "rxjs/Rx";
-import {ResponsavelService} from '../../../services/responsavel.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {API_CONFIG} from "../../../config/api.config";
 import {LocalUser} from "../../../models/local_user";
 import {StorageService} from "../../../services/storage.service";
-import {Responsavel} from "../../../models/responsavel";
+import {API_CONFIG} from "../../../config/api.config";
 
 @Component({
   selector: 'app-web-social',
@@ -19,7 +17,7 @@ import {Responsavel} from "../../../models/responsavel";
 })
 export class WebSocialComponent implements OnInit {
 
-  alunos:Aluno[] ;
+  alunos:Aluno[]=[] ;
 
   of(observable: Observable<any>, successFn?: Function, errorFn?: Function) {
     const defaultHandleError = this.alunoService.handleError.bind(this);
@@ -35,14 +33,12 @@ export class WebSocialComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.alunos=[];
     this.alunoService.list().subscribe(response=>{
       this.alunos=response;
       console.log(this.alunos);
     },error => {
       console.log(error);
     })
-
     }
 
   showAluno(aluno_id:string){
@@ -85,9 +81,11 @@ export class WebSocialComponent implements OnInit {
    // this.router.navigate(['/perfil-aluno/'+index]);
   }
 
-  onDelete(index:string){
-    // index=this.alunoModel.id;
-    // this.aluno.splice(index,1);
+  onDelete(id:string){
+    this.http.delete(`${API_CONFIG.baseUrl}/alunos/delete/${id}`).subscribe(data=>{
+      let id= data['_id'];
+      this.router.navigate(['/web-social']);
+    })
   }
 
 }

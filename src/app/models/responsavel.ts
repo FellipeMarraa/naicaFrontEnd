@@ -2,10 +2,6 @@ import {Aluno} from './aluno';
 import {AlunoDto} from './aluno.dto';
 
 export class Responsavel {
-
-  constructor() {
-  }
-
   id:string
   nome: string ;
   dataNascimento: string ;

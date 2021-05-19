@@ -65,10 +65,5 @@ export class AlunoService {
     return throwError(errorMessage);
   }
 
-  geraResponsavel(alunoList: Aluno[]) {
-    return this.http.post(`${API_CONFIG.baseUrl}/alunos/gera-responsavel`,{
-      responseType:Aluno,
-      data: alunoList
-    });
-  }
+
 }
