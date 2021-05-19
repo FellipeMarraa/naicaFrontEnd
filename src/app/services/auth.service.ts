@@ -55,6 +55,7 @@ export class AuthService {
     console.log(authorizationValue);
     const tok = authorizationValue;
     const user: LocalUser = {
+      id:"",
       token : tok,
     };
     console.log(user);

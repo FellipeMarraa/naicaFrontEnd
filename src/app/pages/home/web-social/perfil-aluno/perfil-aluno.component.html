@@ -1,21 +1,22 @@
 <div class="container-fluid p-0" id="corpo-cadastro">
   <div class="container-fluid p-0" id="caixa-cadastro">
     <form id="formulario-cadastro">
-      <p id="titulo-cadastro"><strong>Cadastro de Atendidos</strong></p>
+      <p id="titulo-cadastro"><strong>Perfil do Atendido </strong></p>
 
       <div class="row" style="padding-top: 2%">
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-nome">Nome</label>
-            <input class="form-control" id="input-nome" type="text" name="nome" placeholder="Nome completo do atendido"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-nome" type="text" name="nome"
                    [(ngModel)]="aluno.nome">
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group" id="div-dataNascimento">
             <label for="input-dataNascimento">Data de Nascimento</label>
-            <input class="form-control" id="input-dataNascimento" type="date" name="dataNascimento"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-dataNascimento" type="date"
+                   name="dataNascimentoAtendido"
                    [(ngModel)]="aluno.dataNascimento">
           </div>
         </div>
@@ -23,7 +24,8 @@
         <div class="col-md-2">
           <div class="form-group">
             <label for="input-idadeIncial">Idade Inicial</label>
-            <input class="form-control" id="input-idadeIncial" type="number" name="idadeIncial"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-idadeIncial" type="number"
+                   name="idadeIncial"
                    [(ngModel)]="aluno.idadeInicial">
           </div>
         </div>
@@ -31,7 +33,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <label for="input-idadeAtual">Idade Atual</label>
-            <input class="form-control" id="input-idadeAtual" type="number" name="idadeAtual"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-idadeAtual" type="number" name="idadeAtual"
                    [(ngModel)]="aluno.idadeAtual">
           </div>
         </div>
@@ -42,7 +44,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="select-sexo">Sexo</label>
-            <select class="form-select" id="select-sexo" name="sexo" [(ngModel)]="aluno.sexo" >
+            <select class="form-select" id="select-sexo" name="sexo" [(ngModel)]="aluno.sexo">
               <option value="Feminino">Feminino</option>
               <option value="Masculino">Masculino</option>
             </select>
@@ -54,7 +56,7 @@
 
           <div class="form-group">
             <label for="input-nisAtendido">Nis Atendido</label>
-            <input class="form-control" id="input-nisAtendido" type="text" name="nisAtendido"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-nisAtendido" type="text" name="nisAtendido"
                    [(ngModel)]="aluno.nisAtendido">
           </div>
 
@@ -65,7 +67,8 @@
         <div class="col-md-2">
           <div class="form-group">
             <label for="input-dataMatricula">Data da Matrícula</label>
-            <input class="form-control" id="input-dataMatricula" type="date" name="dataMatricula"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-dataMatricula" type="date"
+                   name="dataMatricula"
                    [(ngModel)]="aluno.dataMatricula">
           </div>
         </div>
@@ -75,10 +78,12 @@
           <p>Desligado</p>
           <div class="container" id="div-desligado">
 
-            <input class="form-check-input" id="input-desligadoSim" type="radio" name="desligadoSim"
-                   value=true [(ngModel)]="aluno.desligado"> Sim
-            <input class="form-check-input" id="input-desligadoNao" type="radio" name="desligadoNao"
-                   value=false [(ngModel)]="aluno.desligado"> Não
+            <input [readOnly]="dadosReadOnly" class="form-check-input" id="input-desligadoSim" type="radio"
+                   name="desligadoSim"
+                   value="sim" [(ngModel)]="aluno.desligado"> Sim
+            <input [readOnly]="dadosReadOnly" class="form-check-input" id="input-desligadoNao" type="radio"
+                   name="desligadoNao"
+                   value="nao" [(ngModel)]="aluno.desligado"> Não
           </div>
 
         </div>
@@ -89,7 +94,8 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-escola">Escola </label>
-            <input class="form-control" id="input-escola" type="text" name="escola" [(ngModel)]="aluno.escola">
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-escola" type="text" name="escola"
+                   [(ngModel)]="aluno.escola">
           </div>
 
         </div>
@@ -97,7 +103,7 @@
         <div class="col-md-2 ">
           <div class="form-group">
             <label for="input-anoEscolar">Ano Escolar</label>
-            <input class="form-control" id="input-anoEscolar" type="text" name="anoEscolar"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-anoEscolar" type="text" name="anoEscolar"
                    [(ngModel)]="aluno.anoEscolar">
           </div>
 
@@ -124,10 +130,12 @@
           <p>Desacompanhado</p>
           <div class="container" id="div-desacompanhado">
 
-            <input class="form-check-input" id="input-desacompanhadoSim" type="radio" name="sim" value=true
+            <input [readOnly]="dadosReadOnly" class="form-check-input" id="input-desacompanhadoSim" type="radio"
+                   name="sim" value="sim"
                    [(ngModel)]="aluno.desacompanhado"> Sim
 
-            <input class="form-check-input" id="input-desacompanhadoNao" type="radio" name="nao" value=false
+            <input [readOnly]="dadosReadOnly" class="form-check-input" id="input-desacompanhadoNao" type="radio"
+                   name="nao" value="nao"
                    [(ngModel)]="aluno.desacompanhado"> Não
 
           </div>
@@ -136,7 +144,8 @@
         <div class="col-md-9">
           <div class="form-group">
             <label for="input-autorizadoBuscar">Autorizado a buscar</label>
-            <textarea class="form-control" id="input-autorizadoBuscar" type="text" name="autorizadoBuscar"
+            <textarea [readOnly]="dadosReadOnly" class="form-control" id="input-autorizadoBuscar" type="text"
+                      name="autorizadoBuscar"
                       [(ngModel)]="aluno.autorizadoBuscar"></textarea>
           </div>
         </div>
@@ -150,14 +159,14 @@
 <div class="container-fluid p-0" id="corpo-cadastro-responsavel">
   <div class="container-fluid p-0" id="caixa-cadastro-responsavel">
     <form id="formulario-cadastro-responsavel" style="padding-top: 2%">
-      <p id="titulo-cadastro-responsavel"><strong>Cadastro do Responsável</strong></p>
+      <p id="titulo-cadastro-responsavel"><strong>Editar o Responsável</strong></p>
 
       <div class="row" style="padding-top: 2%">
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-nome">Nome</label>
-            <input class="form-control" id="input-nome-responsavel" type="text" name="nome"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-nome-responsavel-aluno" type="text" name="nomeResponsavel"
                    placeholder="Nome completo do Responsável" [(ngModel)]="aluno.responsavel.nome">
           </div>
         </div>
@@ -166,7 +175,7 @@
         <div class="col-md-2">
           <div class="form-group" id="div-dataNascimento-responsavel">
             <label for="input-dataNascimento-responsavel">Data de Nascimento</label>
-            <input class="form-control" id="input-dataNascimento-responsavel" type="date"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-dataNascimento-responsavel" type="date"
                    name="dataNascimento-responsavel" [(ngModel)]="aluno.responsavel.dataNascimento">
           </div>
         </div>
@@ -175,7 +184,8 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="input-cpf">CPF</label>
-            <input class="form-control" id="input-cpf" type="text" name="cpf" [(ngModel)]="aluno.responsavel.cpf">
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-cpf" type="text" name="cpf"
+                   [(ngModel)]="aluno.responsavel.cpf">
           </div>
         </div>
 
@@ -186,7 +196,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="input-identidade">Identidade</label>
-            <input class="form-control" id="input-identidade" type="text" name="identidade"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-identidade" type="text" name="identidade"
                    [(ngModel)]="aluno.responsavel.identidade">
           </div>
         </div>
@@ -195,7 +205,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="input-dataEmissao">Data de Emissão</label>
-            <input class="form-control" id="input-dataEmissao" type="date" name="dataEmissao"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-dataEmissao" type="date" name="dataEmissao"
                    [(ngModel)]="aluno.responsavel.dataEmissao">
           </div>
         </div>
@@ -204,7 +214,8 @@
         <div class="col-md-2">
           <div class="form-group">
             <label for="input-uf">UF </label>
-            <input class="form-control" id="input-uf" type="text" name="uf" [(ngModel)]="aluno.responsavel.uf">
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-uf" type="text" name="uf"
+                   [(ngModel)]="aluno.responsavel.uf">
           </div>
         </div>
 
@@ -212,7 +223,8 @@
         <div class="col-md-4 ">
           <div class="form-group">
             <label for="input-orgaoExpeditor">Órgão Expeditor</label>
-            <input class="form-control" id="input-orgaoExpeditor" type="text" name="orgaoExpeditor"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-orgaoExpeditor" type="text"
+                   name="orgaoExpeditor"
                    [(ngModel)]="aluno.responsavel.orgaoExpeditor">
           </div>
         </div>
@@ -223,7 +235,8 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="input-ctps">CTPS</label>
-            <input class="form-control" id="input-ctps" type="text" name="ctps" [(ngModel)]="aluno.responsavel.ctps">
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-ctps" type="text" name="ctps"
+                   [(ngModel)]="aluno.responsavel.ctps">
           </div>
         </div>
 
@@ -231,7 +244,8 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="input-nisResponsavel">Nis Responsável</label>
-            <input class="form-control" id="input-nisResponsavel" type="text" name="nisResponsavel"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-nisResponsavel" type="text"
+                   name="nisResponsavel"
                    [(ngModel)]="aluno.responsavel.nisResponsavel">
           </div>
         </div>
@@ -240,7 +254,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-endereco">Endereco</label>
-            <input class="form-control" id="input-endereco" type="text" name="endereco"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-endereco" type="text" name="endereco"
                    [(ngModel)]="aluno.responsavel.endereco">
           </div>
         </div>
@@ -250,7 +264,8 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-email">Email</label>
-            <input class="form-control" id="input-email" type="email" name="email" [(ngModel)]="aluno.responsavel.email">
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-email" type="email" name="email"
+                   [(ngModel)]="aluno.responsavel.email">
           </div>
         </div>
 
@@ -258,7 +273,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="input-telefone">Telefone</label>
-            <input class="form-control" id="input-telefone" type="tel" name="telefone"
+            <input [readOnly]="dadosReadOnly" class="form-control" id="input-telefone" type="tel" name="telefone"
                    [(ngModel)]="aluno.responsavel.telefones">
           </div>
         </div>
@@ -275,15 +290,18 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-observacao">Observacao</label>
-            <textarea class="form-control" id="input-observacao" type="text" name="observacao"
+            <textarea [readOnly]="dadosReadOnly" class="form-control" id="input-observacao" type="text"
+                      name="observacao"
                       [(ngModel)]="aluno.responsavel.observacao"></textarea>
           </div>
         </div>
       </div>
+      <div *ngIf="!habilitarEdit" >
+      <button type="button" class="btn btn-info" (click)="updateStart($event)" id="buttonEdit">Editar</button>
 
+      </div>
+      <button *ngIf="habilitarEdit" type="button" class="btn btn-danger" (click)="saveUpdate($event)" id="buttonSave">Salvar</button>
     </form>
-
-    <button type="submit" id="button-cadastrar" (click)="cadastrar()">Cadastrar</button>
 
   </div>
 </div>

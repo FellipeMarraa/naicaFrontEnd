@@ -1,199 +1,61 @@
-<dx-data-grid [dataSource]="dataSource" [remoteOperations]="true" [height]="600" [showBorders]="true"
-              [masterDetail]="{template:'informacaoTemplate'}" [columns]="['nome', 'dataNascimento', 'idadeAtual']" id="data-grid-aluno">
-  <dxo-filter-row [visible]="true"></dxo-filter-row>
-  <dxo-header-filter [visible]="true"></dxo-header-filter>
-  <dxo-scrolling mode="virtual"></dxo-scrolling>
+<!--<div class="container" id="corpo">-->
+<div class="alunoList">
+  <table class="table table-stripes">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Data Nascimento</th>
+      <th>Idade Atual</th>
+      <th>Sexo</th>
+      <th>Nis Atendido</th>
+      <th>Período Escolar</th>
+      <th>Desacompanhado</th>
+      <th>Autorizado Buscar</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let aluno of alunos;let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{aluno.nome}}</td>
+      <td>{{aluno.dataNascimento}}</td>
+      <td>{{aluno.idadeAtual}}</td>
+      <td>{{aluno.sexo}}</td>
+      <td>{{aluno.nisAtendido}}</td>
+      <td>{{aluno.periodoEscolar}}</td>
+      <td>{{aluno.desacompanhado}}</td>
+      <td>{{aluno.autorizadoBuscar}}</td>
+      <td>
+        <button type="button" class="btn btn-info" (click)="showAluno(aluno.id)" id="buttonEdit">Editar</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(aluno.id)" id="buttonDelete">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!--  <div class="regentry" *ngIf="showNew">-->
+<!--    <form (ngSubmit)="onSave()">-->
+<!--      <div class = "form-group row">-->
+<!--        <label for = "nome" class = "col-2 col-form-label"> Nome </label>-->
+<!--        <div class = "col-10">-->
+<!--          <input class = "form-control" type = "text" [(ngModel)] = "alunoModel.nome" id="Nome">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <button type="submit" class="btn btn-success">{{submitType}}</button>-->
+<!--      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
 
-  <dxo-editing mode="row" [allowAdding]="false" [allowUpdating]="true" [allowDeleting]="true">
-  </dxo-editing>
 
-  <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
 
-  <dxi-column dataField="nome"
-              caption="Nome"
-              dataType="string"
-              alignment="center"
-              [cellTemplate]="'displayCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="dataNascimento"
-              caption="Data Nascimento"
-              dataType="date"
-              alignment="center"
-              [cellTemplate]="'displayDateCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="idadeAtual"
-              caption="Idade Atual"
-              dataType="string"
-              alignment="center"
-              [cellTemplate]="'displayCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="sexo"
-              caption="Sexo"
-              dataType="string"
-              alignment="center"
-              [cellTemplate]="'displayCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="nisAtendido"
-              caption="NIS"
-              dataType="string"
-              alignment="center"
-              [cellTemplate]="'displayCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="dataMatricula"
-              caption="Data da Matrícula"
-              dataType="date"
-              alignment="center"
-              [cellTemplate]="'displayDateCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="escola"
-              caption="Escola"
-              dataType="string"
-              alignment="center"
-              [cellTemplate]="'displayCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="anoEscolar"
-              caption="Ano Escolar"
-              dataType="string"
-              alignment="center"
-              [cellTemplate]="'displayCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="periodoEscolar"
-              caption="Período Escolar"
-              dataType="boolean"
-              alignment="center"
-              [cellTemplate]="'displayCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="desacompanhado"
-              caption="Desacompanhado"
-              dataType="boolean"
-              alignment="center"
-              [cellTemplate]="'displayCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="autorizadoBuscar"
-              caption="Autorizado Buscar"
-              dataType="string"
-              alignment="center"
-              [cellTemplate]="'displayCellTemplate'">
-  </dxi-column>
-  <dxi-column dataField="responsaveis"
-              caption="Responsavel"
-              dataType="string"
-              alignment="center"
-              [cellTemplate]="'displayCellTemplate'">
-  </dxi-column>
 
-  <dxo-paging [pageSize]="12"></dxo-paging>
-  <dxo-pager
-    [showPageSizeSelector]="true"
-    [allowedPageSizes]="[8, 12, 20]"
-  ></dxo-pager>
 
-  <div *dxTemplate="let data of 'displayDateCellTemplate'">
-    {{data.value | date: "dd/MM/yyyy"}}
-  </div>
 
-  <div *dxTemplate="let data of 'displayCellTemplate'">
-    {{data.value && data.value.getDisplayValue ? data.value.getDisplayValue() : data.value}}
-  </div>
 
-  <div *dxTemplate="let data of 'informacaoTemplate'">
-    <dx-data-grid [dataSource]="data.data && data.data.responsaveis ? data.data.responsaveis:[]"
-                  [cacheEnabled]="false" [elementAttr]="{ 'grid-except':true }" id="data-grid-responsavel">
-      <dxi-column dataField="nome"
-                  caption="Nome Responsavel"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="dataNascimento"
-                  caption="Data Nascimento"
-                  dataType="date"
-                  alignment="center"
-                  [cellTemplate]="'displayDateCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="cpf"
-                  caption="CPF"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="identidade"
-                  caption="Identidade"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="dataEmissao"
-                  caption="Data de Emissão"
-                  dataType="date"
-                  alignment="center"
-                  [cellTemplate]="'displayDateCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="uf"
-                  caption="UF"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="orgaoExpeditor"
-                  caption="Orgao Expeditor"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="ctps"
-                  caption="CTPS"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="nisResponsavel"
-                  caption="NIS"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="endereco"
-                  caption="Endereco"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="email"
-                  caption="Email"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="telefones"
-                  caption="Telefones"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
-      <dxi-column dataField="observacao"
-                  caption="Observacao"
-                  dataType="string"
-                  alignment="center"
-                  [cellTemplate]="'displayCellTemplate'">
-      </dxi-column>
 
-      <div *dxTemplate="let data of 'displayDateCellTemplate'">
-        {{data.value | date: "dd/MM/yyyy"}}
-      </div>
 
-      <div *dxTemplate="let data of 'displayCellTemplate'">
-        {{data.value && data.value.getDisplayValue ? data.value.getDisplayValue() : data.value}}
-      </div>
-    </dx-data-grid>
-  </div>
 
-  <dxo-summary>
-    <dxi-total-item
-      column="nome"
-      summaryType="count">
-    </dxi-total-item>
-  </dxo-summary>
 
-</dx-data-grid>
 

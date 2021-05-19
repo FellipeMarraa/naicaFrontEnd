@@ -2,13 +2,13 @@ import {Responsavel} from './responsavel';
 import {ResponsavelDto} from './responsavel.dto';
 
 export class Aluno {
-  id:string
+  id:string;
   nome: string;
   dataNascimento: string;
   idadeInicial: number;
   idadeAtual: number;
   escola: string;
-  responsaveis: string[];
+  responsavel: Responsavel;
   sexo: string;
   nisAtendido: string;
   dataMatricula: string;
@@ -17,4 +17,5 @@ export class Aluno {
   periodoEscolar: string;
   desacompanhado: boolean;
   autorizadoBuscar: string;
+
 }

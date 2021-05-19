@@ -16,7 +16,5 @@ export class Responsavel {
   email:string ;
   telefones: string
   observacao: string;
-  alunos: string[];
-
 
 }

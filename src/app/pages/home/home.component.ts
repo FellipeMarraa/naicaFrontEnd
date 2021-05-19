@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {style} from '@angular/animations';
 import {Aluno} from '../../models/aluno';
 import {Router} from '@angular/router';
+import {StorageService} from "../../services/storage.service";
+import {LocalUser} from "../../models/local_user";
+import {AlunoService} from "../../services/aluno.service";
 
 @Component({
   selector: 'app-home',
@@ -9,11 +12,29 @@ import {Router} from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  alunos: Aluno[];
 
 
-  constructor(public router: Router) { }
+  constructor(public router: Router,
+              public storage:StorageService,
+              public alunoService: AlunoService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.alunos=[];
+    this.alunoService.list().subscribe(response=>{
+      this.alunos=response;
+    },error => {
+      console.log(error);
+    })
+  }
+  showAluno(aluno_id:string){
+    let local:LocalUser={
+      id:aluno_id,
+      token:""
+    }
+    this.storage.setLocalUser(local);
+    console.log(local);
+    this.router.navigate(['/web-social'])
   }
 
   webSocial() {

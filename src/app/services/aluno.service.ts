@@ -33,19 +33,23 @@ export class AlunoService {
   }
 
   save(aluno: AlunoDto): Observable<Aluno> {
-    return this.http.post<Aluno>(`${API_CONFIG.baseUrl}/alunos/create`, JSON.stringify(aluno), this.httpOptions)
+    return this.http.post<Aluno>(`${API_CONFIG.baseUrl}/alunos/create`, aluno)
       .pipe(
         retry(2),
         catchError(this.handleError)
       );
   }
 
-  update(aluno: AlunoDto): Observable<AlunoDto> {
-    return this.http.put<AlunoDto>(`${API_CONFIG.baseUrl}/alunos/edit`, JSON.stringify(aluno), this.httpOptions)
+  update(aluno: Aluno): Observable<Aluno> {
+    return this.http.put<Aluno>(`${API_CONFIG.baseUrl}/alunos/edit/${aluno.id}`, JSON.stringify(aluno), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       );
+  }
+
+  delete(id: string) {
+    return this.http.delete(`${API_CONFIG.baseUrl}/alunos/${id}`);
   }
 
   handleError(error: HttpErrorResponse) {
@@ -60,4 +64,6 @@ export class AlunoService {
     console.log(errorMessage);
     return throwError(errorMessage);
   }
+
+
 }

@@ -2,7 +2,7 @@ import {Aluno} from './aluno';
 import {AlunoDto} from './aluno.dto';
 
 export class ResponsavelDto {
-  id:string
+  id:string;
   nome: string ;
   dataNascimento: string ;
   cpf: string ;
@@ -17,6 +17,4 @@ export class ResponsavelDto {
   telefones: string;
   observacao: string;
 
-
-  alunos: string[];
 }
