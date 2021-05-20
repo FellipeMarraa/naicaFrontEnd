@@ -151,159 +151,167 @@
         </div>
 
       </div>
-    </form>
-
-  </div>
-</div>
-
-<div class="container-fluid p-0" id="corpo-cadastro-responsavel">
-  <div class="container-fluid p-0" id="caixa-cadastro-responsavel">
-    <form id="formulario-cadastro-responsavel" style="padding-top: 2%">
-      <p id="titulo-cadastro-responsavel"><strong>Editar o Responsável</strong></p>
-
-      <div class="row" style="padding-top: 2%">
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="input-nome">Nome</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-nome-responsavel-aluno" type="text" name="nomeResponsavel"
-                   placeholder="Nome completo do Responsável" [(ngModel)]="aluno.responsavel.nome">
-          </div>
-        </div>
-
-
-        <div class="col-md-2">
-          <div class="form-group" id="div-dataNascimento-responsavel">
-            <label for="input-dataNascimento-responsavel">Data de Nascimento</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-dataNascimento-responsavel" type="date"
-                   name="dataNascimento-responsavel" [(ngModel)]="aluno.responsavel.dataNascimento">
-          </div>
-        </div>
-
-
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="input-cpf">CPF</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-cpf" type="text" name="cpf"
-                   [(ngModel)]="aluno.responsavel.cpf">
-          </div>
-        </div>
-
-      </div>
-
-      <div class="row" style="padding-top: 2%">
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="input-identidade">Identidade</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-identidade" type="text" name="identidade"
-                   [(ngModel)]="aluno.responsavel.identidade">
-          </div>
-        </div>
-
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="input-dataEmissao">Data de Emissão</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-dataEmissao" type="date" name="dataEmissao"
-                   [(ngModel)]="aluno.responsavel.dataEmissao">
-          </div>
-        </div>
-
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="input-uf">UF </label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-uf" type="text" name="uf"
-                   [(ngModel)]="aluno.responsavel.uf">
-          </div>
-        </div>
-
-
-        <div class="col-md-4 ">
-          <div class="form-group">
-            <label for="input-orgaoExpeditor">Órgão Expeditor</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-orgaoExpeditor" type="text"
-                   name="orgaoExpeditor"
-                   [(ngModel)]="aluno.responsavel.orgaoExpeditor">
-          </div>
-        </div>
-      </div>
-
-      <div class="row" style="padding-top: 2%">
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="input-ctps">CTPS</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-ctps" type="text" name="ctps"
-                   [(ngModel)]="aluno.responsavel.ctps">
-          </div>
-        </div>
-
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="input-nisResponsavel">Nis Responsável</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-nisResponsavel" type="text"
-                   name="nisResponsavel"
-                   [(ngModel)]="aluno.responsavel.nisResponsavel">
-          </div>
-        </div>
-
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="input-endereco">Endereco</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-endereco" type="text" name="endereco"
-                   [(ngModel)]="aluno.responsavel.endereco">
-          </div>
-        </div>
-      </div>
-
-      <div class="row" style="padding-top: 2%">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="input-email">Email</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-email" type="email" name="email"
-                   [(ngModel)]="aluno.responsavel.email">
-          </div>
-        </div>
-
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="input-telefone">Telefone</label>
-            <input [readOnly]="dadosReadOnly" class="form-control" id="input-telefone" type="tel" name="telefone"
-                   [(ngModel)]="aluno.responsavel.telefones">
-          </div>
-        </div>
-
-        <!--        <div class="col-md-3">-->
-        <!--          <div class="form-group">-->
-        <!--            <label for="input-telefone2">Telefone 2</label>-->
-        <!--            <input class="form-control" id="input-telefone2" type="tel" name="telefone2" [(ngModel)]="responsavel.telefones">-->
-        <!--          </div>-->
-        <!--        </div>-->
-      </div>
-
-      <div class="row" style="padding-top: 2%">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="input-observacao">Observacao</label>
-            <textarea [readOnly]="dadosReadOnly" class="form-control" id="input-observacao" type="text"
-                      name="observacao"
-                      [(ngModel)]="aluno.responsavel.observacao"></textarea>
-          </div>
-        </div>
-      </div>
       <div *ngIf="!habilitarEdit" >
-      <button type="button" class="btn btn-info" (click)="updateStart($event)" id="buttonEdit">Editar</button>
+            <button type="button" class="btn btn-info" (click)="updateStart($event)" id="buttonEdit">Editar</button>
+          </div>
+      <div *ngIf="habilitarEdit">
+              <button  type="button" class="btn btn-success" (click)="saveUpdate($event)" id="buttonSave">Salvar</button>
 
       </div>
-      <button *ngIf="habilitarEdit" type="button" class="btn btn-danger" (click)="saveUpdate($event)" id="buttonSave">Salvar</button>
     </form>
 
   </div>
 </div>
+
+<!--<div class="container-fluid p-0" id="corpo-cadastro-responsavel">-->
+<!--  <div class="container-fluid p-0" id="caixa-cadastro-responsavel">-->
+<!--    <form id="formulario-cadastro-responsavel" style="padding-top: 2%">-->
+<!--      <p id="titulo-cadastro-responsavel"><strong>Editar o Responsável</strong></p>-->
+
+<!--      <div class="row" style="padding-top: 2%">-->
+
+<!--        <div class="col-md-6">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-nome">Nome</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-nome-responsavel-aluno" type="text" name="nomeResponsavel"-->
+<!--                   placeholder="Nome completo do Responsável" [(ngModel)]="aluno.responsavel.nome">-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="col-md-2">-->
+<!--          <div class="form-group" id="div-dataNascimento-responsavel">-->
+<!--            <label for="input-dataNascimento-responsavel">Data de Nascimento</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-dataNascimento-responsavel" type="date"-->
+<!--                   name="dataNascimento-responsavel" [(ngModel)]="aluno.responsavel.dataNascimento">-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="col-md-4">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-cpf">CPF</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-cpf" type="text" name="cpf"-->
+<!--                   [(ngModel)]="aluno.responsavel.cpf">-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+
+<!--      <div class="row" style="padding-top: 2%">-->
+
+<!--        <div class="col-md-3">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-identidade">Identidade</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-identidade" type="text" name="identidade"-->
+<!--                   [(ngModel)]="aluno.responsavel.identidade">-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="col-md-3">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-dataEmissao">Data de Emissão</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-dataEmissao" type="date" name="dataEmissao"-->
+<!--                   [(ngModel)]="aluno.responsavel.dataEmissao">-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="col-md-2">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-uf">UF </label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-uf" type="text" name="uf"-->
+<!--                   [(ngModel)]="aluno.responsavel.uf">-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="col-md-4 ">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-orgaoExpeditor">Órgão Expeditor</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-orgaoExpeditor" type="text"-->
+<!--                   name="orgaoExpeditor"-->
+<!--                   [(ngModel)]="aluno.responsavel.orgaoExpeditor">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="row" style="padding-top: 2%">-->
+
+<!--        <div class="col-md-3">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-ctps">CTPS</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-ctps" type="text" name="ctps"-->
+<!--                   [(ngModel)]="aluno.responsavel.ctps">-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="col-md-3">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-nisResponsavel">Nis Responsável</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-nisResponsavel" type="text"-->
+<!--                   name="nisResponsavel"-->
+<!--                   [(ngModel)]="aluno.responsavel.nisResponsavel">-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="col-md-6">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-endereco">Endereco</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-endereco" type="text" name="endereco"-->
+<!--                   [(ngModel)]="aluno.responsavel.endereco">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="row" style="padding-top: 2%">-->
+<!--        <div class="col-md-6">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-email">Email</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-email" type="email" name="email"-->
+<!--                   [(ngModel)]="aluno.responsavel.email">-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="col-md-3">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-telefone">Telefone</label>-->
+<!--            <input [readOnly]="dadosReadOnly" class="form-control" id="input-telefone" type="tel" name="telefone"-->
+<!--                   [(ngModel)]="aluno.responsavel.telefones">-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash;        <div class="col-md-3">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <div class="form-group">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <label for="input-telefone2">Telefone 2</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <input class="form-control" id="input-telefone2" type="tel" name="telefone2" [(ngModel)]="responsavel.telefones">&ndash;&gt;-->
+<!--        &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </div>-->
+
+<!--      <div class="row" style="padding-top: 2%">-->
+<!--        <div class="col-md-6">-->
+<!--          <div class="form-group">-->
+<!--            <label for="input-observacao">Observacao</label>-->
+<!--            <textarea [readOnly]="dadosReadOnly" class="form-control" id="input-observacao" type="text"-->
+<!--                      name="observacao"-->
+<!--                      [(ngModel)]="aluno.responsavel.observacao"></textarea>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <button *ngIf="habilitarEdit" type="button" class="btn btn-danger" (click)="saveUpdate($event)" id="buttonSave">Salvar</button>-->
+<!--    </form>-->
+
+
+<!--  </div>-->
+<!--  <div *ngIf="!habilitarEdit" >-->
+<!--    <button type="button" class="btn btn-info" (click)="updateStart($event)" id="buttonEdit">Editar</button>-->
+<!--  </div>-->
+<!--</div>-->
 
 

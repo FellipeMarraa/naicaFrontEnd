@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {CoordenadorService} from '../../services/coordenador.service';
+import {error} from '@angular/compiler/src/util';
 
 
 @Component({
@@ -44,7 +45,11 @@ export class LoginComponent {
   // }
 
   login() {
-    this.auth.authenticate(this.creds);
-              // this.router.navigate(['home']);
+    this.auth.authenticate(this.creds).then(result => {
+      this.router.navigate(['home']);
+    }, error => {
+      this.toastr.error('Usuário ou senha inválidos!')
+    })
+
   }
 }

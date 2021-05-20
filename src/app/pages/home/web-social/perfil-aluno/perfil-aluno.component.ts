@@ -14,8 +14,8 @@ import {LocalUser} from "../../../../models/local_user";
 export class PerfilAlunoComponent implements OnInit {
 
   aluno:any;
-  dadosReadOnly: boolean=true;
-  habilitarEdit: boolean=false;
+  dadosReadOnly: boolean = true;
+  habilitarEdit: boolean = false;
 
   constructor(private route:ActivatedRoute,
               private http:HttpClient,
@@ -24,6 +24,8 @@ export class PerfilAlunoComponent implements OnInit {
               private storage: StorageService ) { }
 
   ngOnInit() {
+
+console.log(this.habilitarEdit);
     let localStorage=this.storage.getLocalUser();
     this.alunoService.findById(localStorage.id).subscribe(data=>{
       console.log(data);
@@ -49,19 +51,19 @@ export class PerfilAlunoComponent implements OnInit {
   }
 
   updateStart($event: MouseEvent) {
-    this.habilitarEdit=true;
-    this.dadosReadOnly=false;
+    this.habilitarEdit = true;
+    this.dadosReadOnly = false;
   }
 
   saveUpdate($event: MouseEvent) {
     this.habilitarEdit=false;
     this.dadosReadOnly=true;
-    // this.alunoService.update(this.aluno).subscribe(alunoAtualizado=>{
-    //   if (alunoAtualizado){
-    //     console.log('Aluno Atualizado');
-    //   }else{
-    //     console.log('Error');
-    //   }
-    //       })
+    this.alunoService.update(this.aluno).subscribe(alunoAtualizado=>{
+      if (alunoAtualizado){
+        console.log('Aluno Atualizado');
+      }else{
+        console.log('Error');
+      }
+          })
   }
 }

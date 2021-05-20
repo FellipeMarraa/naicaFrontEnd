@@ -83,8 +83,7 @@ export class WebSocialComponent implements OnInit {
 
   onDelete(id:string){
     this.http.delete(`${API_CONFIG.baseUrl}/alunos/delete/${id}`).subscribe(data=>{
-      let id= data['_id'];
-      this.router.navigate(['/web-social']);
+      this.toastr.warning('Registro deletado com sucesso!');
     })
   }
 
