@@ -12,7 +12,7 @@ import {WebSocialComponent} from './pages/home/web-social/web-social.component';
 import {AuthService} from './services/auth.service';
 import {StorageService} from './services/storage.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {FormBuilder, FormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthGuard} from './services/auth.guard';
 import {AlertService} from './services/alert.service';
 import {AlunoService} from './services/aluno.service';
@@ -36,22 +36,23 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     WebSocialComponent,
     PerfilAlunoComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    DxButtonModule,
-    DxDataGridModule,
-    DevExtremeModule,
-    HttpClientModule,
-    FormsModule,
-    ToastrModule.forRoot(),
-    ToasterModule,
-    BrowserAnimationsModule,
-    NgbModule,
-    MatProgressBarModule,
-    Ng2SearchPipeModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        DxButtonModule,
+        DxDataGridModule,
+        DevExtremeModule,
+        HttpClientModule,
+        FormsModule,
+        ToastrModule.forRoot(),
+        ToasterModule,
+        BrowserAnimationsModule,
+        NgbModule,
+        MatProgressBarModule,
+        Ng2SearchPipeModule,
+        ReactiveFormsModule
 
-  ],
+    ],
   providers: [
     CoordenadorService,
     AuthService,

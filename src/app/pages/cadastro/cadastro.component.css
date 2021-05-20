@@ -25,6 +25,12 @@
   padding-right: 2%;
 }
 
+span{
+  color: red;
+  margin-bottom: 0px;
+  position: absolute;
+}
+
 
 /*AQUI ACABA O FORMULARIO------------------------------------------------------------------------------------------------*/
 

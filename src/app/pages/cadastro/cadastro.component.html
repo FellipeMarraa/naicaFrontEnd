@@ -1,6 +1,6 @@
 <div class="container-fluid p-0" id="corpo-cadastro">
   <div class="container-fluid p-0" id="caixa-cadastro">
-    <form id="formulario-cadastro">
+    <form id="formulario-cadastro" [formGroup]="formGroup">
       <p id="titulo-cadastro"><strong>Cadastro de Atendidos</strong></p>
 
       <div class="row" style="padding-top: 2%">
@@ -8,31 +8,52 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-nome">Nome</label>
-            <input class="form-control" id="input-nome" type="text" name="nome" placeholder="Nome completo do atendido"
-                   [(ngModel)]="aluno.nome">
+            <input class="form-control" id="input-nome" type="text" formControlName="nome"
+                   placeholder="Nome completo do atendido"
+                   [(ngModel)]="aluno.nome" required>
+            <ng-container *ngIf="formGroup.controls.nome.touched">
+              <span *ngIf="formGroup.controls.nome.errors">
+              * O nome é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group" id="div-dataNascimento">
             <label for="input-dataNascimento">Data de Nascimento</label>
-            <input class="form-control" id="input-dataNascimento" type="date" name="dataNascimento"
-                   [(ngModel)]="aluno.dataNascimento">
+            <input class="form-control" id="input-dataNascimento" type="date" formControlName="dataNascimento"
+                   [(ngModel)]="aluno.dataNascimento" required>
+            <ng-container  *ngIf="formGroup.controls.dataNascimento.touched">
+              <span  *ngIf="formGroup.controls.dataNascimento.errors">
+              * O campo é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
         <div class="col-md-2">
           <div class="form-group">
-            <label for="input-idadeIncial">Idade Inicial</label>
-            <input class="form-control" id="input-idadeIncial" type="number" name="idadeIncial"
-                   [(ngModel)]="aluno.idadeInicial">
+            <label for="input-idadeInicial">Idade Inicial</label>
+            <input class="form-control" id="input-idadeInicial" type="number" formControlName="idadeInicial"
+                   [(ngModel)]="aluno.idadeInicial" required>
+            <ng-container *ngIf="formGroup.controls.idadeInicial.touched">
+              <span *ngIf="formGroup.controls.idadeInicial.errors">
+              * A idade inicial é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
         <div class="col-md-2">
           <div class="form-group">
             <label for="input-idadeAtual">Idade Atual</label>
-            <input class="form-control" id="input-idadeAtual" type="number" name="idadeAtual"
-                   [(ngModel)]="aluno.idadeAtual">
+            <input class="form-control" id="input-idadeAtual" type="number" formControlName="idadeAtual"
+                   [(ngModel)]="aluno.idadeAtual" required>
+            <ng-container *ngIf="formGroup.controls.idadeAtual.touched">
+              <span *ngIf="formGroup.controls.idadeAtual.errors">
+              * A idade atual é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
@@ -41,12 +62,16 @@
       <div class="row" style="padding-top: 2%">
         <div class="col-md-3">
           <div class="form-group">
-            <label for="select-sexo">Sexo</label>
-            <select class="form-select" id="select-sexo" name="sexo" [(ngModel)]="aluno.sexo" >
+            <label for="select-sexo">Genero</label>
+            <select class="form-select" id="select-sexo" formControlName="sexo" [(ngModel)]="aluno.sexo" required>
               <option value="Feminino">Feminino</option>
               <option value="Masculino">Masculino</option>
             </select>
-
+            <ng-container *ngIf="formGroup.controls.sexo.touched">
+              <span *ngIf="formGroup.controls.sexo.errors">
+              * O genero é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
@@ -54,7 +79,7 @@
 
           <div class="form-group">
             <label for="input-nisAtendido">Nis Atendido</label>
-            <input class="form-control" id="input-nisAtendido" type="text" name="nisAtendido"
+            <input class="form-control" id="input-nisAtendido" type="text" formControlName="nisAtendido"
                    [(ngModel)]="aluno.nisAtendido">
           </div>
 
@@ -65,20 +90,24 @@
         <div class="col-md-2">
           <div class="form-group">
             <label for="input-dataMatricula">Data da Matrícula</label>
-            <input class="form-control" id="input-dataMatricula" type="date" name="dataMatricula"
-                   [(ngModel)]="aluno.dataMatricula">
+            <input class="form-control" id="input-dataMatricula" type="date" formControlName="dataMatricula"
+                   [(ngModel)]="aluno.dataMatricula" required>
+            <ng-container *ngIf="formGroup.controls.dataMatricula.touched">
+              <span *ngIf="formGroup.controls.dataMatricula.errors">
+              * O campo é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
 
         <div class="col-md-2">
-          <p>Desligado</p>
           <div class="container" id="div-desligado">
-
-            <input class="form-check-input" id="input-desligadoSim" type="radio" name="desligadoSim"
-                   value=true [(ngModel)]="aluno.desligado"> Sim
-            <input class="form-check-input" id="input-desligadoNao" type="radio" name="desligadoNao"
-                   value=false [(ngModel)]="aluno.desligado"> Não
+            <label for="select-desligado">Desligado</label>
+            <select class="form-select" id="select-desligado" formControlName="desligado" [(ngModel)]="aluno.desligado">
+              <option value="sim">Sim</option>
+              <option value="nao">Nao</option>
+            </select>
           </div>
 
         </div>
@@ -89,7 +118,13 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-escola">Escola </label>
-            <input class="form-control" id="input-escola" type="text" name="escola" [(ngModel)]="aluno.escola">
+            <input class="form-control" id="input-escola" type="text" formControlName="escola"
+                   [(ngModel)]="aluno.escola" required>
+            <ng-container *ngIf="formGroup.controls.escola.touched">
+              <span *ngIf="formGroup.controls.escola.errors">
+              * A escola é obrigatorio
+            </span>
+            </ng-container>
           </div>
 
         </div>
@@ -97,46 +132,49 @@
         <div class="col-md-2 ">
           <div class="form-group">
             <label for="input-anoEscolar">Ano Escolar</label>
-            <input class="form-control" id="input-anoEscolar" type="text" name="anoEscolar"
-                   [(ngModel)]="aluno.anoEscolar">
+            <input class="form-control" id="input-anoEscolar" type="text" formControlName="anoEscolar"
+                   [(ngModel)]="aluno.anoEscolar" required>
+            <ng-container *ngIf="formGroup.controls.anoEscolar.touched">
+              <span *ngIf="formGroup.controls.anoEscolar.errors">
+              * O ano escolar é obrigatorio
+            </span>
+            </ng-container>
           </div>
-
         </div>
 
         <div class="col-md-2">
-
           <div class="form-group">
             <label for="select-periodoEscolar">Periodo Escolar</label>
-            <select class="form-select" id="select-periodoEscolar" name="periodoEscolar"
-                    [(ngModel)]="aluno.periodoEscolar">
+            <select class="form-select" id="select-periodoEscolar" formControlName="periodoEscolar"
+                    [(ngModel)]="aluno.periodoEscolar" required>
               <option value="manha">Manhã</option>
               <option value="tarde">Tarde</option>
             </select>
-
+            <ng-container *ngIf="formGroup.controls.periodoEscolar.touched">
+              <span *ngIf="formGroup.controls.periodoEscolar.errors">
+              * O periodo escolar é obrigatorio
+            </span>
+            </ng-container>
           </div>
-
         </div>
-
       </div>
 
       <div class="row" style="padding-top: 2%">
         <div class="col-md-3">
-          <p>Desacompanhado</p>
           <div class="container" id="div-desacompanhado">
-
-            <input class="form-check-input" id="input-desacompanhadoSim" type="radio" name="sim" value=true
-                   [(ngModel)]="aluno.desacompanhado"> Sim
-
-            <input class="form-check-input" id="input-desacompanhadoNao" type="radio" name="nao" value=false
-                   [(ngModel)]="aluno.desacompanhado"> Não
-
+            <label for="select-desacompanhado">Desacompanhado</label>
+            <select class="form-select" id="select-desacompanhado" formControlName="desacompanhado"
+                    [(ngModel)]="aluno.desacompanhado">
+              <option value="sim">Sim</option>
+              <option value="nao">Nao</option>
+            </select>
           </div>
 
         </div>
         <div class="col-md-9">
           <div class="form-group">
             <label for="input-autorizadoBuscar">Autorizado a buscar</label>
-            <textarea class="form-control" id="input-autorizadoBuscar" type="text" name="autorizadoBuscar"
+            <textarea class="form-control" id="input-autorizadoBuscar" type="text" formControlName="autorizadoBuscar"
                       [(ngModel)]="aluno.autorizadoBuscar"></textarea>
           </div>
         </div>
@@ -159,6 +197,7 @@
             <label for="input-nome">Nome</label>
             <input class="form-control" id="input-nome-responsavel" type="text" name="nome"
                    placeholder="Nome completo do Responsável" [(ngModel)]="aluno.responsavel.nome">
+
           </div>
         </div>
 
@@ -168,6 +207,9 @@
             <label for="input-dataNascimento-responsavel">Data de Nascimento</label>
             <input class="form-control" id="input-dataNascimento-responsavel" type="date"
                    name="dataNascimento-responsavel" [(ngModel)]="aluno.responsavel.dataNascimento">
+            <span>
+
+            </span>
           </div>
         </div>
 
@@ -250,7 +292,8 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-email">Email</label>
-            <input class="form-control" id="input-email" type="email" name="email" [(ngModel)]="aluno.responsavel.email">
+            <input class="form-control" id="input-email" type="email" name="email"
+                   [(ngModel)]="aluno.responsavel.email">
           </div>
         </div>
 
