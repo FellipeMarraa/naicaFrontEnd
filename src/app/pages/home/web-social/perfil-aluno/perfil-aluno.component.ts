@@ -32,21 +32,7 @@ console.log(this.habilitarEdit);
     })
   }
 
-  // editAluno(aluno_id:string){
-  //   let local:LocalUser={
-  //     id:aluno_id,
-  //     token:""
-  //   }
-  //   this.storage.setLocalUser(local);
-  //   console.log(local);
-  //   this.router.navigate(['/aluno-edit/',local.id]);
-  // }
 
-
-  editAluno(){
-
-
-  }
 
   updateStart($event: MouseEvent) {
     this.habilitarEdit = true;

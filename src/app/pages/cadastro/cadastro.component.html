@@ -11,7 +11,7 @@
             <input class="form-control" id="input-nome" type="text" formControlName="nome"
                    placeholder="Nome completo do atendido"
                    [(ngModel)]="aluno.nome" required>
-            <ng-container *ngIf="formGroup.controls.nome.touched">
+            <ng-container *ngIf="formGroup.controls.nome.touched "  >
               <span *ngIf="formGroup.controls.nome.errors">
               * O nome é obrigatorio
             </span>
@@ -23,8 +23,8 @@
             <label for="input-dataNascimento">Data de Nascimento</label>
             <input class="form-control" id="input-dataNascimento" type="date" formControlName="dataNascimento"
                    [(ngModel)]="aluno.dataNascimento" required>
-            <ng-container  *ngIf="formGroup.controls.dataNascimento.touched">
-              <span  *ngIf="formGroup.controls.dataNascimento.errors">
+            <ng-container *ngIf="formGroup.controls.dataNascimento.touched">
+              <span *ngIf="formGroup.controls.dataNascimento.errors">
               * O campo é obrigatorio
             </span>
             </ng-container>
@@ -108,6 +108,11 @@
               <option value="sim">Sim</option>
               <option value="nao">Nao</option>
             </select>
+            <ng-container *ngIf="formGroup.controls.desligado.touched">
+              <span *ngIf="formGroup.controls.desligado.errors">
+              * O campo é obrigatorio
+            </span>
+            </ng-container>
           </div>
 
         </div>
@@ -168,6 +173,11 @@
               <option value="sim">Sim</option>
               <option value="nao">Nao</option>
             </select>
+            <ng-container *ngIf="formGroup.controls.desacompanhado.touched">
+              <span *ngIf="formGroup.controls.desacompanhado.errors">
+              * O campo é obrigatorio
+            </span>
+            </ng-container>
           </div>
 
         </div>
@@ -187,7 +197,7 @@
 
 <div class="container-fluid p-0" id="corpo-cadastro-responsavel">
   <div class="container-fluid p-0" id="caixa-cadastro-responsavel">
-    <form id="formulario-cadastro-responsavel" style="padding-top: 2%">
+    <form id="formulario-cadastro-responsavel" style="padding-top: 2%" [formGroup]="formGroup">
       <p id="titulo-cadastro-responsavel"><strong>Cadastro do Responsável</strong></p>
 
       <div class="row" style="padding-top: 2%">
@@ -195,9 +205,13 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-nome">Nome</label>
-            <input class="form-control" id="input-nome-responsavel" type="text" name="nome"
-                   placeholder="Nome completo do Responsável" [(ngModel)]="aluno.responsavel.nome">
-
+            <input class="form-control" id="input-nome-responsavel" type="text" formControlName="nomeResponsavel"
+                   placeholder="Nome completo do Responsável" [(ngModel)]="aluno.responsavel.nome" required>
+            <ng-container *ngIf="formGroup.controls.nomeResponsavel.touched">
+              <span *ngIf="formGroup.controls.nomeResponsavel.errors">
+              * O nome é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
@@ -206,10 +220,12 @@
           <div class="form-group" id="div-dataNascimento-responsavel">
             <label for="input-dataNascimento-responsavel">Data de Nascimento</label>
             <input class="form-control" id="input-dataNascimento-responsavel" type="date"
-                   name="dataNascimento-responsavel" [(ngModel)]="aluno.responsavel.dataNascimento">
-            <span>
-
-            </span>
+                   formControlName="dataNascimentoResponsavel" [(ngModel)]="aluno.responsavel.dataNascimento" required>
+                       <ng-container *ngIf="formGroup.controls.dataNascimentoResponsavel.touched">
+                                      <span *ngIf="formGroup.controls.dataNascimentoResponsavel.errors">
+                                      * O campo é obrigatorio
+                                    </span>
+                        </ng-container>
           </div>
         </div>
 
@@ -217,7 +233,13 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="input-cpf">CPF</label>
-            <input class="form-control" id="input-cpf" type="text" name="cpf" [(ngModel)]="aluno.responsavel.cpf">
+            <input class="form-control" id="input-cpf" type="text" formControlName="cpf"
+                   [(ngModel)]="aluno.responsavel.cpf" required>
+            <ng-container *ngIf="formGroup.controls.cpf.touched">
+            <span *ngIf="formGroup.controls.cpf.errors">
+              * O CPF é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
@@ -228,8 +250,13 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="input-identidade">Identidade</label>
-            <input class="form-control" id="input-identidade" type="text" name="identidade"
-                   [(ngModel)]="aluno.responsavel.identidade">
+            <input class="form-control" id="input-identidade" type="text" formControlName="identidade"
+                   [(ngModel)]="aluno.responsavel.identidade" required>
+            <ng-container *ngIf="formGroup.controls.identidade.touched">
+            <span *ngIf="formGroup.controls.identidade.errors">
+              * A identidade é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
@@ -237,16 +264,35 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="input-dataEmissao">Data de Emissão</label>
-            <input class="form-control" id="input-dataEmissao" type="date" name="dataEmissao"
-                   [(ngModel)]="aluno.responsavel.dataEmissao">
+            <input class="form-control" id="input-dataEmissao" type="date" formControlName="dataEmissao"
+                   [(ngModel)]="aluno.responsavel.dataEmissao" required>
+            <ng-container *ngIf="formGroup.controls.dataEmissao.touched">
+            <span *ngIf="formGroup.controls.dataEmissao.errors">
+              * O campo é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
 
         <div class="col-md-2">
           <div class="form-group">
-            <label for="input-uf">UF </label>
-            <input class="form-control" id="input-uf" type="text" name="uf" [(ngModel)]="aluno.responsavel.uf">
+            <mat-label>UF</mat-label>
+            <input [formControl]="formControl" type="text" matInput [matAutocomplete]="auto" class="form-select" id="input-uf" formControlName="uf"
+                    [(ngModel)]="aluno.responsavel.uf" required>
+              <mat-autocomplete #auto="matAutocomplete" >
+                <mat-option *ngFor="let estado of filterEstados | async" [value]="estado" >
+                 {{estado}}
+
+                </mat-option>
+
+              </mat-autocomplete>
+
+            <ng-container *ngIf="formGroup.controls.uf.touched">
+            <span *ngIf="formGroup.controls.uf.errors">
+              * UF é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
@@ -254,8 +300,13 @@
         <div class="col-md-4 ">
           <div class="form-group">
             <label for="input-orgaoExpeditor">Órgão Expeditor</label>
-            <input class="form-control" id="input-orgaoExpeditor" type="text" name="orgaoExpeditor"
-                   [(ngModel)]="aluno.responsavel.orgaoExpeditor">
+            <input class="form-control" id="input-orgaoExpeditor" type="text" formControlName="orgaoExpeditor"
+                   [(ngModel)]="aluno.responsavel.orgaoExpeditor" required>
+            <ng-container *ngIf="formGroup.controls.orgaoExpeditor.touched">
+            <span *ngIf="formGroup.controls.orgaoExpeditor.errors">
+              * O orgao de expeditor é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
       </div>
@@ -265,7 +316,8 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="input-ctps">CTPS</label>
-            <input class="form-control" id="input-ctps" type="text" name="ctps" [(ngModel)]="aluno.responsavel.ctps">
+            <input class="form-control" id="input-ctps" type="text" formControlName="ctps"
+                   [(ngModel)]="aluno.responsavel.ctps" required>
           </div>
         </div>
 
@@ -273,8 +325,8 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="input-nisResponsavel">Nis Responsável</label>
-            <input class="form-control" id="input-nisResponsavel" type="text" name="nisResponsavel"
-                   [(ngModel)]="aluno.responsavel.nisResponsavel">
+            <input class="form-control" id="input-nisResponsavel" type="text" formControlName="nisResponsavel"
+                   [(ngModel)]="aluno.responsavel.nisResponsavel" >
           </div>
         </div>
 
@@ -282,8 +334,13 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-endereco">Endereco</label>
-            <input class="form-control" id="input-endereco" type="text" name="endereco"
-                   [(ngModel)]="aluno.responsavel.endereco">
+            <input class="form-control" id="input-endereco" type="text" formControlName="endereco"
+                   [(ngModel)]="aluno.responsavel.endereco" required>
+            <ng-container *ngIf="formGroup.controls.endereco.touched">
+            <span *ngIf="formGroup.controls.endereco.errors">
+              * O endereco é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
       </div>
@@ -292,8 +349,8 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="input-email">Email</label>
-            <input class="form-control" id="input-email" type="email" name="email"
-                   [(ngModel)]="aluno.responsavel.email">
+            <input class="form-control" id="input-email" type="email" formControlName="email"
+                   [(ngModel)]="aluno.responsavel.email" >
           </div>
         </div>
 
@@ -301,29 +358,26 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="input-telefone">Telefone</label>
-            <input class="form-control" id="input-telefone" type="tel" name="telefone"
-                   [(ngModel)]="aluno.responsavel.telefones">
+            <input class="form-control" id="input-telefone" type="tel" formControlName="telefone"
+                   [(ngModel)]="aluno.responsavel.telefones" required>
+            <ng-container *ngIf="formGroup.controls.telefone.touched">
+            <span *ngIf="formGroup.controls.telefone.errors">
+              * O telefone  é obrigatorio
+            </span>
+            </ng-container>
           </div>
         </div>
 
-        <!--        <div class="col-md-3">-->
-        <!--          <div class="form-group">-->
-        <!--            <label for="input-telefone2">Telefone 2</label>-->
-        <!--            <input class="form-control" id="input-telefone2" type="tel" name="telefone2" [(ngModel)]="responsavel.telefones">-->
-        <!--          </div>-->
-        <!--        </div>-->
-      </div>
-
-      <div class="row" style="padding-top: 2%">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="input-observacao">Observacao</label>
-            <textarea class="form-control" id="input-observacao" type="text" name="observacao"
-                      [(ngModel)]="aluno.responsavel.observacao"></textarea>
+        <div class="row" style="padding-top: 2%">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="input-observacao">Observacao</label>
+              <textarea class="form-control" id="input-observacao" type="text" formControlName="observacao"
+                        [(ngModel)]="aluno.responsavel.observacao"></textarea>
+            </div>
           </div>
         </div>
       </div>
-
     </form>
 
     <button type="submit" id="button-cadastrar" (click)="cadastrar()">Cadastrar</button>

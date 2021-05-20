@@ -20,6 +20,7 @@ const routes: Routes = [
     path: 'cadastro', component: CadastroComponent,
     // canActivate: [AuthGuard]
   },
+
   {
     path: 'relacao-atendidos', component: RelacaoAlunoComponent,
     // canActivate: [AuthGuard]
@@ -40,8 +41,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  exports: [ RouterModule ],
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
+  exports: [RouterModule]
 })
 
 export class AppRoutingModule {

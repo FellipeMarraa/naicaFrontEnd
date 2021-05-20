@@ -48,7 +48,7 @@ export class LoginComponent {
     this.auth.authenticate(this.creds).then(result => {
       this.router.navigate(['home']);
     }, error => {
-      this.toastr.error('Usuário ou senha inválidos!')
+      // this.toastr.error('Usuário ou senha inválidos!')
     })
 
   }

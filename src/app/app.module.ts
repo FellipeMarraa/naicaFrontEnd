@@ -25,6 +25,11 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { PerfilAlunoComponent } from './pages/home/web-social/perfil-aluno/perfil-aluno.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatAutocomplete, MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatFormFieldModule, MatLabel} from "@angular/material/form-field";
+import { ConfirmationDialogComponent } from './classe/confirmation-dialog/confirmation-dialog.component';
+import {ConfirmationDialogService} from "./services/confirmation.dialog.service";
+import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CadastroComponent,
     RelacaoAlunoComponent,
     WebSocialComponent,
-    PerfilAlunoComponent
+    PerfilAlunoComponent,
+    ConfirmationDialogComponent
   ],
     imports: [
         BrowserModule,
@@ -50,8 +56,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
         NgbModule,
         MatProgressBarModule,
         Ng2SearchPipeModule,
-        ReactiveFormsModule
-
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatFormFieldModule
     ],
   providers: [
     CoordenadorService,
@@ -62,8 +69,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AlertService,
     FormBuilder,
     AlunoService,
+    ConfirmationDialogService,
     ResponsavelService,
-    ToastrService
+    ToastrService,
+    ErrorInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })

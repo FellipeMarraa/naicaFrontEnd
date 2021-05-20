@@ -9,6 +9,7 @@ import {HttpClient} from "@angular/common/http";
 import {LocalUser} from "../../../models/local_user";
 import {StorageService} from "../../../services/storage.service";
 import {API_CONFIG} from "../../../config/api.config";
+import {ConfirmationDialogService} from "../../../services/confirmation.dialog.service";
 
 @Component({
   selector: 'app-web-social',
@@ -31,7 +32,9 @@ export class WebSocialComponent implements OnInit {
               public route:ActivatedRoute,
               public router: Router,
               public http: HttpClient,
-              public storage: StorageService) {
+              public storage: StorageService,
+              public confirmationDialogService: ConfirmationDialogService
+                ) {
   }
 
   ngOnInit() {
@@ -56,9 +59,19 @@ export class WebSocialComponent implements OnInit {
   }
 
   onDelete(id:string){
-    this.http.delete(`${API_CONFIG.baseUrl}/alunos/delete/${id}`).subscribe(data=>{
-      this.toastr.warning('Registro deletado com sucesso!');
-    })
+    this.confirmationDialogService.confirm("Deletar o registro","Tem certeza de que deseja deletar?","Sim","Cancelar","sm")
+      .then((confirmed) =>{
+        if (confirmed){
+          this.http.delete(`${API_CONFIG.baseUrl}/alunos/delete/${id}`).subscribe(data=>{
+            this.toastr.success('Registro deletado com sucesso!');
+            this.reloadComponent();
+        })
+        }else{
+        this.reloadComponent();
+        }
+
+      }).catch(()=>this.reloadComponent());
+
   }
 
   filtrar(value: string) {
@@ -69,6 +82,11 @@ export class WebSocialComponent implements OnInit {
         x.nome.trim().toLowerCase().includes(value.trim().toLowerCase())
       );
     }
+  }
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/web-social']);
   }
 
 }
