@@ -13,10 +13,10 @@ export interface AlunoDto {
   sexo: string;
   nisAtendido: string;
   dataMatricula: string;
-  desligado: boolean;
+  desligado: string;
   anoEscolar: string;
   periodoEscolar: string;
-  desacompanhado: boolean;
+  desacompanhado: string;
   autorizadoBuscar: string;
 
 }

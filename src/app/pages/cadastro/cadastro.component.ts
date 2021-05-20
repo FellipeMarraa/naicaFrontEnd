@@ -6,6 +6,7 @@ import {ResponsavelService} from '../../services/responsavel.service';
 import {ToastrService} from 'ngx-toastr';
 import {Responsavel} from '../../models/responsavel';
 import {Aluno} from '../../models/aluno';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -15,31 +16,48 @@ import {Aluno} from '../../models/aluno';
 })
 export class CadastroComponent {
 
-
+  formGroup: FormGroup;
   aluno: Aluno = {
     'id':"",
     'nome': '',
-    'dataNascimento': Date.toString(),
-    'idadeInicial': 0,
-    'idadeAtual': 0,
+    'dataNascimento': "",
+    'idadeInicial': null,
+    'idadeAtual': null,
     'escola': '',
     'responsavel': new Responsavel(),
     'sexo': "",
     'nisAtendido': '',
     'dataMatricula': '',
-    'desligado': false,
+    'desligado': '',
     'anoEscolar': '',
     'periodoEscolar': '',
-    'desacompanhado': false,
+    'desacompanhado': '',
     'autorizadoBuscar': ''
   };
-
 
   constructor(
     public router: Router,
     public alunoService: AlunoService,
     public responsavelService: ResponsavelService,
-    public toastr: ToastrService) {
+    public toastr: ToastrService,
+    public formBuilder:FormBuilder) {
+
+    this.formGroup=this.formBuilder.group({
+      nome:["", Validators.required] ,
+      dataNascimento: ["", Validators.required],
+      idadeInicial: ["", Validators.required],
+      idadeAtual: ["", Validators.required],
+      escola: ["", Validators.required],
+      responsavel: [""],
+      sexo: ["", Validators.required],
+      nisAtendido:[""] ,
+      dataMatricula: ["", Validators.required],
+      desligado: [false],
+      anoEscolar: ["", Validators.required],
+      periodoEscolar: ["", Validators.required],
+      desacompanhado: [false],
+      autorizadoBuscar:[ '']
+    })
 
   }
 
@@ -55,17 +73,24 @@ export class CadastroComponent {
   }
 
   cadastrar() {
+    if (!this.formGroup.valid){
+      this.toastr.error('Não foi possível efetuar o cadastro do aluno');
+    }else{
+      this.alunoService.save(this.aluno)
+        .subscribe(responseAluno => {
+            this.toastr.success("Aluno Cadastrado");
+          },
+          error => {
+          });
+    }
 
-    this.alunoService.save(this.aluno)
-      .subscribe(responseAluno => {
-        },
-        error => {
-          this.toastr.error('Não foi possível efetuar o cadastro do aluno');
-        });
 
   }
 
 
+  onSubmit(value: any) {
+
+  }
 }
 
 
