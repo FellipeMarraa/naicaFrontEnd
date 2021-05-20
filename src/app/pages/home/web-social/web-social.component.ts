@@ -51,36 +51,6 @@ export class WebSocialComponent implements OnInit {
     this.router.navigate(['/perfil-aluno/',local.id]);
   }
 
-
-    //  this.alunoService.list().subscribe(response => {
-   //   this.aluno = response;
-   //   console.log(response);
-   //
-   // }, error => {console.log(error)});
-
-    // this.responsavelService.findAll().subscribe(response => {
-    //   this.dataSource = response;
-    //   console.log(this.dataSource);
-    //
-    // }, error => {console.log(error)});
-
-
-
-  getAluno(id:string){
-    // id= this.id;
-    // console.log(id);
-    //
-    // this.http.get(`${API_CONFIG.baseUrl}/alunos/${id}`).subscribe(data=>{
-    //   console.log(data);
-    //   this.aluno=data;
-    // })
-  }
-
-  onEdit(index:string){
-   //  index=this.aluno.id;
-   // this.router.navigate(['/perfil-aluno/'+index]);
-  }
-
   onDelete(id:string){
     this.http.delete(`${API_CONFIG.baseUrl}/alunos/delete/${id}`).subscribe(data=>{
       this.toastr.warning('Registro deletado com sucesso!');

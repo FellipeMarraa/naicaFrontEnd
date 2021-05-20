@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Aluno} from "../../../../models/aluno";
-import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import {AlunoService} from "../../../../services/aluno.service";
-import {StorageService} from "../../../../services/storage.service";
-import {LocalUser} from "../../../../models/local_user";
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {AlunoService} from '../../../../services/aluno.service';
+import {StorageService} from '../../../../services/storage.service';
 
 @Component({
   selector: 'app-perfil-aluno',
