@@ -19,6 +19,8 @@ export class WebSocialComponent implements OnInit {
 
   alunos:Aluno[]=[] ;
 
+  filtro: string = "";
+
   of(observable: Observable<any>, successFn?: Function, errorFn?: Function) {
     const defaultHandleError = this.alunoService.handleError.bind(this);
     return ObservableUtils.of(observable, successFn, errorFn ? errorFn : defaultHandleError);
@@ -39,6 +41,8 @@ export class WebSocialComponent implements OnInit {
     },error => {
       console.log(error);
     })
+
+    this.filtrar(this.filtro);
     }
 
   showAluno(aluno_id:string){
@@ -55,6 +59,16 @@ export class WebSocialComponent implements OnInit {
     this.http.delete(`${API_CONFIG.baseUrl}/alunos/delete/${id}`).subscribe(data=>{
       this.toastr.warning('Registro deletado com sucesso!');
     })
+  }
+
+  filtrar(value: string) {
+    if(!value) {
+      this.alunos = this.alunos;
+    } else {
+      this.alunos = this.alunos.filter(x =>
+        x.nome.trim().toLowerCase().includes(value.trim().toLowerCase())
+      );
+    }
   }
 
 }

@@ -1,6 +1,8 @@
 <!--<div class="container" id="corpo">-->
+
 <div class="alunoList">
   <table class="table table-stripes">
+    <input type="text" [(ngModel)]="filtro" (ngModelChange)='filtrar(filtro)'>
     <thead>
     <tr>
       <th>Id</th>
@@ -16,7 +18,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let aluno of alunos;let i = index">
+    <tr *ngFor="let aluno of alunos; let i = index">
       <th scope="row">{{i + 1}}</th>
       <td>{{aluno.nome}}</td>
       <td>{{aluno.dataNascimento}}</td>
@@ -34,18 +36,6 @@
     </tbody>
   </table>
 </div>
-<!--  <div class="regentry" *ngIf="showNew">-->
-<!--    <form (ngSubmit)="onSave()">-->
-<!--      <div class = "form-group row">-->
-<!--        <label for = "nome" class = "col-2 col-form-label"> Nome </label>-->
-<!--        <div class = "col-10">-->
-<!--          <input class = "form-control" type = "text" [(ngModel)] = "alunoModel.nome" id="Nome">-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <button type="submit" class="btn btn-success">{{submitType}}</button>-->
-<!--      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>-->
-<!--    </form>-->
-<!--  </div>-->
 <!--</div>-->
 
 
