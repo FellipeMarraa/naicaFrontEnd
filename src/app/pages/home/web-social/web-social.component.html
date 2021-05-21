@@ -1,140 +1,107 @@
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
 <div class="example-container mat-elevation-z8">
-  <div class="example-header" [style.display]="selection.isEmpty() ? '' : 'none'">
-    <mat-input-container floatPlaceholder="never">
-      <input matInput #filter placeholder="Filter users">
-    </mat-input-container>
-  </div>
-  <div class="example-header example-selection-header"
-       *ngIf="!selection.isEmpty()">
-    {{selection.selected.length}}
-    {{selection.selected.length == 1 ? 'user' : 'users'}}
-    selected
-  </div>
 
-  <mat-table #table [dataSource]="dataSource" matSort>
+  <mat-table [dataSource]="dataSource" matSort>
+<div *ngFor="let aluno of alunos">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+  </ng-container>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Checkbox Column -->
-    <ng-container cdkColumnDef="select">
-      <mat-header-cell *cdkHeaderCellDef>
-        <mat-checkbox (change)="$event ? masterToggle() : null"
-                      [checked]="isAllSelected()"
-                      [indeterminate]="selection.hasValue() && !isAllSelected()">
-        </mat-checkbox>
-      </mat-header-cell>
-      <mat-cell *cdkCellDef="let row">
-        <mat-checkbox (click)="$event.stopPropagation()"
-                      (change)="$event ? selection.toggle(row.id) : null"
-                      [checked]="selection.isSelected(row.id)">
-        </mat-checkbox>
-      </mat-cell>
-    </ng-container>
-
-    <!-- ID Column -->
-    <ng-container cdkColumnDef="userId">
-      <mat-header-cell *cdkHeaderCellDef mat-sort-header> ID </mat-header-cell>
-      <mat-cell *cdkCellDef="let row"> {{row.id}} </mat-cell>
-    </ng-container>
-
-    <!-- Progress Column -->
-    <ng-container cdkColumnDef="progress">
-      <mat-header-cell *cdkHeaderCellDef mat-sort-header> Progress </mat-header-cell>
-      <mat-cell *cdkCellDef="let row"> {{row.progress}}% </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container cdkColumnDef="userName">
-      <mat-header-cell *cdkHeaderCellDef mat-sort-header> Name </mat-header-cell>
-      <mat-cell *cdkCellDef="let row"> {{row.name}} </mat-cell>
-    </ng-container>
-
-    <!-- Color Column -->
-    <ng-container cdkColumnDef="color">
-      <mat-header-cell *cdkHeaderCellDef mat-sort-header> Color </mat-header-cell>
-      <mat-cell *cdkCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
-    </ng-container>
-
-    <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *cdkRowDef="let row; columns: displayedColumns;"
-             [class.example-selected-row]="selection.isSelected(row.id)"
-             (click)="selection.toggle(row.id)">
-    </mat-row>
-  </mat-table>
-
-  <div class="example-no-results"
-       [style.display]="dataSource?.renderedData.length == 0 ? '' : 'none'">
-    No users found matching filter.
-  </div>
-
-  <mat-paginator #paginator
-                 [length]="dataSource?.filteredData.length"
-                 [pageIndex]="0"
-                 [pageSize]="25"
-                 [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
 </div>
 
 
+    <!-- Progress Column -->
+<!--    <ng-container matColumnDef="name">-->
+<!--      <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>-->
+<!--    </ng-container>-->
+
+<!--    &lt;!&ndash; Name Column &ndash;&gt;-->
+<!--    <ng-container matColumnDef="sexo">-->
+<!--      <mat-header-cell *matHeaderCellDef mat-sort-header> Genero</mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let row"> {{row.sexo}} </mat-cell>-->
+<!--    </ng-container>-->
+
+<!--    &lt;!&ndash; Color Column &ndash;&gt;-->
+<!--    <ng-container matColumnDef="idadeAtual">-->
+<!--      <mat-header-cell *matHeaderCellDef mat-sort-header> Idade Atual </mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let row" > {{row.idadeAtual}} </mat-cell>-->
+<!--    </ng-container>-->
+
+<!--    &lt;!&ndash; Name Column &ndash;&gt;-->
+<!--    <ng-container matColumnDef="desacompanhado">-->
+<!--      <mat-header-cell *matHeaderCellDef mat-sort-header> Desacompanhado</mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let row"> {{row.desacompanhado}} </mat-cell>-->
+<!--    </ng-container>-->
+
+<!--    &lt;!&ndash; Color Column &ndash;&gt;-->
+<!--    <ng-container matColumnDef="autorizadobuscar">-->
+<!--      <mat-header-cell *matHeaderCellDef mat-sort-header> Autorizado Buscar </mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let row" > {{row.autorizadoBuscar}} </mat-cell>-->
+<!--    </ng-container>-->
 
 
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
 
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
 
+<!--<div class="container" id="alunoList">-->
+<!--  <div>-->
 
+<!--    <table class="table table-bordered">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th>Id</th>-->
+<!--        <th>Nome</th>-->
+<!--        <th>Data Nascimento</th>-->
+<!--        <th>Idade Atual</th>-->
+<!--        <th>Sexo</th>-->
+<!--        <th>Nis Atendido</th>-->
+<!--        <th>Período Escolar</th>-->
+<!--        <th>Desacompanhado</th>-->
+<!--        <th>Autorizado Buscar</th>-->
+<!--        <th> </th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr *ngFor="let aluno of alunos  | paginate: { itemsPerPage: contador, currentPage: paginaAtual };let i= index">-->
+<!--        <th scope="row">{{i + 1}}</th>-->
+<!--        <td>{{aluno.nome}}</td>-->
+<!--        <td>{{aluno.dataNascimento | date : "dd/MM/yyyy"}}</td>-->
+<!--        <td>{{aluno.idadeAtual}}</td>-->
+<!--        <td>{{aluno.sexo}}</td>-->
+<!--        <td>{{aluno.nisAtendido}}</td>-->
+<!--        <td>{{aluno.periodoEscolar}}</td>-->
+<!--        <td>{{aluno.desacompanhado}}</td>-->
+<!--        <td>{{aluno.autorizadoBuscar}}</td>-->
+<!--        <td>-->
+<!--          <button type="button" class="btn btn-info" (click)="showAluno(aluno.id)" id="buttonEdit">Editar</button>-->
+<!--          <button type="button" class="btn btn-danger" (click)="onDelete(aluno.id)" id="buttonDelete">Delete</button>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--  &lt;!&ndash;inclindo o controle de paginação.&ndash;&gt;-->
+<!--  <div class="text-right">-->
+<!--    <mat-paginator [length]="100"-->
+<!--                   [pageSize]="10"-->
+<!--                   [pageSizeOptions]="[5, 10, 25, 100]"-->
+<!--                   (page)="onChangePage($event)" >-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div class="alunoList">-->
-<!--  <table class="table table-stripes">-->
-<!--    <input type="text" [(ngModel)]="filtro" (ngModelChange)='filtrar(filtro)'>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--      <th>Id</th>-->
-<!--      <th>Nome</th>-->
-<!--      <th>Data Nascimento</th>-->
-<!--      <th>Idade Atual</th>-->
-<!--      <th>Sexo</th>-->
-<!--      <th>Nis Atendido</th>-->
-<!--      <th>Período Escolar</th>-->
-<!--      <th>Desacompanhado</th>-->
-<!--      <th>Autorizado Buscar</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr *ngFor="let aluno of alunos; let i = index">-->
-<!--      <th scope="row">{{i + 1}}</th>-->
-<!--      <td>{{aluno.nome}}</td>-->
-<!--      <td>{{aluno.dataNascimento}}</td>-->
-<!--      <td>{{aluno.idadeAtual}}</td>-->
-<!--      <td>{{aluno.sexo}}</td>-->
-<!--      <td>{{aluno.nisAtendido}}</td>-->
-<!--      <td>{{aluno.periodoEscolar}}</td>-->
-<!--      <td>{{aluno.desacompanhado}}</td>-->
-<!--      <td>{{aluno.autorizadoBuscar}}</td>-->
-<!--      <td>-->
-<!--        <button type="button" class="btn btn-info" (click)="showAluno(aluno.id)" id="buttonEdit">Editar</button>-->
-<!--        <button type="button" class="btn btn-danger" (click)="onDelete(aluno.id)" id="buttonDelete">Delete</button>-->
-<!--      </td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--  </table>-->
+<!--    </mat-paginator>-->
+<!--  </div>-->
 <!--</div>-->
-
 
 
 

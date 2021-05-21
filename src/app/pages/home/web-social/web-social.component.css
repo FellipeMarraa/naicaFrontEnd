@@ -1,17 +1,42 @@
-.alunoList{
-  position: relative;
+.example-container {
   padding-top: 5%;
-  width: 95vw;
-  margin-left: 2%;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
 }
 
-#buttonDelete{
-  margin-left: 1%;
-  font-size: 10px;
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
 }
 
-#buttonEdit{
-  font-size: 10px;
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
 }
 
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+/*#alunoList{*/
+/*  position: relative;*/
+/*  padding-top: 5%;*/
+/*  width: 95vw;*/
+/*  margin-left: 2%;*/
+/*}*/
+
+/*#buttonDelete{*/
+/*  margin-left: 1%;*/
+/*  font-size: 10px;*/
+/*}*/
+
+/*#buttonEdit{*/
+/*  font-size: 10px;*/
+/*}*/
+
+/*th, td {*/
+/*  text-align: left;*/
+/*}*/
 

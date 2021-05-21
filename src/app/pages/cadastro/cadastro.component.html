@@ -283,9 +283,7 @@
               <mat-autocomplete #auto="matAutocomplete" >
                 <mat-option *ngFor="let estado of filterEstados | async" [value]="estado" >
                  {{estado}}
-
                 </mat-option>
-
               </mat-autocomplete>
 
             <ng-container *ngIf="formGroup.controls.uf.touched">
